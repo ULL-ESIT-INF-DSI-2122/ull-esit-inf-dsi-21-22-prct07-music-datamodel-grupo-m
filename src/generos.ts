@@ -2,7 +2,8 @@ import {Album} from "./album";
 import {Cancion} from "./cancion";
 import {Artista} from "./artistas";
 import {Grupo} from "./grupos";
-export type generoInfo = 'CLASICA'| 'ROCK'| 'HIP HOP' | 'REGGEATON' | 'POP' | 'TRAP' | 'PUNK' ;
+
+export type generoInfo = 'CLASICA'| 'ROCK'| 'HIP-HOP' | 'REGGEATON' | 'POP' | 'TRAP' | 'PUNK' | 'K-POP' | 'METAL' | 'CUMBIA' | 'BLUES' | 'JAZZ'| 'COUNTRY' | 'EDM' | 'FLAMENCO' | 'SALSA' | 'REGGAE' | 'GOSPEL' | 'DISCO' | 'BANDA SONORA' ;
 
 export class Genero {
     constructor(private nombre: generoInfo, private artistas: (Artista | Grupo)[], private albumes: Album[], private canciones: Cancion[]) {

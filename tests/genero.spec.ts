@@ -7,7 +7,7 @@ import {Album} from '../src/album';
 import {Cancion} from '../src/cancion';
 import {Artista} from '../src/artistas';
 
-const rockalbum = new Album('Minutes to Midnight', 2001, ['ROCK'], []);
+const rockalbum = new Album('Minutes to Midnight',["Likin Park"], 2001, ['ROCK'], []);
 
 const Chester = new Artista('Chester Bennington', ['ROCK'], [rockalbum], 1000000, 1000 );
 const Dave = new Artista('Dave Farrell', ['ROCK'], [rockalbum], 1000, 5);
