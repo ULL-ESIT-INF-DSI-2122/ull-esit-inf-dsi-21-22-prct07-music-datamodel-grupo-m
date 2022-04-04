@@ -1,9 +1,10 @@
-import { Artista } from "./artistas";
-import { generoInfo } from "./generos";
+import {Artista} from "./artistas";
+import {generoInfo} from "./generos";
+import { Grupo } from "./grupos";
 
 
 export class Cancion {
-    constructor(private nombre: string, private autor: Artista, private duracion: number, private generos: generoInfo[], private single: boolean, private reproducciones: number){
+    constructor(private nombre: string, private autor: (Artista | Grupo)[], private duracion: number, private generos: generoInfo[], private single: boolean, private reproducciones: number){
         this.autor = autor;
         this.duracion = duracion;
         this.generos = generos;
@@ -16,7 +17,7 @@ export class Cancion {
         return this.nombre;
     }
 
-    getAutor(): Artista {
+    getAutor(): (Artista | Grupo)[] {
         return this.autor;
     }
 

@@ -4,12 +4,12 @@ import { generoInfo } from "./generos";
 import {Grupo} from "./grupos";
 
 export class Artista {
-  constructor(private nombre: string, private grupos: Grupo[], private generos: generoInfo[], private albumes: Album[], private canciones: Cancion[], private oyentesIndi: number, private oyentesMensual: number) {
+  private grupos: Grupo[] = [];
+  private canciones: Cancion[] = [];
+  constructor(private nombre: string, private generos: generoInfo[], private albumes: Album[], private oyentesIndi: number, private oyentesMensual: number) {
     this.nombre = nombre;
-    this.grupos = grupos;
     this.generos = generos;
     this.albumes = albumes;
-    this.canciones = canciones;
     this.oyentesIndi = oyentesIndi;
     this.oyentesMensual = this.calOyentes();
   }

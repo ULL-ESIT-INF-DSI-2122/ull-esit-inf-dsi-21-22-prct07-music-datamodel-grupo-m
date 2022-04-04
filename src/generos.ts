@@ -5,7 +5,7 @@ import {Grupo} from "./grupos";
 export type generoInfo = 'CLASICA'| 'ROCK'| 'HIP HOP' | 'REGGEATON' | 'POP' | 'TRAP' | 'PUNK' ;
 
 export class Genero {
-    constructor(private nombre: generoInfo, private artistas: Artista[] | Grupo[], private albumes: Album[], private canciones: Cancion[]) {
+    constructor(private nombre: generoInfo, private artistas: (Artista | Grupo)[], private albumes: Album[], private canciones: Cancion[]) {
         this.nombre = nombre;
         this.artistas = artistas;
         this.albumes = albumes;
@@ -17,7 +17,7 @@ export class Genero {
     }
 
 
-    getArtistas(): Artista[] | Grupo[] {
+    getArtistas(): (Artista | Grupo)[] {
         return this.artistas;
     }
 

@@ -3,12 +3,12 @@ import {Genero, generoInfo} from "./generos";
 import {Artista} from "./artistas";
 
 export class Grupo {
-  constructor(private nombre: string, private artistas: Artista[], private añoCreacion: number, private genero: generoInfo[], private albumes: Album[], private oyentes: number){
+  private albumes: Album[] = [];
+  constructor(private nombre: string, private artistas: Artista[], private añoCreacion: number, private genero: generoInfo[], private oyentes: number){
       this.nombre = nombre;
       this.artistas = artistas;
       this.añoCreacion = añoCreacion;
       this.genero = genero;
-      this.albumes = albumes;
       this.oyentes = oyentes;
   }
 

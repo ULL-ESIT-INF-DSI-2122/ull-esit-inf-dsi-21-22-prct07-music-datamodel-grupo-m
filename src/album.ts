@@ -1,22 +1,18 @@
 import { Artista } from "./artistas";
 import {Genero, generoInfo} from "./generos";
-import {Playlist} from "./playlist";
+import { Cancion } from "./cancion";
 
 export class Album {
-    constructor(private nombre: string, private artista: Artista, private añoPubli: number, private genero: generoInfo[], private tracklist: Playlist) {
+    private artista: Artista[] = [];
+    constructor(private nombre: string, private añoPubli: number, private genero: generoInfo[], private canciones: Cancion[]) {
         this.nombre = nombre;
-        this.artista = artista;
         this.añoPubli = añoPubli;
         this.genero = genero;
-        this.tracklist = tracklist;
+        this.canciones = canciones;
     }
 
     getNombre(): string {
         return this.nombre;
-    }
-
-    getArtista(): Artista {
-        return this.artista;
     }
 
     getAño(): number {
@@ -27,7 +23,7 @@ export class Album {
         return this.genero;
     }
 
-    getTracklist(): Playlist {
-        return this.tracklist;
+    getTracklist(): Cancion[] {
+        return this.canciones;
     }
 }
