@@ -121,7 +121,7 @@ export function data() {
 
 /**
  * Completando datos faltantes
- */
+*/
 
   artist3.setGroups(group2);
   artist4.setGroups(group1);
@@ -134,6 +134,10 @@ export function data() {
 
   group1.setAlbum(album4);
   group2.setAlbum(album2);
+
+/**
+* Rellenamos nuestra base de datos
+*/
 
   songCollection.setList([song1, song2, song3, song4, song5, song6, song7, song8, song9, song10, song11, song12, song13, song14, song15, song16, song17, song18, song19, song20, song21, song22, song23, song24, song25, song26, song27, song28, song29, song30, song31, song32, song33, song34, song35, song36, song37, song38, song39, song40, song41, song42, song43, song44, song45, song46, song47, song48, song49]);
   albumCollection.setList([album1, album2, album3, album4]);
