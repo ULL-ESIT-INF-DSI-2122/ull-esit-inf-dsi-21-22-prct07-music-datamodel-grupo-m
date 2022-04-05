@@ -1,6 +1,11 @@
 import 'mocha';
 import {expect} from 'chai';
-import {Genero, generoInfo} from "../src/generos";
+import {albumCollection} from '../src/database';
+import {data} from '../src/data';
+//import {DataBase, albumCollection, artistCollection, groupCollection, genreCollection, songCollection, playlistCollection} from './database'
+
+
+/*import {Genero, generoInfo} from "../src/generos";
 import {Grupo} from '../src/grupos';
 import {Playlist} from '../src/playlist';
 import {Album} from '../src/album';
@@ -13,16 +18,15 @@ const DojaAlbum = new Album('Planet Her',[], 2021, ['POP'], []);
 const LilAlbum = new Album('Montero',[], 2021, ['TRAP'], []);
 const MarcAlbum = new Album('3.0',[], 2013, ['SALSA'], []);
 const HendrixAlbum = new Album('Electric LadyLand',[], 1968, ['BLUES'], []);
-const TiestoAlbum = new Album('A Town Called Paradise',[], 2014, ['EDM'], []);
+const TiestoAlbum = new Album('A Town Called Paradise',[], 2014, ['EDM'], []);*/
+
+data();
 
 describe('Tests de la clase Album', ()=>{
   it('Test de instancia de los diferentes albumes', ()=> {
-    expect(LikinParkAlbum).to.exist;
-    expect(DojaAlbum).to.exist;
-    expect(LilAlbum).to.exist;
-    expect(MarcAlbum).to.exist;
-    expect(HendrixAlbum).to.exist;
-    expect(TiestoAlbum).to.exist;
+    albumCollection.getList().forEach((album) => {
+      expect(album).to.exist;
+    });
   });
   it('Test de Getters y Setters de la Clase Album', ()=> {
 

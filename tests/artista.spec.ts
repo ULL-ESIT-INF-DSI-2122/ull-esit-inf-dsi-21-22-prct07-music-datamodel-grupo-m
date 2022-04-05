@@ -1,6 +1,8 @@
 import 'mocha';
 import {expect} from 'chai';
-import {Genre, genreInfo} from "../src/generos";
+import {artistCollection} from '../src/database';
+import {data} from '../src/data';
+/*import {Genre, genreInfo} from "../src/generos";
 import {Group} from '../src/grupos';
 import {Playlist} from '../src/playlist';
 import {Album} from '../src/album';
@@ -17,20 +19,13 @@ const DojaCat = new Artist('Amala Ratna Zandile Dlamini', ['POP'], 55866049, 172
 const JimiHendrix = new Artist('James Marshall Hendrix', ['BLUES'], 7587951, 5541782);
 const LilNashX = new Artist('Montero Lamar Hill', ['TRAP'], 49539739, 10217255);
 const DonOmar = new Artist('Dave Farrell', ['REGGEATON'], 21064472, 6909750);
-const MarcAnthony = new Artist('Marco Antonio Muñiz Rivera', ['SALSA'], 10171402, 6992643);
+const MarcAnthony = new Artist('Marco Antonio Muñiz Rivera', ['SALSA'], 10171402, 6992643);*/
 
 describe('Tests de la clase Artista', ()=>{
   it('Test de instancia de los diferentes artistas', ()=> {
-    expect(Chester).to.exist;
-    expect(Dave).to.exist;
-    expect(NF).to.exist;
-    expect(BobMarley).to.exist;
-    expect(Tiesto).to.exist;
-    expect(DojaCat).to.exist;
-    expect(JimiHendrix).to.exist;
-    expect(LilNashX).to.exist;
-    expect(DonOmar).to.exist;
-    expect(MarcAnthony).to.exist;
+    artistCollection.getList().forEach((artist) => {
+      expect(artist).to.exist;
+    });
   });
   it('Test de Getters y Setters de la Clase Artistas', ()=> {
 
