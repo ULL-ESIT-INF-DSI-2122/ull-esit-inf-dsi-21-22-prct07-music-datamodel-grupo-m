@@ -1,59 +1,59 @@
 import {Album} from "./album";
-import {Cancion} from "./cancion";
-import {Artista} from "./artistas";
-import {Grupo} from "./grupos";
+import {Song} from "./cancion";
+import {Artist} from "./artistas";
+import {Group} from "./grupos";
 /**
- * Objeto generoInfo que define los diferentes generos reconocidos dentro del sistema.
+ * Objeto genreInfo que define los diferentes genero reconocidos dentro del sistema.
  */
-export type generoInfo = 'CLASICA'| 'ROCK'| 'HIP-HOP' | 'REGGEATON' | 'POP' | 'TRAP' | 'PUNK' | 'K-POP' | 'METAL' | 'CUMBIA' | 'BLUES' | 'JAZZ'| 'COUNTRY' | 'EDM' | 'FLAMENCO' | 'SALSA' | 'REGGAE' | 'GOSPEL' | 'DISCO' | 'BANDA SONORA' ;
+export type genreInfo = 'CLASICA'| 'ROCK'| 'HIP-HOP' | 'REGGEATON' | 'POP' | 'TRAP' | 'PUNK' | 'K-POP' | 'METAL' | 'CUMBIA' | 'BLUES' | 'JAZZ'| 'COUNTRY' | 'EDM' | 'FLAMENCO' | 'SALSA' | 'REGGAE' | 'GOSPEL' | 'DISCO' | 'BANDA SONORA' | 'ALTERNATIVO' | 'ELECTROPOP' | 'SOUL' | 'R&B' |'RAP';
 
 /**
  * Clase encargada de implementar un genero musical dentro del sistema.
  */
-export class Genero {
+export class Genre {
     /**
      * Constructor de la clase encargada de implementar el genero musical.
-     * @param nombre nombre del genero.
-     * @param artistas artistas que hay dentro de un genero.
-     * @param albumes albumes que hay dentro de un genero.
-     * @param canciones canciones que hay dentro de un genero determinado.
+     * @param name nombre del genero.
+     * @param artists artistas que hay dentro de un genero.
+     * @param albums albums que hay dentro de un genero.
+     * @param song song que hay dentro de un genero determinado.
      */
-    constructor(private nombre: generoInfo, private artistas: (Artista | Grupo)[], private albumes: Album[], private canciones: Cancion[]) {
-        this.nombre = nombre;
-        this.artistas = artistas;
-        this.albumes = albumes;
-        this.canciones = canciones;
+    constructor(private name: genreInfo, private artists: (Artist | Group)[], private albums: Album[], private song: Song[]) {
+        this.name = name;
+        this.artists = artists;
+        this.albums = albums;
+        this.song = song;
     }
 
     /**
      * Metodo que obtiene el nombre del genero.
      * @returns devuelve el nombre de un genero musical.
      */
-    getNombre(): generoInfo {
-        return this.nombre;
+    getNombre(): genreInfo {
+        return this.name;
     }
 
     /**
-     * Metodo que devuelve todos los artistas dentro del genero.
+     * Metodo que devuelve todos los artists dentro del genero.
      * @returns devuelve los artistas que estan englobados dentro de un genero.
      */
-    getArtistas(): (Artista | Grupo)[] {
-        return this.artistas;
+    getArtistas(): (Artist | Group)[] {
+        return this.artists;
     }
 
     /**
-     * metodo que devuelve los albumes que hay dentro de un genero.
-     * @returns devuelve los albumes de un genero.
+     * metodo que devuelve los albums que hay dentro de un genero.
+     * @returns devuelve los albums de un genero.
      */
     getAlbumes():Album[] {
-        return this.albumes;
+        return this.albums;
     }
     
     /**
-     * metodos que obtiene las canciones que hay dentro de un genero.
-     * @returns devuelve la lsita de canciones de un genero determinado.
+     * metodos que obtiene las songs que hay dentro de un genero.
+     * @returns devuelve la lsita de songs de un genero determinado.
      */
-    getCanciones(): Cancion[] {
-        return this.canciones;
+    getSongs(): Song[] {
+        return this.song;
     }
 }

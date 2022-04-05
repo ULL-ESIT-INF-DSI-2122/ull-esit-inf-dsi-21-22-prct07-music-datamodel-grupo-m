@@ -1,26 +1,26 @@
-import {Artista} from "./artistas";
-import {generoInfo} from "./generos";
-import { Grupo } from "./grupos";
+import {Artist} from "./artistas";
+import {genreInfo} from "./generos";
+import {Group} from "./grupos";
 
 /**
  * Clase encargada de representar la cancion que ha publicado un artista y que se encuentra en un Album.
  */
-export class Cancion {
+export class Song {
     /**
      * Constructor de uya cancion del sistema.
-     * @param nombre titulo de la cancion.
+     * @param name titulo de la cancion.
      * @param autor autor de la cancion.
-     * @param duracion tiempo de duracion de la cancion musical.
-     * @param generos genero en el que se engloba la cancion
+     * @param duration tiempo de duracion de la cancion musical.
+     * @param genres genero en el que se engloba la cancion
      * @param single flag que determina si fue un single o es lanzado en un album
-     * @param reproducciones numero total de reproducciones de esta cancion
+     * @param reproductions numero total de reproducciones de esta cancion
      */
-    constructor(private nombre: string, private autor: (Artista | Grupo)[], private duracion: number, private generos: generoInfo[], private single: boolean, private reproducciones: number){
+    constructor(private name: string, private autor: (Artist | Group)[], private duration: number, private genres: genreInfo[], private single: boolean, private reproductions: number){
         this.autor = autor;
-        this.duracion = duracion;
-        this.generos = generos;
-        this.nombre = nombre;
-        this.reproducciones = reproducciones;
+        this.duration = duration;
+        this.genres = genres;
+        this.name = name;
+        this.reproductions = reproductions;
         this.single = single;
     }
     
@@ -29,14 +29,14 @@ export class Cancion {
      * @returns devuelve el titulo de una cancion
      */
     getNombre(): string {
-        return this.nombre;
+        return this.name;
     }
 
     /**
      * Metodo que obtiene el autor de la cancion ya sea un artista o un grupo
      * @returns devuelve un array de artistas o de grupos que ha realizado la cancion
      */
-    getAutor(): (Artista | Grupo)[] {
+    getAutor(): (Artist | Group)[] {
         return this.autor;
     }
 
@@ -44,16 +44,16 @@ export class Cancion {
      * Metodo que obtiene la duracion de la cancion
      * @returns devuelve la duracion total de la cancion.
      */
-    getDuracion(): number {
-        return this.duracion;
+    getDuration(): number {
+        return this.duration;
     }
 
     /**
      * metodo que obtiene el atributo encargado de definir el genero de una cancion
      * @returns devuelve el genero en el que se engloba una cancion.
      */
-    getGeneros(): generoInfo[] {
-        return this.generos;
+    getGenres(): genreInfo[] {
+        return this.genres;
     }
 
     /**
@@ -61,7 +61,7 @@ export class Cancion {
      * @returns 
      */
     getReproducciones(): number {
-        return this.reproducciones;
+        return this.reproductions;
     }
 
     /**
