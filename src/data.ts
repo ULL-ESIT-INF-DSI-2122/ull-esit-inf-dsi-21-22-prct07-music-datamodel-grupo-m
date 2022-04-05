@@ -75,16 +75,17 @@ import {Song} from './cancion';
   let song38 = new Song("LIFE AFTER SALEM", [artist2], 3.30, ['RAP'], false, 36478);
   let song39 = new Song("AM I DREAMING", [artist2], 3.03, ['RAP'], false, 958585);
 
-  let song40 = new Song("song1", [artist1], 3, ['ROCK'], false, 74675);
-  let song41 = new Song("song1", [artist1], 3, ['ROCK'], false, 85475475);
-  let song42 = new Song("song1", [artist1], 3, ['ROCK'], false, 537463);
-  let song43 = new Song("song1", [artist1], 3, ['ROCK'], false, 857495);
-  let song44 = new Song("song1", [artist1], 3, ['ROCK'], false, 927474);
-  let song45 = new Song("song1", [artist1], 3, ['ROCK'], false, 183647);
-  let song46 = new Song("song1", [artist1], 3, ['ROCK'], false, 1739372);
-  let song47 = new Song("song1", [artist1], 3, ['ROCK'], false, 23834);
-  let song48 = new Song("song1", [artist1], 3, ['ROCK'], false, 4938748);
-  let song49 = new Song("song1", [artist1], 3, ['ROCK'], false, 838274);
+  let song40 = new Song("Father of All...", [group1], 2.31, ['ROCK'], true, 74675);
+  let song41 = new Song("Fire, Ready, Aim", [group1], 1.52, ['ROCK'], true, 85475475);
+  let song42 = new Song("Oh Yeah!", [group1], 2.51, ['ROCK'], true, 537463);
+  let song43 = new Song("Meet Me on the Roof", [group1], 2.39, ['PUNK'], false, 857495);
+  let song44 = new Song("I was a Teenage Teenager", [group1], 3.44, ['ROCK'], false, 927474);
+  let song45 = new Song("Stab You in the Heart", [group1], 2.10, ['ROCK'], false, 183647);
+  let song46 = new Song("Sugar Youth", [group1], 1.54, ['ROCK'], false, 1739372);
+  let song47 = new Song("Junkies on a High", [group1], 3.06, ['PUNK'], false, 23834);
+  let song48 = new Song("Take the Monay and Crawl", [group1], 2.08, ['PUNK'], false, 4938748);
+  let song49 = new Song("Graffitia", [group1], 3.17, ['ROCK'], false, 838274);
+  
   let song50 = new Song("song1", [artist1], 3, ['ROCK'], false, 667384);
 
 
@@ -93,18 +94,22 @@ import {Song} from './cancion';
  */
   
   let album1 = new Album("Happier Than Ever", [artist1], 2021, ['POP', 'ELECTROPOP'], [song1, song2, song3, song4, song5, song6, song7, song8, song9, song10, song11, song12, song13, song14, song15, song16]);
-  let album2 = new Album("Teatro d'ira - Vol.I", [group1], 2021, ['ROCK', 'ALTERNATIVO'], [song17, song18, song19, song20, song21, song22, song23, song24]);
+  let album2 = new Album("Teatro d'ira - Vol.I", [group2], 2021, ['ROCK', 'ALTERNATIVO'], [song17, song18, song19, song20, song21, song22, song23, song24]);
   let album3 = new Album("MONTERO", [artist2], 2021, ['POP', 'RAP'], [song25, song26, song27, song28, song29, song30, song31, song32, song33, song34, song35, song36, song37, song38, song39]);
+  let album4 = new Album("Father of All...", [group1], 2020, ['ROCK', 'PUNK'], [song40, song41, song42, song43, song44, song45, song46, song47, song48, song49]);
 
 
   /**
  * Géneros musicales 10
  */
   
-  let genero1 = new Genre('ROCK', [artist1, group2, group1], [album2], [song15, song17, song18, song19, song20, song21, song22, song23, song24]);
+  let genero1 = new Genre('ROCK', [artist1, group2, group1, group3], [album2, album4], [song15, song17, song18, song19, song20, song21, song22, song23, song24, song40, song41, song42, song44, song45, song46, song49]);
   let genero2 = new Genre('POP', [artist1, artist2], [album1, album3], [song1, song2, song3, song5, song6, song7, song8, song9, song10, song11, song12, song13, song14, song16, song27]);
   let genero3 = new Genre('ALTERNATIVO', [artist1, group2], [album1, album2], [song13, song18]);
-  let genero4 = new Genre('RAP', [artist2], [album3], [song25, song26, song27, song29, song30, song31, song32, song33, song34, song35, song36, song37, song38, song39])
+  let genero4 = new Genre('RAP', [artist2], [album3], [song25, song26, song27, song29, song30, song31, song32, song33, song34, song35, song36, song37, song38, song39]);
+  let genero5 = new Genre('PUNK', [group1, group1], [album4], [song43, song47, song48]);
+
+
 
   /**
  * Playlists 3
