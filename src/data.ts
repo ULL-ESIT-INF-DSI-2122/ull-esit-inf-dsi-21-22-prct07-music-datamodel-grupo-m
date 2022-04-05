@@ -1,10 +1,10 @@
 import {Album} from './album';
 import {Artist} from './artistas';
-//import {musicGenreCollection, artistCollection, groupCollection, songCollection, albumCollection, playlistCollection} from './collection';
 import {Group} from './grupos';
 import {Genre, genreInfo} from './generos';
 import {Playlist} from './playlist';
 import {Song} from './cancion';
+import {DataBase, albumCollection, artistCollection, groupCollection, genreCollection, songCollection, playlistCollection} from './database'
 
 /**
  * @function Genera la coleccion del sistema con una serie de
@@ -134,5 +134,12 @@ export function data() {
 
   group1.setAlbum(album4);
   group2.setAlbum(album2);
+
+  songCollection.setList([song1, song2, song3, song4, song5, song6, song7, song8, song9, song10, song11, song12, song13, song14, song15, song16, song17, song18, song19, song20, song21, song22, song23, song24, song25, song26, song27, song28, song29, song30, song31, song32, song33, song34, song35, song36, song37, song38, song39, song40, song41, song42, song43, song44, song45, song46, song47, song48, song49]);
+  albumCollection.setList([album1, album2, album3, album4]);
+  artistCollection.setList([artist1, artist2, artist3, artist4, artist5]);
+  genreCollection.setList([genero1, genero2, genero3, genero4, genero5]);
+  groupCollection.setList([group1, group2, group3]);
+  playlistCollection.setList([playlist1]);
 
 }
