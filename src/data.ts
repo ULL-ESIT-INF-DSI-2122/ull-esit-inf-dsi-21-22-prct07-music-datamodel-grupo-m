@@ -14,6 +14,8 @@ import {Song} from './cancion';
  * Artistas  5+
  */
   
+export function data() {
+
   let artist1 = new Artist("Billie Eillish", ['POP', 'ALTERNATIVO'], 47949051, 0);
   let artist2 = new Artist("Lil Nash X", ['POP', 'RAP'], 49522921, 0);
   let artist3 = new Artist("Damiano David", ['ROCK', 'POP'], 0, 0);
@@ -117,22 +119,18 @@ import {Song} from './cancion';
   
   let playlist1 = new Playlist("playlist1", [song1], 10, ['ROCK']);
 
-/**
- * @function Actualiza los atributos de los objetos del sitema que sean
- * dependientes de los datos de otras clase en el orden adecuado tras por
- * ejemplo añadir un nuevo objeto al sistema
- */
-export function Data() : void {
-  //artist1.getAlbumList().forEach((album) => {
-  //});
+
+
   artist3.setGroups(group2);
   artist4.setGroups(group1);
   artist5.setGroups(group2);
 
   artist1.setAlbum(album1);
   artist1.setSongList([song1, song2, song3, song4, song5, song6, song7, song8, song9, song10, song11, song12, song13, song14, song15, song16]);
+  artist2.setAlbum(album3);
+  artist2.setSongList([song25, song26, song27, song28, song29, song30, song31, song32, song33, song34, song35, song36, song37, song38, song39]);
 
+  group1.setAlbum(album4);
   group2.setAlbum(album2);
-
 
 }
