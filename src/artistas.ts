@@ -1,68 +1,68 @@
 import { Album } from "./album";
-import { Cancion } from "./cancion";
-import { generoInfo } from "./generos";
-import {Grupo} from "./grupos";
+import { Song } from "./cancion";
+import { genreInfo } from "./generos";
+import {Group} from "./grupos";
 /**
  * Clase encargada de especificar a los diferentes musicos u artistas que forman parte de grupos o tienen carreras en solitario.
  */
-export class Artista {
+export class Artist {
   
-  private grupos: Grupo[] = [];
-  private canciones: Cancion[] = [];
+  private groupList: Group[] = [];
+  private songsList: Song[] = [];
+  private albumList: Album[] = [];
   /**
    * Constructor de la entidad Artistas del sistema.
-   * @param nombre nombre del artista.
-   * @param generos generos en los que suele trabajar el artista
+   * @param name nombre del artista.
+   * @param genre generos en los que suele trabajar el artista
    * @param albumes albumes que ha publicado un artista
-   * @param oyentesIndi cantidad de oyentes mensuales que tiene un artista en especifico.
-   * @param oyentesMensual Cantidad de oyentes mensuales de un grupo, en caso de ser una carrera solitaria es igual a los oyentes individuales.
+   * @param listenerIndi cantidad de oyentes mensuales que tiene un artista en especifico.
+   * @param listenerMensual Cantidad de oyentes mensuales de un grupo, en caso de ser una carrera solitaria es igual a los oyentes individuales.
    */
-  constructor(private nombre: string, private generos: generoInfo[], private albumes: Album[], private oyentesIndi: number, private oyentesMensual: number) {
-    this.nombre = nombre;
-    this.generos = generos;
-    this.albumes = albumes;
-    this.oyentesIndi = oyentesIndi;
-    this.oyentesMensual = this.calOyentes();
+  constructor(private name: string, private genres: genreInfo[], private listenerIndi: number, private listenerMensual: number) {
+    this.name = name;
+    this.genres = genres;
+    this.listenerIndi = listenerIndi;
+    this.listenerMensual = this.calOyentes();
   }
   
   /**
    * metodo encargado de devolver el nombre del artista
    * @returns devuelve el nombre del artista
    */
-  getNombre(): string {
-    return this.nombre;
+  getName(): string {
+    return this.name;
   }
 
   /**
    * metodo encargada de mostrar los grupos a los que pertenece el artista.
    * @returns devuelve lso grupos en los que se encuentra el artista.
    */
-  getGrupos(): Grupo[]{
-    return this.grupos;
+  getGroupList(): Group[]{
+    return this.groupList;
   }
 
   /**
    * metodo que devuelve los generos musicales relacionados
    * @returns devuelve el genero musical relacionado a ese artista.
    */
-  getGeneros(): generoInfo[] {
-    return this.generos;
+  getGenre(): genreInfo[] {
+    return this.genres;
   }
 
   /**
    * metodo que devuelve los albumes lanzados por el artista
    * @returns el album lanzado por el artista
    */
-  getAlbumes(): Album[] {
-    return this.albumes;
+  getAlbumList(): Album[] {
+    return this.albumList;
   }
 
   /**
    * Metodo encargado de devolver todas las canciones que tiene un artista
    * @returns devuelve las canciones que ha lanzado el artista.
    */
-  getCanciones(): Cancion[] {
-    return this.canciones;
+  getSongList(): Song[] {
+    return this.songsList;
   }
 
   /**
@@ -70,7 +70,7 @@ export class Artista {
    * @returns devuelve la cantidad numerica de oyentes mensuales de un artista.
    */
   getOyentesMensual():number {
-    return this.oyentesMensual;
+    return this.listenerMensual;
   }
 
   /**
@@ -78,14 +78,46 @@ export class Artista {
    * @returns devuelve la suma del trabajo individual mas la cantidad de oyentes mensuales.
    */
   public calOyentes(): number {
-    let resultado: number =0;
-    for (let i : number = 0; i < this.grupos.length; i++) {
-      if (this.grupos[i].getNombre() == " ") {
-        resultado = this.oyentesIndi;
+    let result: number =0;
+    for (let i : number = 0; i < this.groupList.length; i++) {
+      if (this.groupList[i].getNombre() == " ") {
+        result = this.listenerIndi;
       } else {
-        resultado += this.oyentesIndi + this.grupos[i].getOyentes();
+        result += this.listenerIndi + this.groupList[i].getOyentes();
       }
     }
-    return resultado;
+    return result;
   }
+  /**
+   * Metodo encargado de añadir un nuevo elemento al atributo privados grupos
+   * @param newGrupo Nuevo item a añadir al grupo
+   * @return añade un nuevo grupo.
+   */
+  public setGroups(newGrupo: Group): void {
+    this.groupList.push(newGrupo);
+  }
+
+  /**
+   * Metodo encargado de añadir un nuevo elemento al atributo privados song
+   * @param newGrupo Nuevo item a añadir a la lista de canciones
+   * @return añade una nueva cancion.
+   */
+  public setSongList(newList: Song[]): void {
+    this.songsList = newList;
+  }
+
+  public setSong(newSong: Song): void {
+    this.songsList.push(newSong);
+  }
+
+  /**
+   * Metodo encargado de añadir un nuevo elemento a la lista de albumes
+   * @param newGrupo Nuevo item a añadir al album
+   * @return añade un nuevo album a la lista de albumes.
+   */
+  public setAlbum(newAlbum: Album): void {
+    this.albumList.push(newAlbum);
+  }
+
+
 }

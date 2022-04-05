@@ -8,12 +8,12 @@ import {Cancion} from '../src/cancion';
 import {Artista} from '../src/artistas';
 
 // Los [] en blanco son canciones que no estan definidos
-const LikinParkAlbum = new Album('Minutes to Midnight',["Likin Park"], 2001, ['ROCK'], []);
-const DojaAlbum = new Album('Planet Her',["Doja Cat"], 2021, ['POP'], []);
-const LilAlbum = new Album('Montero',["Lil Nash X"], 2021, ['TRAP'], []);
-const MarcAlbum = new Album('3.0',["Marc Anthony"], 2013, ['SALSA'], []);
-const HendrixAlbum = new Album('Electric LadyLand',["Jimi Hendrix"], 1968, ['BLUES'], []);
-const TiestoAlbum = new Album('A Town Called Paradise',["Tiesto"], 2014, ['EDM'], []);
+const LikinParkAlbum = new Album('Minutes to Midnight',[], 2001, ['ROCK'], []);
+const DojaAlbum = new Album('Planet Her',[], 2021, ['POP'], []);
+const LilAlbum = new Album('Montero',[], 2021, ['TRAP'], []);
+const MarcAlbum = new Album('3.0',[], 2013, ['SALSA'], []);
+const HendrixAlbum = new Album('Electric LadyLand',[], 1968, ['BLUES'], []);
+const TiestoAlbum = new Album('A Town Called Paradise',[], 2014, ['EDM'], []);
 
 describe('Tests de la clase Album', ()=>{
   it('Test de instancia de los diferentes albumes', ()=> {

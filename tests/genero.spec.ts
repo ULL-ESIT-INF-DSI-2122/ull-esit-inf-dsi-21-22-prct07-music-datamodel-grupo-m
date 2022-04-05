@@ -7,13 +7,13 @@ import {Album} from '../src/album';
 import {Cancion} from '../src/cancion';
 import {Artista} from '../src/artistas';
 
-const rockalbum = new Album('Minutes to Midnight',["Likin Park"], 2001, ['ROCK'], []);
 
-const Chester = new Artista('Chester Bennington', ['ROCK'], [rockalbum], 1000000, 1000 );
-const Dave = new Artista('Dave Farrell', ['ROCK'], [rockalbum], 1000, 5);
+
+const Chester = new Artista('Chester Bennington', ['ROCK'], 1000000, 1000 );
+const Dave = new Artista('Dave Farrell', ['ROCK'], 1000, 5);
 
 const LinkinPark = new Grupo('Linkin Park', [Chester, Dave], 1996, ['ROCK'], 30000000 );
-
+const rockalbum = new Album('Minutes to Midnight',[LinkinPark], 2001, ['ROCK'], []);
 const numb = new Cancion('Numb', [LinkinPark], 3.06, ['ROCK'], true, 2000000);
 
 const listCanciones = new Playlist('Linkin Park', [numb], 3.06, ['ROCK']);
