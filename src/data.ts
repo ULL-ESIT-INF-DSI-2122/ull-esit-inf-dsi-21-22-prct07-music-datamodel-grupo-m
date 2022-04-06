@@ -135,4 +135,11 @@ export function data() {
   group1.setAlbum(album4);
   group2.setAlbum(album2);
 
+  /*
+   Hay tres formas de arreglar el asunto de los tests:
+   1. La primera solucion es buscar una funcion que devuelva depenediendo de lo que se quiera buscar el objeto en cuestion.
+   2. La segunda opcion es copiar los datos que hay aqui almacenados y ponerlos inicializados en cada test y comprobar que funciones
+   3 .Otra opcion es crear un array vacio e intentar indexar el elemento deseado dentro y luego realizar las operaciones pertinenete
+  
+  */
 }
