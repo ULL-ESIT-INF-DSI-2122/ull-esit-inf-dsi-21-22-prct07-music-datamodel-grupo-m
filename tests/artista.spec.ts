@@ -12,11 +12,8 @@ describe('Tests de la clase Artista', ()=>{
       expect(artist).to.exist;
     });
   });
-  it('Test de Getters y Setters de la Clase Artistas', ()=> {
-
-  });
   it('Test de Métodos de la clase Artistas', ()=> {
-
+    expect(artistCollection.getList()[2].getOyentesMensual()).to.eql(20420352);
   });
 
 });
