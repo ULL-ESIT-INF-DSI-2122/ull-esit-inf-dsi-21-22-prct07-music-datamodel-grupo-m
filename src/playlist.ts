@@ -1,5 +1,5 @@
-import { Song } from "./cancion";
-import { genreInfo } from "./generos";
+import { Song } from "./song";
+import { genreInfo } from "./genre";
 /**
  * Clase encargada de definir el funcionamiento de una lista de reproduccion de musica de una plataforma digital.
  */

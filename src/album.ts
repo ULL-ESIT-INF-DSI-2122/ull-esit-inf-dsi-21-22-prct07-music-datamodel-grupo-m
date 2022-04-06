@@ -1,7 +1,7 @@
-import { Artist } from "./artistas";
-import {Genre, genreInfo} from "./generos";
-import { Song } from "./cancion";
-import {Group} from "./grupos";
+import { Artist } from "./artist";
+import {Genre, genreInfo} from "./genre";
+import { Song } from "./song";
+import {Group} from "./group";
 
 /**
  * Clase encargada de representar un album, es decir, la informacion relativa a un disco musical.

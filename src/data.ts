@@ -1,9 +1,9 @@
 import {Album} from './album';
-import {Artist} from './artistas';
-import {Group} from './grupos';
-import {Genre, genreInfo} from './generos';
+import {Artist} from './artist';
+import {Group} from './group';
+import {Genre, genreInfo} from './genre';
 import {Playlist} from './playlist';
-import {Song} from './cancion';
+import {Song} from './song';
 import {DataBase, albumCollection, artistCollection, groupCollection, genreCollection, songCollection, playlistCollection} from './database'
 
 /**
@@ -197,4 +197,7 @@ export function data() {
    3 .Otra opcion es crear un array vacio e intentar indexar el elemento deseado dentro y luego realizar las operaciones pertinenete
   
   */
+
+
+
 }

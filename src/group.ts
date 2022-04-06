@@ -1,6 +1,6 @@
 import {Album} from "./album";
-import {Genre, genreInfo} from "./generos";
-import {Artist} from "./artistas";
+import {Genre, genreInfo} from "./genre";
+import {Artist} from "./artist";
 /**
  * Clase encargada de implementar la entidad de un grupo, asociacion de diversos artistas.
  */

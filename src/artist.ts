@@ -1,7 +1,7 @@
 import { Album } from "./album";
-import { Song } from "./cancion";
-import { genreInfo } from "./generos";
-import {Group} from "./grupos";
+import { Song } from "./song";
+import { genreInfo } from "./genre";
+import {Group} from "./group";
 /**
  * Clase encargada de especificar a los diferentes musicos u artistas que forman parte de grupos o tienen carreras en solitario.
  */

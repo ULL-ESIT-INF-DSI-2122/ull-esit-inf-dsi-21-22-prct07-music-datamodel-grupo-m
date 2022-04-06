@@ -1,7 +1,7 @@
 import {Album} from "./album";
-import {Song} from "./cancion";
-import {Artist} from "./artistas";
-import {Group} from "./grupos";
+import {Song} from "./song";
+import {Artist} from "./artist";
+import {Group} from "./group";
 /**
  * Objeto genreInfo que define los diferentes genero reconocidos dentro del sistema.
  */

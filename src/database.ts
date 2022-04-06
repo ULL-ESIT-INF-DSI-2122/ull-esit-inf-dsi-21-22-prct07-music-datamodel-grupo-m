@@ -1,9 +1,9 @@
 import {Album} from './album';
-import {Artist} from './artistas';
-import {Group} from './grupos';
-import {Genre, genreInfo} from './generos';
+import {Artist} from './artist';
+import {Group} from './group';
+import {Genre, genreInfo} from './genre';
 import {Playlist} from './playlist';
-import {Song} from './cancion';
+import {Song} from './song';
 
 export class DataBase<T> {
   
@@ -38,3 +38,4 @@ export const groupCollection = new DataBase<Group>();
 export const genreCollection = new DataBase<Genre>();
 export const songCollection = new DataBase<Song>();
 export const playlistCollection = new DataBase<Playlist>();
+

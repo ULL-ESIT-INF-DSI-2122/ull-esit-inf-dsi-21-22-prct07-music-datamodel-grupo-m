@@ -1,6 +1,6 @@
-import {Artist} from "./artistas";
-import {genreInfo} from "./generos";
-import {Group} from "./grupos";
+import {Artist} from "./artist";
+import {genreInfo} from "./genre";
+import {Group} from "./group";
 
 /**
  * Clase encargada de representar la cancion que ha publicado un artista y que se encuentra en un Album.
