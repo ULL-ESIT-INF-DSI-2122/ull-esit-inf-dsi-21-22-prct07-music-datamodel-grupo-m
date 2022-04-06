@@ -10,6 +10,7 @@ export class Artist {
   private groupList: Group[] = [];
   private songsList: Song[] = [];
   private albumList: Album[] = [];
+  private listenerMensual: number = 0;
   /**
    * Constructor de la entidad Artistas del sistema.
    * @param name nombre del artista.
@@ -18,11 +19,10 @@ export class Artist {
    * @param listenerIndi cantidad de oyentes mensuales que tiene un artista en especifico.
    * @param listenerMensual Cantidad de oyentes mensuales de un grupo, en caso de ser una carrera solitaria es igual a los oyentes individuales.
    */
-  constructor(private name: string, private genres: genreInfo[], private listenerIndi: number, private listenerMensual: number) {
+  constructor(private name: string, private genres: genreInfo[], private listenerIndi: number) {
     this.name = name;
     this.genres = genres;
     this.listenerIndi = listenerIndi;
-    this.listenerMensual = this.calOyentes();
   }
   
   /**
@@ -78,22 +78,24 @@ export class Artist {
    * @returns devuelve la suma del trabajo individual mas la cantidad de oyentes mensuales.
    */
   public calOyentes(): number {
-    let result: number =0;
-    for (let i : number = 0; i < this.groupList.length; i++) {
-      if (this.groupList[i].getNombre() == " ") {
-        result = this.listenerIndi;
-      } else {
-        result += this.listenerIndi + this.groupList[i].getOyentes();
-      }
+    let result: number = 0;
+    if (this.groupList.length > 0){
+      this.groupList.forEach((group) => {
+        result += group.getOyentes();
+      });
     }
-    return result;
+    return result + this.listenerIndi;
   }
   /**
    * Metodo encargado de añadir un nuevo elemento al atributo privados grupos
    * @param newGrupo Nuevo item a añadir al grupo
    * @return añade un nuevo grupo.
    */
-  public setGroups(newGrupo: Group): void {
+  public setGroups(newGroupList: Group[]): void {
+    this.groupList = newGroupList;
+  }
+
+  public addGroup(newGrupo: Group): void {
     this.groupList.push(newGrupo);
   }
 
@@ -117,6 +119,10 @@ export class Artist {
    */
   public setAlbum(newAlbum: Album): void {
     this.albumList.push(newAlbum);
+  }
+
+  public setListeners(listeners: number): void {
+    this.listenerMensual = listeners;
   }
 
 

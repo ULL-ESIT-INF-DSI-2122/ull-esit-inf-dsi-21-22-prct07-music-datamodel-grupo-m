@@ -1,5 +1,6 @@
 import 'mocha';
 import {expect} from 'chai';
+<<<<<<< HEAD
 import {data} from "../src/data";
 // import { Album } from '../src/album';
 // import {Grupo} from '../src/grupos';
@@ -19,6 +20,20 @@ import {data} from "../src/data";
 describe('Tests de la clase Album', ()=>{
   it('Test de instancia de los diferentes albumes', ()=> {
     
+=======
+import {albumCollection} from '../src/database';
+import {data} from '../src/data';
+//import {DataBase, albumCollection, artistCollection, groupCollection, genreCollection, songCollection, playlistCollection} from './database'
+
+
+data();
+
+describe('Tests de la clase Album', ()=>{
+  it('Test de instancia de los diferentes albumes', ()=> {
+    albumCollection.getList().forEach((album) => {
+      expect(album).to.exist;
+    });
+>>>>>>> 4ab10abbc02b0db472032b94a64081423a5243b0
   });
   it('Test de Getters y Setters de la Clase Album', ()=> {
 
