@@ -12,4 +12,7 @@ describe('Pruebas unitarias de la clase genero', ()=>{
       expect(genre).to.exist;
     });
   });
+  it ('Pruebas de instancia de genero', ()=>{
+    expect(genreCollection.getList()[1].getNombre()).to.be.eql('POP');
+  });
 });  
