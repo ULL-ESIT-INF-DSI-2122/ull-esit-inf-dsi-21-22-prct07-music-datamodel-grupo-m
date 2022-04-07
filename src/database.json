@@ -1,0 +1,55 @@
+{
+  "Artist": [
+    {
+      "name": "Billie Eillish",
+      "genres": [
+        "POP",
+        "ALTERNATIVO"
+      ],
+      "listenerIndiv": "47949051"
+    },
+    {
+
+    }
+  ],
+  "Songs": [
+    {
+      "name": "Getting Older",
+      "author": ["Billie Eillish"],
+      "duration": 4.04,
+      "genres": ["POP"],
+      "single": false,
+      "reproduction": 82368601
+    },
+    {
+
+    }
+  ],
+
+  "Genre": [
+
+  ],
+
+  "Album": [
+
+  ],
+
+  "Group": [
+
+  ]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+}
+

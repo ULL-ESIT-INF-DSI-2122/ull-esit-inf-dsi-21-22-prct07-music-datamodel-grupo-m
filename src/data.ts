@@ -4,7 +4,7 @@ import {Group} from './group';
 import {Genre, genreInfo} from './genre';
 import {Playlist} from './playlist';
 import {Song} from './song';
-import {DataBase, albumCollection, artistCollection, groupCollection, genreCollection, songCollection, playlistCollection} from './database'
+import {Collection, albumCollection, artistCollection, groupCollection, genreCollection, songCollection, playlistCollection} from './collection'
 
 /**
  * @function Genera la coleccion del sistema con una serie de

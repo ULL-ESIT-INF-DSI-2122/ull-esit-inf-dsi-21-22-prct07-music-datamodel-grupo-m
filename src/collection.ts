@@ -5,7 +5,7 @@ import {Genre, genreInfo} from './genre';
 import {Playlist} from './playlist';
 import {Song} from './song';
 
-export class DataBase<T> {
+export class Collection<T> {
   
   private list : T[] = [];
   constructor() {}
@@ -32,10 +32,10 @@ export class DataBase<T> {
   }
 }
 
-export const albumCollection = new DataBase<Album>();
-export const artistCollection = new DataBase<Artist>();
-export const groupCollection = new DataBase<Group>();
-export const genreCollection = new DataBase<Genre>();
-export const songCollection = new DataBase<Song>();
-export const playlistCollection = new DataBase<Playlist>();
+export const albumCollection = new Collection<Album>();
+export const artistCollection = new Collection<Artist>();
+export const groupCollection = new Collection<Group>();
+export const genreCollection = new Collection<Genre>();
+export const songCollection = new Collection<Song>();
+export const playlistCollection = new Collection<Playlist>();
 
