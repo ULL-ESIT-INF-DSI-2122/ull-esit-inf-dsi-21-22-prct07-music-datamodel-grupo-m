@@ -22,6 +22,7 @@
   "homepage": "https://github.com/ULL-ESIT-INF-DSI-2122/ull-esit-inf-dsi-21-22-prct07-music-datamodel-grupo-m#readme",
   "devDependencies": {
     "@types/chai": "^4.3.0",
+    "@types/inquirer": "^8.2.1",
     "@types/lowdb": "^1.0.11",
     "@types/mocha": "^9.1.0",
     "chai": "^4.3.6",

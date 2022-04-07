@@ -1,11 +1,10 @@
-import {Artist} from "./artist";
-import {genreInfo} from "./genre";
-import {Group} from "./group";
-
+"use strict";
+exports.__esModule = true;
+exports.Song = void 0;
 /**
  * Clase encargada de representar la cancion que ha publicado un artista y que se encuentra en un Album.
  */
-export class Song {
+var Song = /** @class */ (function () {
     /**
      * Constructor de uya cancion del sistema.
      * @param name titulo de la cancion.
@@ -15,7 +14,13 @@ export class Song {
      * @param single flag que determina si fue un single o es lanzado en un album
      * @param reproductions numero total de reproducciones de esta cancion
      */
-    constructor(private name: string, private autor: (Artist | Group)[], private duration: number, private genres: genreInfo[], private single: boolean, private reproductions: number){
+    function Song(name, autor, duration, genres, single, reproductions) {
+        this.name = name;
+        this.autor = autor;
+        this.duration = duration;
+        this.genres = genres;
+        this.single = single;
+        this.reproductions = reproductions;
         this.autor = autor;
         this.duration = duration;
         this.genres = genres;
@@ -23,52 +28,48 @@ export class Song {
         this.reproductions = reproductions;
         this.single = single;
     }
-    
     /**
      * metodo encargado de obtener el titulo de una cancion
      * @returns devuelve el titulo de una cancion
      */
-    getName(): string {
+    Song.prototype.getName = function () {
         return this.name;
-    }
-
+    };
     /**
      * Metodo que obtiene el autor de la cancion ya sea un artista o un grupo
      * @returns devuelve un array de artistas o de grupos que ha realizado la cancion
      */
-    getAutor(): (Artist | Group)[] {
+    Song.prototype.getAutor = function () {
         return this.autor;
-    }
-
+    };
     /**
      * Metodo que obtiene la duracion de la cancion
      * @returns devuelve la duracion total de la cancion.
      */
-    getDuration(): number {
+    Song.prototype.getDuration = function () {
         return this.duration;
-    }
-
+    };
     /**
      * metodo que obtiene el atributo encargado de definir el genero de una cancion
      * @returns devuelve el genero en el que se engloba una cancion.
      */
-    getGenres(): genreInfo[] {
+    Song.prototype.getGenres = function () {
         return this.genres;
-    }
-
+    };
     /**
      * metodo que obtiene el numero total de reproducciones de una cancion
-     * @returns 
+     * @returns
      */
-    getReproducciones(): number {
+    Song.prototype.getReproducciones = function () {
         return this.reproductions;
-    }
-
+    };
     /**
      * metodo encargado de determinar si fue un single o no.
      * @returns devuelve un flag que determina si es un single (true) o no (false).
      */
-    getSingle(): boolean {
+    Song.prototype.getSingle = function () {
         return this.single;
-    }
-}
+    };
+    return Song;
+}());
+exports.Song = Song;
