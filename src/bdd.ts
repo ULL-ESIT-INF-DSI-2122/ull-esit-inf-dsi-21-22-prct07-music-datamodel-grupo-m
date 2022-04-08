@@ -1,5 +1,6 @@
 import lowdb from 'lowdb';
 import FileSync from "lowdb/adapters/FileSync";
+
 import {Song} from './song';
 import {Genre} from './genre';
 import {Album} from './album';
@@ -48,7 +49,7 @@ export class DataBase extends MapCollection {
   private store(type: string) {
     switch (type) {
       case 'Song':
-        this.database.set("songs", this.getSong()).write();
+        this.database.set("songs", this.songs.values()).write();
     }
   }
 }

@@ -24,7 +24,5 @@ export class MapCollection {
     this.songs.set(newSong.getName(), newSong);
   }
 
-  getSong() {
-    return [...this.songs.values()];
-  }
+
 }
