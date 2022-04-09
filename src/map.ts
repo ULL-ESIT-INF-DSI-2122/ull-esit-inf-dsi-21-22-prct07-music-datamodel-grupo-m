@@ -6,22 +6,14 @@ import {Group} from './group';
 import {Collection} from './collection';
 
 export class MapCollection {
-  protected songs: Map<string, Song>;
-  protected genres: Map<string, Genre>;
-  protected albums: Map<string, Album>;
-  protected artists: Map<string, Artist>;
-  protected groups: Map<string, Group>;
 
-  constructor(){
-    this.songs = new Map<string,Song>();
-    this.genres = new Map<string,Genre>();
-    this.albums = new Map<string,Album>();
-    this.artists = new Map<string,Artist>();
-    this.groups = new Map<string,Group>();
+
+  constructor(protected songsMap: Map<number, Song>){
+    this.songsMap = new Map<number,Song>();
   }
 
   addSong(newSong: Song) {
-    this.songs.set(newSong.getName(), newSong);
+    this.songsMap.set(newSong.getId(), newSong);
   }
 
 

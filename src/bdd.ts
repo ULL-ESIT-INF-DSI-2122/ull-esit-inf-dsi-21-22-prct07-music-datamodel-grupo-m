@@ -9,7 +9,7 @@ import {Group} from './group';
 import {Collection} from './collection';
 import { MapCollection } from './map';
 
-
+/*
 
 export type BDD = {
   songs: Song[],
@@ -53,3 +53,4 @@ export class DataBase extends MapCollection {
     }
   }
 }
+*/

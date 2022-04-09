@@ -1,6 +1,6 @@
 import 'mocha';
 import {expect} from 'chai';
-import {groupCollection} from '../src/database';
+import {groupCollection} from '../src/collection';
 import {data} from '../src/data';
 
 

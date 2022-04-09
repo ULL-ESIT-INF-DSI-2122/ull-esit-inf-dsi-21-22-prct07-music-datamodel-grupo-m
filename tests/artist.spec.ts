@@ -1,6 +1,6 @@
 import 'mocha';
 import {expect} from 'chai';
-import {artistCollection} from '../src/database';
+import {artistCollection} from '../src/collection';
 import {data} from '../src/data';
 
 

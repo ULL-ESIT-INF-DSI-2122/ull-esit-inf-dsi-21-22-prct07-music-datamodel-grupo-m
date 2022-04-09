@@ -15,6 +15,7 @@ export class Song {
      * @param single flag que determina si fue un single o es lanzado en un album
      * @param reproductions numero total de reproducciones de esta cancion
      */
+    private id: number = 0;
     constructor(private name: string, private autor: (Artist | Group)[], private duration: number, private genres: genreInfo[], private single: boolean, private reproductions: number){
         this.autor = autor;
         this.duration = duration;
@@ -22,6 +23,7 @@ export class Song {
         this.name = name;
         this.reproductions = reproductions;
         this.single = single;
+        this.id = this.setId();
     }
     
     /**
@@ -30,6 +32,24 @@ export class Song {
      */
     getName(): string {
         return this.name;
+    }
+
+        
+    /**
+     * metodo encargado de obtener el id de una cancion
+     * @returns devuelve el id de una cancion
+     */
+
+     getId(): number {
+        return this.id;
+    }
+        
+    /**
+     * metodo encargado de establecer el id de una cancion
+     * 
+     */
+    setId(): number {
+        return this.id + 1 ;
     }
 
     /**
