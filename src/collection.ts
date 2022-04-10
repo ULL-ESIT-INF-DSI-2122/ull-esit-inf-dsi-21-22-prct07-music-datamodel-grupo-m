@@ -30,6 +30,12 @@ export class Collection<T> {
   getLenght(): number {
     return this.list.length;
   }
+
+  showCollection(): void {
+    this.list.forEach((T) => {
+      console.log(T);
+    });
+  }
 }
 
 export const albumCollection = new Collection<Album>();

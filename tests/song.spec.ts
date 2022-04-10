@@ -1,6 +1,6 @@
 import 'mocha';
 import {expect} from 'chai';
-import {songCollection} from '../src/collection';
+import {songCollection, artistCollection} from '../src/collection';
 import {data} from '../src/data';
 
 
@@ -12,11 +12,13 @@ describe('Tests de la clase Cancion', ()=>{
       expect(song).to.exist;
     });
   });
-  it('Test de Getters y Setters de la Clase Artistas', ()=> {
-
-  });
-  it('Test de Métodos de la clase Artistas', ()=> {
-
+  it ('Test de los metodos del Cancion numero 1', ()=>{
+    expect(songCollection.getList()[0].getName()).to.be.eql('Getting Older');
+    expect(songCollection.getList()[0].getAutor()).to.be.eql([artistCollection.getList()[0]]);
+    expect(songCollection.getList()[0].getDuration()).to.be.eql(4.04);
+    expect(songCollection.getList()[0].getGenres()).to.be.eql(['POP']);
+    expect(songCollection.getList()[0].getReproducciones()).to.be.eql(82368601);
+    expect(songCollection.getList()[0].getSingle()).to.be.eql(false);
   });
 
 });

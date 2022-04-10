@@ -5,7 +5,7 @@ import {Album} from "./album";
 import {Artist} from "./artist";
 import {Group} from "./group";
 import {Playlist} from "./playlist";
-import {Collection} from "./collection";
+import {Collection, albumCollection, artistCollection, groupCollection, genreCollection, songCollection, playlistCollection} from './collection'
 import { data } from "./data";
 //import {DataBase, BDD} from './bdd';
 
@@ -122,6 +122,7 @@ const prueba = new Manage();
 prueba.mainPrompt();
 */
 
+data();
 
 enum mainOptionCommands {
   managePlaylist = 'Gestionar una Playlist', 
@@ -190,7 +191,6 @@ async function mainPrompt(): Promise<void>   {
     message: 'Seleccione una de las siguientes opciones:',
     choices: Object.values(mainOptionCommands),
   });
-  console.log(answers); 
   switch(answers["chooseSelect"]) {
     case mainOptionCommands.managePlaylist:
       console.log(`Entrando en gestion de PLaylist`);
@@ -215,7 +215,6 @@ async function promptManagePlaylist(): Promise<void> {
     message: 'Seleccione lo que desea hacer con las playlist:  ',
     choices: Object.values(managePlaylistCommands),
   });
-  console.log(answers); 
   switch(answers["chooseManageOption"]) {
     case managePlaylistCommands.create:
       console.log(`creando una nueva Playlist`);
@@ -244,13 +243,14 @@ async function promptManageCollection(): Promise<void> {
     message: 'Seleccione lo que desea hacer con las canciones, albumes, artistas, grupos o generos: ',
     choices: Object.values(manageCollectionCommands),
   });
-  console.log(answers); 
   switch(answers["chooseCollectionOption"]) {
     case manageCollectionCommands.add:
-      console.log(`creando una nueva coleccion`);
+      console.log(`Añadiendo un nuevo artista`);
+      addArtist();
       break;
     case manageCollectionCommands.remove:
-      console.log(`Eliminar una colleccion`);
+      console.log(`Eliminar un artista`);
+      removeArtist();
       break;
     case manageCollectionCommands.modify:
       console.log(`modificar una coleccion`);
@@ -275,7 +275,7 @@ async function promptSortCollection(): Promise<void> {
     message: 'Seleccione una forma de ordenar:  ',
     choices: Object.values(sortPlaylist),
   });
-  console.log(answers); 
+
   switch(answers["sortPlaylistOption"]) {
     case sortPlaylist.titleSong:
       console.log(`Ordenar por Titulo de la Canciones`);
@@ -311,7 +311,7 @@ async function promptSortPlaylist(): Promise<void> {
     message: 'Seleccione una forma de ordenar:  ',
     choices: Object.values(sortCollection),
   });
-  console.log(answers); 
+  // console.log(answers); 
   switch(answers["sortCollectionOption"]) {
     case sortCollection.titleSong:
       console.log(`Ordenar por Titulo de la Canciones`);
@@ -368,5 +368,63 @@ async function promptSortASCDESC(    ): Promise<void> {
 }
 */
 
+function addArtist(): void {
+  // console.clear();
+  inquirer.prompt([{
+    type: 'input',
+    name: 'name',
+    message: 'Introduzca el nombre del artista: ',
+  },
+  {
+    type: 'input',
+    name: 'genres',
+    message: 'Introduzca el genero de la musica del artista: ',
+  },
+  {
+    type: 'input',
+    name: 'listeners',
+    message: 'Introduzca los oyentes individuales del artista:',
+  }
+  ]).then((answers: any) => {
+    let newArtist: Artist = new Artist(answers['name'], answers['genres'], answers['listeners']);
+    artistCollection.addItem(newArtist);
+    artistCollection.showCollection();
+    inquirer.prompt([{
+      type: 'list',
+      name: 'continue',
+      message: '¿Desea añadir otro artista?:',
+      choices: ['Si', 'No'],
+    }]).then((answers: any) => {
+      if (answers['continue'] == 'Si') addArtist();
+      else mainPrompt();
+    });
+  });
+}
 
+function removeArtist(): void {
+  inquirer.prompt({
+    type: 'input',
+    name: 'name',
+    message: 'Introduzca el nombre del artista que desea eliminar: ',
+  }).then((answers: any) => {
+    artistCollection.getList().forEach((item) => {
+      if (item.getName() == answers['name']) {
+        var index = artistCollection.getList().indexOf(item);
+        if (index !== -1) {
+          artistCollection.getList().splice(index, 1);
+        }
+      }
+    });
+    artistCollection.showCollection();
+    inquirer.prompt([{
+      type: 'list',
+      name: 'continue',
+      message: 'Desea eliminar otro artista?:',
+      choices: ['Si', 'No'],
+    }]).then((answers: any) => {
+      if (answers['continue'] == 'Si') removeArtist();
+      else mainPrompt();
+    });
+  });
+}
 mainPrompt();
