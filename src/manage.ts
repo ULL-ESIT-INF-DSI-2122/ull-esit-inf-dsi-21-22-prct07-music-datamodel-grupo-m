@@ -217,6 +217,12 @@ class Manage {
   }
 }
 
+
+
+
+// USO DE LOS MENUS PRINCIPALES
+//##########################################################################################################################################################################
+
 // Prompt principal
 async function mainPrompt(): Promise<void>   {
   console.clear();
@@ -268,16 +274,44 @@ async function promptManagePlaylist(): Promise<void> {
   }
 }
 
-
+// Prompt de la gestion de canciones, albumes, etc...
+async function promptManageCollection(): Promise<void> {
+  console.clear();
+  const answers = await inquirer.prompt({
+    type: 'list',
+    name: 'chooseCollectionOption',
+    message: 'Seleccione lo que desea hacer con las canciones, albumes, artistas, grupos o generos: ',
+    choices: Object.values(manageCollectionCommands),
+  });
+  switch(answers["chooseCollectionOption"]) {
+    case manageCollectionCommands.add:
+      console.log(`Añadiendo canciones, albumes, artistas, grupos o generos`);
+      promptAddSomething();
+      break;
+    case manageCollectionCommands.remove:
+      console.log(`Eliminar canciones, albumes, artistas, grupos o generos`);
+      promptRemoveSomething();
+      break;
+    case manageCollectionCommands.modify:
+      console.log(`modificar una coleccion`);
+      promptModifyCollection();
+      break;
+    case manageCollectionCommands.sort:
+      console.log(`Ordenar una coleccion`);
+      promptSortCollection();
+      break;
+    case manageCollectionCommands.quit:
+      console.log(`Saliendo al menu principal...`);
+      mainPrompt();
+      break;
+  }
+}
 
 //##########################################################################################################################################################################
 
 
-
+// MENU DE AÑADIR, ELIMINAR O MODIFICAR
 //##########################################################################################################################################################################
-
-
-
 // Prompt que se dedica a añadir colecciones
 async function promptAddSomething(): Promise<void> {
   console.clear();
@@ -364,63 +398,6 @@ async function promptModifyCollection(): Promise<void> {
 
 
 
-// menu encargado de dar las diferentes posibilidades de modificacion de un artista
-async function promptModifyArtist(): Promise<void> {
-  console.clear();
-  const answers = await inquirer.prompt({
-    type: 'list',
-    name: 'chooseArtistModify',
-    message: 'Selecciona que desea modificar del artista: ',
-    choices: Object.values(modifyArtist),
-  });
-  switch(answers["chooseArtistModify"]) {
-    case modifyArtist.modifyName:
-      modifyArtistName();
-      break;
-    case modifyArtist.modifyGenres:
-      break;
-    case modifyArtist.modifyListeners:
-      break;
-    case modifyArtist.quit:
-      console.log(`Saliendo al menu principal...`);
-      promptModifyCollection();
-      break;
-  }
-}
-
-// Prompt de la gestion de canciones, albumes, etc...
-async function promptManageCollection(): Promise<void> {
-  console.clear();
-  const answers = await inquirer.prompt({
-    type: 'list',
-    name: 'chooseCollectionOption',
-    message: 'Seleccione lo que desea hacer con las canciones, albumes, artistas, grupos o generos: ',
-    choices: Object.values(manageCollectionCommands),
-  });
-  switch(answers["chooseCollectionOption"]) {
-    case manageCollectionCommands.add:
-      console.log(`Añadiendo canciones, albumes, artistas, grupos o generos`);
-      promptAddSomething();
-      break;
-    case manageCollectionCommands.remove:
-      console.log(`Eliminar canciones, albumes, artistas, grupos o generos`);
-      promptRemoveSomething();
-      break;
-    case manageCollectionCommands.modify:
-      console.log(`modificar una coleccion`);
-      promptModifyCollection();
-      break;
-    case manageCollectionCommands.sort:
-      console.log(`Ordenar una coleccion`);
-      promptSortCollection();
-      break;
-    case manageCollectionCommands.quit:
-      console.log(`Saliendo al menu principal...`);
-      mainPrompt();
-      break;
-  }
-}
-
 // Prompt de ordenacion de Collecciones
 async function promptSortCollection(): Promise<void> {
   console.clear();
@@ -494,34 +471,35 @@ async function promptSortPlaylist(): Promise<void> {
   }
 }
 
+//##########################################################################################################################################################################
 
-/*
-// prompt de ordenacion ascendente y descendente
-async function promptSortASCDESC(    ): Promise<void> {
+
+// MENUS DE LAS OPERACIONES DE UN ARTISTA
+//##########################################################################################################################################################################
+// menu encargado de dar las diferentes posibilidades de modificacion de un artista
+async function promptModifyArtist(): Promise<void> {
   console.clear();
   const answers = await inquirer.prompt({
     type: 'list',
-    name: 'chooseCollectionOption',
-    message: 'A ver hijo de la re mil puta que te re mil pario elegi algo ya, la concha de tu vieja, salu2:  ',
-    choices: Object.values(manageCollectionCommands),
+    name: 'chooseArtistModify',
+    message: 'Selecciona que desea modificar del artista: ',
+    choices: Object.values(modifyArtist),
   });
-  console.log(answers); 
-  switch(answers["chooseManageOption"]) {
-    case manageCollectionCommands.add:
-      console.log(`creando una nueva coleccion`);
-
+  switch(answers["chooseArtistModify"]) {
+    case modifyArtist.modifyName:
+      modifyArtistName();
       break;
-    case manageCollectionCommands.remove:
-      console.log(`Eliminar una colleccion`);
-
+    case modifyArtist.modifyGenres:
       break;
-    case manageCollectionCommands.quit:
+    case modifyArtist.modifyListeners:
+      break;
+    case modifyArtist.quit:
       console.log(`Saliendo al menu principal...`);
-      promptManageCollection();
+      promptModifyCollection();
       break;
   }
 }
-*/
+
 // Menu que pregunta si se desea añadir otro artista a la coleccion
 async function continueAddArtist(): Promise<void> {
   const answers = await inquirer.prompt({
@@ -613,4 +591,39 @@ async function modifyArtistName(): Promise<void> {
     //promptModifyArtist();
 }
 
+/*
+// prompt de ordenacion ascendente y descendente
+async function promptSortASCDESC(    ): Promise<void> {
+  console.clear();
+  const answers = await inquirer.prompt({
+    type: 'list',
+    name: 'chooseCollectionOption',
+    message: 'A ver hijo de la re mil puta que te re mil pario elegi algo ya, la concha de tu vieja, salu2:  ',
+    choices: Object.values(manageCollectionCommands),
+  });
+  console.log(answers); 
+  switch(answers["chooseManageOption"]) {
+    case manageCollectionCommands.add:
+      console.log(`creando una nueva coleccion`);
+
+      break;
+    case manageCollectionCommands.remove:
+      console.log(`Eliminar una colleccion`);
+
+      break;
+    case manageCollectionCommands.quit:
+      console.log(`Saliendo al menu principal...`);
+      promptManageCollection();
+      break;
+  }
+}
+*/
+//##########################################################################################################################################################################
+
+
+// LLAMADA A LA FUNCION PRINCIPAL
+//##########################################################################################################################################################################
 mainPrompt();
+//##########################################################################################################################################################################
+
+
