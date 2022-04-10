@@ -1,4 +1,3 @@
-// import * as inquirer from 'inquirer';
 import inquirer from 'inquirer';
 import {Genre} from "./genre";
 import {Song} from "./song";

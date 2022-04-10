@@ -175,11 +175,11 @@ export function data() {
 * Rellenamos nuestra base de datos
 */
 
-  songCollection.setList([song1, song2, song3, song4, song5, song6, song7, song8, song9, song10, song11, song12, song13, song14, song15, song16, song17, song18, song19, song20, song21, song22, song23, song24, song25, song26, song27, song28, song29, song30, song31, song32, song33, song34, song35, song36, song37, song38, song39, song40, song41, song42, song43, song44, song45, song46, song47, song48, song49, song50, song51, song52, song53, song54, song55, song56, song57, song58, song59, song60, song61, song62]);
-  albumCollection.setList([album1, album2, album3, album4, album5]);
-  artistCollection.setList([artist1, artist2, artist3, artist4, artist5, artist6]);
-  genreCollection.setList([genero1, genero2, genero3, genero4, genero5, genero6]);
-  groupCollection.setList([group1, group2, group3]);
+  songCollection.setList([song1, song2, song3, song4, song5, song6, song7, song8, song9, song10, song11, song12, song13, song14, song15, song16, song17, song18, song19, song20, song21, song22, song23, song24, song25, song26, song27, song28, song29, song30, song31, song32, song33, song34, song35, song36, song37, song38, song39, song40, song41, song42, song43, song44, song45, song46, song47, song48, song49, song50, song51, song52, song53, song54, song55, song56, song57, song58, song59, song60, song61, song62, song63, song64, song65, song66, song67, song68, song69, song70, song71, song72, song73, song74]);
+  albumCollection.setList([album1, album2, album3, album4, album5, album6]);
+  artistCollection.setList([artist1, artist2, artist3, artist4, artist5, artist6, artist7]);
+  genreCollection.setList([genero1, genero2, genero3, genero4, genero5, genero6, genero7]);
+  groupCollection.setList([group1, group2, group3, group4]);
   playlistCollection.setList([playlist1]);
 
 /**
