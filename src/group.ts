@@ -42,7 +42,7 @@ export class Group {
      * Metodo que obtiene el anio de creacion del grupo
      * @returns devuelve el anio en el que se creo el grupo.
      */
-    getAñoCreacion(): number {
+    getAnioCreacion(): number {
         return this.anioCreacion;
     }
 
