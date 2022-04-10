@@ -21,6 +21,7 @@ export class Album {
         this.anioPubli = anioPubli;
         this.genre = genre;
         this.song = song;
+        this.artist = artist;
     }
 
     /**
@@ -53,6 +54,14 @@ export class Album {
      */
     getTracklist(): Song[] {
         return this.song;
+    }
+
+    /**
+     * metodo que devuelve el artista o banda.
+     * @returns devuelve la lista de song que contiene el album.
+     */
+     getArtist(): (Artist | Group)[] {
+        return this.artist;
     }
 
 }
