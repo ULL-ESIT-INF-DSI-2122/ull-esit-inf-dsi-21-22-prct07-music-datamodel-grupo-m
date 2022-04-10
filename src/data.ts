@@ -139,7 +139,7 @@ export function data() {
   let genero2 = new Genre('POP', [artist1, artist2, artist6], [album1, album3, album5], [song1, song2, song3, song5, song6, song7, song8, song9, song10, song11, song12, song13, song14, song16, song27, song51, song52, song55, song57, song58, song59, song62]);
   let genero3 = new Genre('ALTERNATIVO', [artist1, group2], [album1, album2], [song13, song18]);
   let genero4 = new Genre('RAP', [artist2], [album3], [song25, song26, song27, song29, song30, song31, song32, song33, song34, song35, song36, song37, song38, song39]);
-  let genero5 = new Genre('PUNK', [group1, group1], [album4], [song43, song47, song48]);
+  let genero5 = new Genre('PUNK', [group1, group3], [album4], [song43, song47, song48]);
   let genero6 = new Genre('R&B', [artist6], [album5], [song3, song4, song50, song52, song53, song54, song56]);
   let genero7 = new Genre('INDIE', [group4], [album6], [song63, song64, song65, song66, song67, song68, song69, song70, song71, song72, song73, song74]);
 

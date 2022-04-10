@@ -36,4 +36,12 @@ describe('Pruebas unitarias de la clase genero', ()=>{
     expect(groupCollection.getList()[2].getOyentes()).to.be.eql(83135);
   });
 
+  it ('Test de los metodos del grupo numero 4', ()=>{
+    expect(groupCollection.getList()[3].getNombre()).to.be.eql('Mother Mother');
+    expect(groupCollection.getList()[3].getArtistas()).to.be.eql([artistCollection.getList()[6]]);
+    expect(groupCollection.getList()[3].getAnioCreacion()).to.be.eql(2005);
+    expect(groupCollection.getList()[3].getGenero()).to.eql(['ROCK', 'INDIE']);
+    expect(groupCollection.getList()[3].getOyentes()).to.be.eql(7461331);
+  });
+
 });  
