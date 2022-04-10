@@ -33,6 +33,10 @@ export class Artist {
     return this.name;
   }
 
+  setName(newName: string): void {
+    this.name = newName;
+  }
+
   /**
    * metodo encargada de mostrar los grupos a los que pertenece el artista.
    * @returns devuelve lso grupos en los que se encuentra el artista.
@@ -124,6 +128,12 @@ export class Artist {
   public setListeners(listeners: number): void {
     this.listenerMensual = listeners;
   }
-
+/*
+  public setGenres(newGenre: genreInfo): void {
+    if (newGenre === genreInfo) {
+      this.genres.push(newGenre);
+    }
+  }
+*/
 
 }
