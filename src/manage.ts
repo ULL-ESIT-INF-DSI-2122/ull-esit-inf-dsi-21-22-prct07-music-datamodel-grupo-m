@@ -135,6 +135,7 @@ enum managePlaylistCommands {
   remove = 'Eliminar una Playlist',
   modify = 'Modificar una Playlist existente',
   sort = 'Ordenar una playlist existente',
+  print = 'Visualizar todas las playlist',
   quit = 'Volver atras'
 };
 
@@ -150,6 +151,16 @@ enum manageCollectionCommands {
   remove = 'Eliminar una cancion, album, artista, grupo o genero',
   modify = 'Modificar una una cancion, album, artista, grupo o genero',
   sort = 'Ordenar una cancion, album, artista, grupo o genero',
+  print = 'Visualizar la lista de canciones, artistas, grupos o generos',
+  quit = 'Volver atras'
+}
+
+enum PrintableOption {
+  printArtist = 'Visualizar la lista de Artistas',
+  printSong = 'Visualizar la lista de Canciones',
+  printAlbum = 'Visualizar la lista de Albumes',
+  printGroup = 'Visualizar la lista de Grupos',
+  printGenre = 'Visualizar la lista de Generos',
   quit = 'Volver atras'
 }
 
@@ -267,6 +278,9 @@ async function promptManagePlaylist(): Promise<void> {
       console.log(`Ordenando una playlist`);
       promptSortPlaylist();
       break;
+    case managePlaylistCommands.print:
+      console.log(`visualizando una playlist`);
+      break;
     case managePlaylistCommands.quit:
       console.log(`Saliendo al menu principal...`);
       mainPrompt();
@@ -299,6 +313,9 @@ async function promptManageCollection(): Promise<void> {
     case manageCollectionCommands.sort:
       console.log(`Ordenar una coleccion`);
       promptSortCollection();
+      break;
+    case manageCollectionCommands.print:
+      promptPrintableCollection();
       break;
     case manageCollectionCommands.quit:
       console.log(`Saliendo al menu principal...`);
@@ -395,7 +412,6 @@ async function promptModifyCollection(): Promise<void> {
       break;
   }
 }
-
 
 
 // Prompt de ordenacion de Collecciones
@@ -618,6 +634,38 @@ async function promptSortASCDESC(    ): Promise<void> {
   }
 }
 */
+//##########################################################################################################################################################################
+
+
+
+// OPCION QUE PERMITA VISUALIZAR LA COLECCION
+//##########################################################################################################################################################################
+async function promptPrintableCollection(): Promise<void> {
+  // console.clear();
+  const answers = await inquirer.prompt({
+    type: 'list',
+    name: 'whatPrint',
+    message: 'Selecciona que desea modificar del artista: ',
+    choices: Object.values(PrintableOption),
+  });
+  switch(answers["whatPrint"]) {
+    case PrintableOption.printArtist:
+      artistCollection.showCollection();
+      promptPrintableCollection();
+      break;
+    case PrintableOption.printSong:
+      break;
+    case PrintableOption.printGenre:
+      break;
+    case PrintableOption.printGroup:
+      break;
+    case PrintableOption.printAlbum:
+      break;
+    case PrintableOption.quit:
+      promptManageCollection();
+      break;
+  }
+}
 //##########################################################################################################################################################################
 
 
