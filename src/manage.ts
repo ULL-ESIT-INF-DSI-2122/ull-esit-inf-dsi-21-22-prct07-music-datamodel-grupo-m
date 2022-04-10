@@ -268,6 +268,16 @@ async function promptManagePlaylist(): Promise<void> {
   }
 }
 
+
+
+//##########################################################################################################################################################################
+
+
+
+//##########################################################################################################################################################################
+
+
+
 // Prompt que se dedica a añadir colecciones
 async function promptAddSomething(): Promise<void> {
   console.clear();
@@ -324,7 +334,7 @@ async function promptRemoveSomething(): Promise<void> {
   }
 }
 
-// Prompt que modifica un artista
+// Menu que da las opciones de que se qere modificar
 async function promptModifyCollection(): Promise<void> {
   console.clear();
   const answers = await inquirer.prompt({
@@ -354,7 +364,7 @@ async function promptModifyCollection(): Promise<void> {
 
 
 
-// Prompt de la gestion de canciones, albumes, etc...
+// menu encargado de dar las diferentes posibilidades de modificacion de un artista
 async function promptModifyArtist(): Promise<void> {
   console.clear();
   const answers = await inquirer.prompt({
@@ -512,6 +522,7 @@ async function promptSortASCDESC(    ): Promise<void> {
   }
 }
 */
+// Menu que pregunta si se desea añadir otro artista a la coleccion
 async function continueAddArtist(): Promise<void> {
   const answers = await inquirer.prompt({
     type: 'list',
@@ -523,6 +534,7 @@ async function continueAddArtist(): Promise<void> {
   else promptAddSomething();
 }
 
+// menus que pregunta si se desea eliminar otro artista
 async function continueRemoveArtist(): Promise<void> {
   const answers = await inquirer.prompt({
     type: 'list',
@@ -535,6 +547,7 @@ async function continueRemoveArtist(): Promise<void> {
   else mainPrompt();
 }
 
+// menu que añade un artista a la coleccion
 async function addArtist(): Promise<void> {
   console.clear();
   const answers: any = await inquirer.prompt([{
@@ -559,6 +572,7 @@ async function addArtist(): Promise<void> {
     continueAddArtist();
 }
 
+// Menu que elimina un artista de la coleccion
 async function removeArtist(): Promise<void> {
   const answers: any = await inquirer.prompt({
     type: 'input',
@@ -577,6 +591,7 @@ async function removeArtist(): Promise<void> {
     continueRemoveArtist();
 }
 
+// Menu que modifica el nombre de un artista
 async function modifyArtistName(): Promise<void> {
   const answers: any = await inquirer.prompt([{
     type: 'input',
