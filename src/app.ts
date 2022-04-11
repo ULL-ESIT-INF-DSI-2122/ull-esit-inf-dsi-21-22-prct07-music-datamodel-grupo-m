@@ -6,7 +6,7 @@ import {Artist} from "./artist";
 import {Group} from "./group";
 import {Playlist} from "./playlist";
 import {Collection, albumCollection, artistCollection, groupCollection, genreCollection, songCollection, playlistCollection} from './collection'
-import { data } from "./data";
+import {data} from "./data";
 //import {DataBase, BDD} from './bdd';
 
 /*
@@ -645,12 +645,20 @@ async function promptPrintableCollection(): Promise<void> {
       promptPrintableCollection();
       break;
     case PrintableOption.printSong:
+      songCollection.showCollection();
+      promptPrintableCollection();
       break;
     case PrintableOption.printGenre:
+      genreCollection.showCollection();
+      promptPrintableCollection();
       break;
     case PrintableOption.printGroup:
+      groupCollection.showCollection();
+      promptPrintableCollection();
       break;
     case PrintableOption.printAlbum:
+      albumCollection.showCollection();
+      promptPrintableCollection();
       break;
     case PrintableOption.quit:
       promptManageCollection();

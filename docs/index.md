@@ -6,12 +6,14 @@
 ### Autores:  
   * Joel Francisco Escobar Socas - alu0101130408@ull.edu.es
   * Micaela - alu010
+  * Carla - alu01
 
 <br/><br/>
 
 ### Índice:
 
 1. [Introducción y objetivos.](#id1)
+En este apartado se va a explicar el diseño adoptado en la creación del sistema.
 
 2. [Desarrollo.](#id2)
       
