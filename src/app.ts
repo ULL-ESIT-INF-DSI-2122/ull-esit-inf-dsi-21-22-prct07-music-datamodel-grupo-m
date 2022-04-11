@@ -228,6 +228,7 @@ enum sortOption {
 // Prompt principal
 async function mainPrompt(): Promise<void>   {
   console.clear();
+  console.log(`Bienvenidos a la Biblioteca Musical!\n» Autores: Joel, Micaela & Carla`);
   const answers = await inquirer.prompt({
     type: 'list',
     name: 'chooseSelect',
@@ -551,6 +552,7 @@ async function addArtist(): Promise<void> {
     message: 'Introduzca los oyentes individuales del artista:',
   }
   ]);
+
     let newArtist: Artist = new Artist(answers['name'], answers['genres'], answers['listeners']);
     artistCollection.addItem(newArtist);
     artistCollection.showCollection();
@@ -673,4 +675,8 @@ async function promptPrintableCollection(): Promise<void> {
 mainPrompt();
 //##########################################################################################################################################################################
 
+
+//##########################################################################################################################################################################
+
+//##########################################################################################################################################################################
 

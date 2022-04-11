@@ -11,11 +11,12 @@ export class Playlist {
    * @param duration duracion total de la playlist en horas y minutos.
    * @param genres genres musicales que se incluyen dentro de la playlist.
    */
-    constructor(private name: string, private songs: Song[], private duration: number, private genres: genreInfo[]){
+    constructor(private name: string, private songs: Song[], private duration: number, private genres: genreInfo[], private creationYear: number){
        this.songs = songs;
        this.duration = duration;
        this.genres = genres;
        this.name = name; 
+       this.creationYear = creationYear;
     }
 
     /**
@@ -26,12 +27,44 @@ export class Playlist {
       return this.songs;
     }
 
+    getNameSong(): string {
+      this.songs.forEach((item) => {
+        return item.getName();
+      });
+      return "No existe ningun nombre";
+    }
+
+    getArtistSong(): string {
+      this.songs.forEach((item) => {
+        return item.getAutor();
+      });
+      return "No existe ningun Artista o Grupo asociado";
+    }
+
+    getDurationSong(): number {
+      this.songs.forEach((item) => {
+        return item.getDuration();
+      });
+      return -1;
+    }
+
+    getGenrePlaylist(): string {
+      this.songs.forEach((item) => {
+        return item.getGenres();
+      });
+      return "No existe Genero";
+    }
     /**
      * Metodo que devuelve la duracion total de la playlist.
      * @returns devuelve la duracion.
      */
     getDuration(): number {
       return this.duration;
+    }
+
+
+    getCreateYear(): number {
+      return this.creationYear;
     }
     /**
      * Metodo que devuelve los genres de las songs de la playlist.

@@ -4,8 +4,8 @@
 
 ### Autores:  
   * Joel Francisco Escobar Socas - alu0101130408@ull.edu.es
-  * Micaela - alu010
-  * Carla - alu01
+  * Micaela Lucia Mungay Juncal- alu0101124506@ull.edu.es
+  * Carla Oval Torres - alu0101036694@ull.edu.es
 
 
 ### Índice:

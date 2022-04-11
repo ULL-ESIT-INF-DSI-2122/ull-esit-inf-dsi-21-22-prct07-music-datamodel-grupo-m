@@ -4,6 +4,7 @@ import {Album} from "./Basic_Class/album";
 import {Artist} from "./Basic_Class/artist";
 import {Group} from "./Basic_Class/group";
 import {Playlist} from "./Basic_Class/playlist";
+import {Manage} from "./manage";
 import {Collection, albumCollection, artistCollection, groupCollection, genreCollection, songCollection, playlistCollection} from './collection'
 
 /**
@@ -150,7 +151,9 @@ export function data() {
  * Playlists 3
  */
   
-  let playlist1 = new Playlist("playlist1", [song1], 10, ['ROCK']);
+  let playlist1 = new Playlist("playlist1", [song1], 10, ['ROCK'], 1990);
+  let playlist2 = new Playlist("Playlist2", [song2, song5], 40, ['POP', 'RAP'], 2012);
+
 
 /**
  * Completando datos faltantes
@@ -197,7 +200,12 @@ export function data() {
    3 .Otra opcion es crear un array vacio e intentar indexar el elemento deseado dentro y luego realizar las operaciones pertinenete
   
   */
+   let PlaylistCollec: Playlist[] = [playlist1, playlist2];
 
-
-
+   let patata = new Manage(PlaylistCollec);
+ 
+   console.log(patata.sortSongPlaylist());
+  
 }
+
+data();

@@ -28,7 +28,7 @@ export class Album {
      * metodo que devuelve el nombre del album
      * @returns devuelve el nombre del album
      */
-    getNombre(): string {
+    getName(): string {
         return this.name;
     }
 
@@ -36,7 +36,7 @@ export class Album {
      * metodo que obtiene el atributo privado del año de publicacion
      * @returns devuelve el año de lanzamiento del album
      */
-    getAnio(): number {
+    getYear(): number {
         return this.anioPubli;
     }
 
