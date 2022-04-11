@@ -1,14 +1,12 @@
 # Práctica 7 - Digitalizando la colección de música de los abuelos
 # Desarrollo de Sistemas Informáticos
 # Universidad de la Laguna
-<br/><br/>
 
 ### Autores:  
   * Joel Francisco Escobar Socas - alu0101130408@ull.edu.es
   * Micaela - alu010
   * Carla - alu01
 
-<br/><br/>
 
 ### Índice:
 
@@ -70,7 +68,7 @@ Y luego nos encontramos con diversos métodos *getters*  que se encargan de obte
 
 ```TypeScript
 export class Genre {
-  
+
     constructor(private name: genreInfo, private artists: (Artist | Group)[], private albums: Album[], private song: Song[]) {
         this.name = name;
         this.artists = artists;
@@ -161,6 +159,62 @@ describe('Pruebas unitarias de la clase genero', ()=>{
 
 ### 2.2. Clase Canción. <a name="id22"></a>
 
+La clase `Canción` tiene una estructura similar a la clase comentada anteriormente, en este caso declaramos diversos atributos en el constructor que posteriormente inicializamos, que seria el nombre de una cancion (*string*), un conjunto de autores que este recogido en el sistema, es decir, será un conjunto de varios artistas, grupos o una mezcla de ambas (*(Artist | Group)[]*), también especifica la duración de la canción (*number*), una lista de tipos de generos en la que se encuentra la canción (*genreInfo[]*), si la canción fue lanzada como single o no (*Boolean*) y por último el número de reproducciónes que ha tenido esa canción definida. 
+
+Posteriormente se definen los métodos que permiten acceder a los atributos de las canciones *Getters*.
+
+```TypeScript
+export class Song {
+    private id: number = 0;
+    constructor(private name: string, private autor: (Artist | Group)[], private duration: number, private genres: genreInfo[], private single: boolean, private reproductions: number){
+        this.autor = autor;
+        this.duration = duration;
+        this.genres = genres;
+        this.name = name;
+        this.reproductions = reproductions;
+        this.single = single;
+        this.id = this.setId();
+    }
+
+    getName(): string {
+        return this.name;
+    }
+
+     getId(): number {
+        return this.id;
+    }
+
+    setId(): number {
+        return this.id + 1 ;
+    }
+
+    getAutor(): (Artist | Group)[] {
+        return this.autor;
+    }
+
+    getDuration(): number {
+        return this.duration;
+    }
+
+    getGenres(): genreInfo[] {
+        return this.genres;
+    }
+
+    getReproducciones(): number {
+        return this.reproductions;
+    }
+
+    getSingle(): boolean {
+        return this.single;
+    }
+}
+```
+
+Para las pruebas unitarias de esta clase se ha operado de forma similar a las pruebas de la clase `genre` puesto que solo contempla operaciones que obtiene informacion de una canción, entonces trás cargar los datos desde el fichero data, comprobamos si los valores que obtenemos a través de la sentencia tienen sentido con los valores que esperamos.
+
+```TypeScript
+
+```
 <br/><br/>
 
 ### 2.3. Clase Album. <a name="id23"></a>
