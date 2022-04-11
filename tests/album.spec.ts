@@ -1,7 +1,7 @@
 import 'mocha';
 import {expect} from 'chai';
-import {data} from "../../src/data";
-import {albumCollection, artistCollection, groupCollection} from '../../src/collection';
+import {data} from "../src/data";
+import {albumCollection, artistCollection, groupCollection} from '../src/collection';
 // //import {DataBase, albumCollection, artistCollection, groupCollection, genreCollection, songCollection, playlistCollection} from './database'
 
 
@@ -23,7 +23,7 @@ describe('Tests de la clase Album', ()=>{
 
   it ('Test de los metodos del Album numero 2', ()=>{
     expect(albumCollection.getList()[1].getName()).to.be.eql("Teatro d'ira - Vol.I");
-    expect(albumCollection.getList()[1].getName()).to.be.eql(2021);
+    expect(albumCollection.getList()[1].getYear()).to.be.eql(2021);
     expect(albumCollection.getList()[1].getGenero()).to.be.eql(['ROCK', 'ALTERNATIVO']);
     expect(albumCollection.getList()[1].getArtist()).to.be.eql([groupCollection.getList()[1]]);
     //expect(albumCollection.getList()[0].getTracklist()).to.be.eql();

@@ -106,8 +106,6 @@ export function sortSingles(): Song[] {
 }
   
 
-
-data();
 // console.log(sortTituloCollection(false));
 // console.log(sortAlbumYear(false));
 // console.log(sortListenersTotal());
