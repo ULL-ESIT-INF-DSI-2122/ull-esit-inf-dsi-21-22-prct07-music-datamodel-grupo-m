@@ -14,10 +14,10 @@
 
 > Si desea acceder a la documentación de Typedoc puede acceder a través de la extensión Live Server.
 
-> [Guión de la Pŕactica 7](https://ull-esit-inf-dsi-2122.github.io/prct07-music-dataModel/) 
+> [Guión de la Práctica 7](https://ull-esit-inf-dsi-2122.github.io/prct07-music-dataModel/) 
 
 --- 
-[![Tests](https://github.com/ULL-ESIT-INF-DSI-2122/ull-esit-inf-dsi-21-22-prct07-music-datamodel-grupo-m/actions/workflows/node.js.yml/badge.svg)](https://github.com/ULL-ESIT-INF-DSI-2122/ull-esit-inf-dsi-21-22-prct07-music-datamodel-grupo-m/actions/workflows/node.js.yml)
+[![Tests](https://github.com/ULL-ESIT-INF-DSI-2122/ull-esit-inf-dsi-21-22-prct07-music-datamodel-grupo-m/actions/workflows/node.js.yml/badge.svg?branch=master)](https://github.com/ULL-ESIT-INF-DSI-2122/ull-esit-inf-dsi-21-22-prct07-music-datamodel-grupo-m/actions/workflows/node.js.yml)
 
 ---
 
