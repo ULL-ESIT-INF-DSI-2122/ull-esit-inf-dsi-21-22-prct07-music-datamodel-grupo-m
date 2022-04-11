@@ -13,25 +13,24 @@
 ### Índice:
 
 1. [Introducción y objetivos.](#id1)
-En este apartado se va a explicar el diseño adoptado en la creación del sistema.
 
 2. [Desarrollo.](#id2)
       
-      2.1. [Clase Genero.](#id21)
+  2.1. [Clase Genero.](#id21)
 
-      2.2. [Clase Canción](#id22)
+  2.2. [Clase Canción](#id22)
 
-      2.3. [Clase Album](#id23)
+  2.3. [Clase Album](#id23)
       
-      2.4. [Clase Artista](#id24)
+  2.4. [Clase Artista](#id24)
 
-      2.5. [Clase Grupo](#id25)
+  2.5. [Clase Grupo](#id25)
 
-      2.6. [Clase PlayList](#id26)
+  2.6. [Clase PlayList](#id26)
 
-      2.7. [Clase Gestora](#id27)
+  2.7. [Clase Gestora](#id27)
 
-      2.8. [fichero App](#id28)
+  2.8. [fichero App](#id28)
 
 3. [Dificultades.](#id3)
 
@@ -54,8 +53,110 @@ Además para almacenar toda esta información se hará uso de los dos siguientes
 
 ## 2. Desarrollo. <a name="id2"></a>
 
-### 2.1. Clase Genero. <a name="id21"></a>
+En este apartado se va a explicar el diseño adoptado y la explicación de las diversas clases implementadas.
 
+### 2.1. Clase Genero. <a name="id21"></a>
+Tal y como se especifica en el enunciado debemos implementar un sistema que recoja diferentes objetos de diversas clases que esten relacionadas entre sí. Por lo que comenzaremos a explicar una de las clases más básicas, `Género`. Que principalmente almacenará los diversos géneros musicales de los que podrán hacer uso el resto de clases de nuestro sistema.
+
+Al acceder a esta clase podemos ver que se define al pricipio de define un objeto denominado `genreInfo`, el cual es un objeto que solo podrá contener el nombre de los géneros que se especifican en él. 
+
+```TypeScript
+export type genreInfo = 'CLASICA'| 'ROCK'| 'HIP-HOP' | 'REGGEATON' | 'POP' | 'TRAP' | 'PUNK' | 'K-POP' | 'METAL' | 'CUMBIA' | 'BLUES' | 'JAZZ'| 'COUNTRY' | 'EDM' | 'FLAMENCO' | 'SALSA' | 'REGGAE' | 'GOSPEL' | 'DISCO' | 'BANDA SONORA' | 'ALTERNATIVO' | 'ELECTROPOP' | 'SOUL' | 'R&B' |'RAP' | 'INDIE';
+```
+
+Posteriormente nos encontramos con la clase `Genre`. Dentro de su constructor se recibe tanto el nombre del género que será uno de los nombres registrado en nuestor objeto **genreInfo** como un array *(Artist | Group)[]* que se encarga de definir la cantidad de artistas o grupos que hay dentro de un género, también se define un array de Albumes (*Album[]*) cuyo cometido es especificar todos los albumes que hay dentro de un género y por último un array de canciones (*Song[]*) que especifica todas las canciones que hay dentro de un género.
+
+Y luego nos encontramos con diversos métodos *getters*  que se encargan de obtener los valores a estos atributos inicializados en el constructor de la clase.
+
+```TypeScript
+export class Genre {
+  
+    constructor(private name: genreInfo, private artists: (Artist | Group)[], private albums: Album[], private song: Song[]) {
+        this.name = name;
+        this.artists = artists;
+        this.albums = albums;
+        this.song = song;
+    }
+
+    getNombre(): genreInfo {
+        return this.name;
+    }
+
+    getArtistas(): (Artist | Group)[] {
+        return this.artists;
+    }
+
+    getAlbumes():Album[] {
+        return this.albums;
+    }
+  
+    getSongs(): Song[] {
+        return this.song;
+    }
+}
+
+```
+Para comprobar la correcta implementación de esta clase lo que se hace es cargar el fichero `data.ts` que contendrá todos los objetos de nuestro sistema y comprobamos por una parte que se puedan instanciar objetos de esta clase y no esten vacíos y por otra parte que se obtenga los valores esperados al hacer ejecutar diversos *getters* que hemos definido. Todo esto se puede ver implementado en la carpeta `tests/genre.spec.ts`, cuyo contenido es:
+
+```TypeScript
+import 'mocha';
+import {expect} from 'chai';
+import {genreCollection, artistCollection, groupCollection, albumCollection, songCollection} from '../src/collection';
+import {data} from '../src/data';
+
+
+data();
+
+describe('Pruebas unitarias de la clase genero', ()=>{
+  it ('Pruebas de instancia de genero', ()=>{
+    genreCollection.getList().forEach((genre) => {
+      expect(genre).to.exist;
+    });
+  });
+  it ('Test de los metodos del genero numero 1', ()=>{
+    expect(genreCollection.getList()[0].getNombre()).to.be.eql('ROCK');
+    expect(genreCollection.getList()[0].getArtistas()).to.be.eql([artistCollection.getList()[0], groupCollection.getList()[1], groupCollection.getList()[0], groupCollection.getList()[2], groupCollection.getList()[3]]);
+    expect(genreCollection.getList()[0].getAlbumes()).to.be.eql([albumCollection.getList()[1], albumCollection.getList()[3], albumCollection.getList()[5]]);
+  });
+
+  it ('Test de los metodos del genero numero 2', ()=>{
+    expect(genreCollection.getList()[1].getNombre()).to.be.eql('POP');
+    expect(genreCollection.getList()[1].getArtistas()).to.be.eql([artistCollection.getList()[0], artistCollection.getList()[1], artistCollection.getList()[5]]);
+    expect(genreCollection.getList()[1].getAlbumes()).to.be.eql([albumCollection.getList()[0], albumCollection.getList()[2], albumCollection.getList()[4]]);
+  });
+
+  it ('Test de los metodos del genero numero 3', ()=>{
+    expect(genreCollection.getList()[2].getNombre()).to.be.eql('ALTERNATIVO');
+    expect(genreCollection.getList()[2].getArtistas()).to.be.eql([artistCollection.getList()[0], groupCollection.getList()[1]]);
+    expect(genreCollection.getList()[2].getAlbumes()).to.be.eql([albumCollection.getList()[0], albumCollection.getList()[1]]);
+  });
+
+  it ('Test de los metodos del genero numero 4', ()=>{
+    expect(genreCollection.getList()[3].getNombre()).to.be.eql('RAP');
+    expect(genreCollection.getList()[3].getArtistas()).to.be.eql([artistCollection.getList()[1]]);
+    expect(genreCollection.getList()[3].getAlbumes()).to.be.eql([albumCollection.getList()[2]]);
+  });
+
+  it ('Test de los metodos del genero numero 5', ()=>{
+    expect(genreCollection.getList()[4].getNombre()).to.be.eql('PUNK');
+    expect(genreCollection.getList()[4].getArtistas()).to.be.eql([groupCollection.getList()[0], groupCollection.getList()[2]]);
+    expect(genreCollection.getList()[4].getAlbumes()).to.be.eql([albumCollection.getList()[3]]);
+  });
+
+  it ('Test de los metodos del genero numero 6', ()=>{
+    expect(genreCollection.getList()[5].getNombre()).to.be.eql('R&B');
+    expect(genreCollection.getList()[5].getArtistas()).to.be.eql([artistCollection.getList()[5]]);
+    expect(genreCollection.getList()[5].getAlbumes()).to.be.eql([albumCollection.getList()[4]]);
+
+  });
+
+  it ('Test de los metodos del genero numero 7', ()=>{
+    expect(genreCollection.getList()[6].getNombre()).to.be.eql('INDIE');
+    expect(genreCollection.getList()[6].getArtistas()).to.be.eql([groupCollection.getList()[3]]);
+    expect(genreCollection.getList()[6].getAlbumes()).to.be.eql([albumCollection.getList()[5]]);
+  });
+});  
+```
 <br/><br/>
 
 ### 2.2. Clase Canción. <a name="id22"></a>
