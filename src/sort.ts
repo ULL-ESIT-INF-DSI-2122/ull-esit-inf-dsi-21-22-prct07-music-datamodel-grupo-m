@@ -5,7 +5,7 @@ import {Album} from "./Basic_Class/album";
 import {Artist} from "./Basic_Class/artist";
 import {Group} from "./Basic_Class/group";
 import {Playlist} from "./Basic_Class/playlist";
-import {Collection, albumCollection, artistCollection, groupCollection, genreCollection, songCollection, playlistCollection} from './collection'
+import {Collection, albumCollection, artistCollection, groupCollection, genreCollection, songCollection} from './collection'
 
 
 /*

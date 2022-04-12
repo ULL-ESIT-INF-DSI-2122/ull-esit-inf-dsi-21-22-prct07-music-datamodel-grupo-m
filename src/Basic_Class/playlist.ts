@@ -78,7 +78,7 @@ export class Playlist {
      * Metodo que devuelve el name de la playlist
      * @returns devuelve el nombre de la playlist.
      */
-    getNombre(): string{
+    getName(): string{
       return this.name;
     }
 }

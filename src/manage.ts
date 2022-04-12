@@ -12,6 +12,18 @@ export class Manage extends Collection<Playlist> {
     this.listPlaylist = listPlaylist;
   }
 
+
+
+  searchPlaylist(namePlaylist: string): Playlist[] {
+    const arrayMatchedPlaylist: Playlist[] = [];
+    this.listPlaylist.forEach((element) => {
+      if (element.getName().search(namePlaylist) > -1) {
+        arrayMatchedPlaylist.push(element);
+      }
+    });
+    return arrayMatchedPlaylist;
+  }
+
   /*
   Alfabéticamente por título de la canción, ascendente y descendente.
   Alfabéticamente por nombre del grupo/artista, ascendente y descendente.
@@ -22,8 +34,10 @@ export class Manage extends Collection<Playlist> {
   */
 
   // Visualizar PLaylist Actual y atributos privados
-  showPlaylist (): Playlist[] {
-    return this.listPlaylist;
+  showPlaylist (): void {
+    this.listPlaylist.forEach((item) => {
+      console.log(item);
+    });
   }
 
   // Navegar una playlist

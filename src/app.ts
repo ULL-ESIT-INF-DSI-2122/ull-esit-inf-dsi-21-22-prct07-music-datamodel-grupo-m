@@ -1,13 +1,17 @@
 import inquirer from 'inquirer';
+import * as readline from 'readline';
+
 import {Genre} from "./Basic_Class/genre";
 import {Song} from "./Basic_Class/song";
 import {Album} from "./Basic_Class/album";
 import {Artist} from "./Basic_Class/artist";
 import {Group} from "./Basic_Class/group";
 import {Playlist} from "./Basic_Class/playlist";
-import {Collection, albumCollection, artistCollection, groupCollection, genreCollection, songCollection, playlistCollection} from './collection'
+import {Collection, albumCollection, artistCollection, groupCollection, genreCollection, songCollection} from './collection'
 import {data} from "./data";
+import {Manage} from './manage';
 //import {DataBase, BDD} from './bdd';
+
 
 /*
 // Menu principal
@@ -122,7 +126,7 @@ const prueba = new Manage();
 prueba.mainPrompt();
 */
 
-data();
+let playlistManage: Manage = data();
 
 enum mainOptionCommands {
   managePlaylist = 'Gestionar una Playlist', 
@@ -219,6 +223,11 @@ enum sortOption {
   quit = 'volver atras'
 }
 
+enum chooseAddPlaylist {
+  existente = 'Añadir una playlist existente',
+  nueva = 'Añadir una nueva playlit desde Cero',
+  quit = 'Volver atras'
+}
 
 
 
@@ -261,7 +270,7 @@ async function promptManagePlaylist(): Promise<void> {
   });
   switch(answers["chooseManageOption"]) {
     case managePlaylistCommands.create:
-      console.log(`creando una nueva Playlist`);
+      
       break;
     case managePlaylistCommands.remove:
       console.log(`Eliminar una PLaylist`);
@@ -319,7 +328,7 @@ async function promptManageCollection(): Promise<void> {
 //##########################################################################################################################################################################
 
 
-// MENU DE AÑADIR, ELIMINAR O MODIFICAR
+// MENU DE AÑADIR, ELIMINAR O MODIFICAR COLLECCIONES
 //##########################################################################################################################################################################
 // Prompt que se dedica a añadir colecciones
 async function promptAddSomething(): Promise<void> {
@@ -668,15 +677,89 @@ async function promptPrintableCollection(): Promise<void> {
   }
 }
 //##########################################################################################################################################################################
+// PARTE DEL CODIGO QUE SE ENCARGA DE AÑADIR PLAYLIST
+//##########################################################################################################################################################################
+
+//##########################################################################################################################################################################
+
+async function promptAddPlaylist(): Promise<void> {
+  // console.clear();
+  const answers = await inquirer.prompt({
+    type: 'list',
+    name: 'whatAdd',
+    message: 'Que desea hacer? ',
+    choices: Object.values(chooseAddPlaylist),
+  });
+  switch(answers["whatAdd"]) {
+    case chooseAddPlaylist.existente:
+
+      break;
+    case chooseAddPlaylist.nueva:
+      break;
+    case chooseAddPlaylist.quit:
+      promptManagePlaylist();
+      break;
+  }
+}
+
+async function promptSelecExist(): Promise<void> {
+  console.log(`Lista de playlist que están registradas en el sistema`);
+  playlistManage.showCollection();
+  // console.clear();
+  const answers = await inquirer.prompt({
+    type: 'list',
+    name: 'whatAdd',
+    message: 'Que desea hacer? ',
+    choices: Object.values(chooseAddPlaylist),
+  });
+  switch(answers["whatAdd"]) {
+    case chooseAddPlaylist.existente:
+      
+      break;
+    case chooseAddPlaylist.nueva:
+      break;
+    case chooseAddPlaylist.quit:
+      promptManagePlaylist();
+      break;
+  }
+}
+// LLAMADA A LA FUNCION sumarMenu(nombreMenu: string, cantidadMenu: number) {
+ function addPlaylistExist(namePlaylist: string) {
+    const matchedPlaylist = playlistManage.searchPlaylist(namePlaylist);
+
+    let rl = readline.createInterface({
+      input: process.stdin,
+      output: process.stdout
+    });
+
+    if (matchedPlaylist.length <= 0) {
+      console.log('No se encontró en la lista de Playlist.');
+    } else {
+      if (matchedPlaylist.length > 1) {
+        matchedPlaylist.forEach((item) => {
+          rl.question(('¿Añadir ' + item.getName() + ' a la comanda?'), (answer) => {
+            switch(answer.toLowerCase()) {
+              case 'si':
+                console.log('Playlist añadida');
+                playlistManage.getList().push(item);
+                break;
+              case 'no':
+                let index = matchedPlaylist.indexOf(item);
+                if (index > -1)
+                matchedPlaylist.splice(index, 1);
+                break;
+              default:
+                console.log('Respuesta no soportada.')
+            }
+          });
+        });
+      }
+    }
+  } 
 
 
-// LLAMADA A LA FUNCION PRINCIPAL
 //##########################################################################################################################################################################
 mainPrompt();
 //##########################################################################################################################################################################
 
-
-//##########################################################################################################################################################################
-
-//##########################################################################################################################################################################
 

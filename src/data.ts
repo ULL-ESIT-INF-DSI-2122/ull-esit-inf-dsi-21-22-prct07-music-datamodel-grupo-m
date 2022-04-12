@@ -5,7 +5,7 @@ import {Artist} from "./Basic_Class/artist";
 import {Group} from "./Basic_Class/group";
 import {Playlist} from "./Basic_Class/playlist";
 import {Manage} from "./manage";
-import {Collection, albumCollection, artistCollection, groupCollection, genreCollection, songCollection, playlistCollection} from './collection'
+import {Collection, albumCollection, artistCollection, groupCollection, genreCollection, songCollection} from './collection'
 
 /**
  * @function Genera la coleccion del sistema con una serie de
@@ -15,7 +15,7 @@ import {Collection, albumCollection, artistCollection, groupCollection, genreCol
  * Artistas  5+
  */
   
-export function data() {
+export function data(): Manage {
 
   let artist1 = new Artist("Billie Eillish", ['POP', 'ALTERNATIVO'], 47949051);
   let artist2 = new Artist("Lil Nash X", ['POP', 'RAP'], 49522921);
@@ -183,7 +183,7 @@ export function data() {
   artistCollection.setList([artist1, artist2, artist3, artist4, artist5, artist6, artist7]);
   genreCollection.setList([genero1, genero2, genero3, genero4, genero5, genero6, genero7]);
   groupCollection.setList([group1, group2, group3, group4]);
-  playlistCollection.setList([playlist1]);
+  // playlistCollection.setList([playlist1]);
 
 /**
 * Calculamos los oyentes mensuales de cada artista
@@ -200,12 +200,10 @@ export function data() {
    3 .Otra opcion es crear un array vacio e intentar indexar el elemento deseado dentro y luego realizar las operaciones pertinenete
   
   */
-   let PlaylistCollec: Playlist[] = [playlist1, playlist2];
+   let arrayPlaylist: Playlist[] = [playlist1, playlist2];
 
-   let patata = new Manage(PlaylistCollec);
- 
-   console.log(patata.sortSongPlaylist());
+  let playlistCollection = new Manage(arrayPlaylist);
+  return playlistCollection;
+
   
 }
-
-data();
