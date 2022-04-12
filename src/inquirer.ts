@@ -10,6 +10,7 @@ import {Playlist} from "./Basic_Class/playlist";
 import {Collection, albumCollection, artistCollection, groupCollection, genreCollection, songCollection} from './collection'
 import {data} from "./data";
 import {Manage} from './manage';
+import {sortTituloCollection, sortAlbumCollection, sortAlbumYear, sortListenersTotal, sortSingles} from './sort';
 
 
 let playlistManage: Manage = data();
@@ -236,10 +237,23 @@ async function promptConsultCollection(): Promise<void>   {
   switch(answers["chooseCollectionVisualize"]) {
     case consultCollectionOptions.defaultVisualize:
       console.clear();
-      promptDefaultCollection()
+      promptDefaultCollection();
       break;
     case consultCollectionOptions.sortByTitle:
-
+      console.clear();
+      inquirer.prompt({
+        type: 'list',
+        name: 'ascOrDesc',
+        message: 'Desea visualizar de forma ascendente o descendente? ',
+        choices: ["Ascendente", "Descendente"],
+      }).then(answers => {
+        if(answers.ascOrDesc == "Ascendente") {
+          console.log(sortTituloCollection());
+        } else {
+          console.log(sortTituloCollection(false));
+        }
+        promptConsultCollection();
+      });
       break;
     case consultCollectionOptions.sortByAlbum:
 
