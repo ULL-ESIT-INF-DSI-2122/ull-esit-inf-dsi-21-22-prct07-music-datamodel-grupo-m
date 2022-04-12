@@ -15,7 +15,7 @@ import {Collection, albumCollection, artistCollection, groupCollection, genreCol
  * Artistas  5+
  */
   
-export function data() {
+export function data(): Playlist[] {
 
   let artist1 = new Artist("Billie Eillish", ['POP', 'ALTERNATIVO'], 47949051);
   let artist2 = new Artist("Lil Nash X", ['POP', 'RAP'], 49522921);
@@ -202,9 +202,10 @@ export function data() {
   */
    let PlaylistCollec: Playlist[] = [playlist1, playlist2];
 
-   let patata = new Manage(PlaylistCollec);
+   return PlaylistCollec;
+   //let patata = new Manage(PlaylistCollec);
  
-   console.log(patata.sortSongPlaylist());
+   //console.log(patata.sortSongPlaylist());
   
 }
 
