@@ -14,7 +14,6 @@ import {Collection, albumCollection, artistCollection, groupCollection, genreCol
   /**
  * Artistas  5+
  */
-  J
 export function data(): Manage {
 
   let artist1 = new Artist("Billie Eillish", ['POP', 'ALTERNATIVO'], 47949051);
