@@ -63,7 +63,7 @@ export function sortSingles(): Song[] {
   return singleSong;
 }
 
-  
+  // data();
   // console.log(sortTituloCollection(false));
   // console.log(sortAlbumYear(false));
   // console.log(sortListenersTotal());
