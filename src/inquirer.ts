@@ -16,8 +16,8 @@ import {sortTituloCollection, sortAlbumCollection, sortAlbumYear, sortListenersT
 let playlistManage: Manage = data();
 
 enum mainOptions {
-  consult = 'Consultar',
-  calculate = 'Operar',
+  consult = 'Realizar una Consulta',
+  calculate = 'Realizar una Operación',
   quit = 'Salir'
 };
   
@@ -58,6 +58,36 @@ enum consultDefaultCollection {
   printGenre = 'Visualizar la lista de Generos del sistema',
   back = 'Volver atras'
 };
+
+enum OperationSelect {
+  operatePlaylist = 'Realizar una operación en las Playlist del sistema',
+  operateCollection = 'Realizar una operación en las Colecciones del sistema',
+  back = 'Volver atras'
+};
+
+enum selectOperatePlaylist {
+  addNewPlaylist = 'Añadir una Playlist nueva al sistema',
+  modifyPlaylist = 'Modificar una Playlist existente',
+  removePlaylist =  'Eliminar una Playlist existente',
+  back = 'Volver atras'
+};
+
+enum selectOperateCollection {
+  addNewCollection = 'Añadir nuevos elementos a la Coleccion',
+  modifyCollection = 'Realizar una modificación en las Colecciones del sistema',
+  removeCollection = 'Eliminar elementos existentes de la Coleccion',
+  back = 'Volver atras'
+};
+
+
+enum optionAddCollection {
+  addArtist = 'Añadir un Artista a la colección',
+  addGroup = 'Añadir un grupo a la colección',
+  addSong = 'Añadir una canción a la colección',
+  addGenre = 'Añadir un genero musical a la colección',
+  addAlbum = 'Añadir un album a la colección',
+  back = 'Volver atras'
+};
 // ###############################################################################################################################
 // Menu principal
 async function mainPrompt(): Promise<void>   {
@@ -72,12 +102,12 @@ async function mainPrompt(): Promise<void>   {
   switch(answers["chooseSelect"]) {
     case mainOptions.consult:
       whatConsult();
-        
       break;
     case mainOptions.calculate:
-
+      whatOperate();
       break;
     case mainOptions.quit:
+      console.clear();
       console.log(`Gracias por su visita. Que tenga un buen dia`);
       console.log(`Saliendo...`);
       break;
@@ -357,6 +387,101 @@ async function promptDefaultCollection(): Promise<void>   {
     case consultDefaultCollection.back:
       console.log(`Volviendo atras, espere por favor...`);
       promptConsultCollection();
+      break;
+  }
+}
+// ###############################################################################################################################
+// MENU DE OPERACIONES
+// ###############################################################################################################################
+
+
+async function whatOperate(): Promise<void> {
+  console.clear();
+  const answers = await inquirer.prompt({
+    type: 'list',
+    name: 'operateSelect',
+    message: 'Qué desea hacer?',
+    choices: Object.values(OperationSelect),
+  });
+  switch(answers["operateSelect"]) {
+    case OperationSelect.operatePlaylist: 
+      promptOperatePlaylist();
+      break;
+    case OperationSelect.operateCollection:
+      promptOperateCollection();
+      break;
+    case OperationSelect.back: 
+      mainPrompt();
+      break;
+  }
+}
+
+async function promptOperatePlaylist(): Promise<void> {
+  console.clear();
+  const answers = await inquirer.prompt({
+    type: 'list',
+    name: 'operatePlaylist',
+    message: 'Qué desea hacer?',
+    choices: Object.values(selectOperatePlaylist),
+  });
+  switch(answers["operatePlaylist"]) {
+    case selectOperatePlaylist.addNewPlaylist: 
+      break;
+    case selectOperatePlaylist.modifyPlaylist:
+      break;
+    case selectOperatePlaylist.removePlaylist: 
+      break;
+    case selectOperatePlaylist.back: 
+      whatOperate();
+      break;
+  }
+}
+
+
+async function promptOperateCollection(): Promise<void> {
+  console.clear();
+  const answers = await inquirer.prompt({
+    type: 'list',
+    name: 'operateCollection',
+    message: 'Qué desea hacer?',
+    choices: Object.values(selectOperateCollection),
+  });
+  switch(answers["operateCollection"]) {
+    case selectOperateCollection.addNewCollection: 
+      selectAddCollection();
+      break;
+    case selectOperateCollection.modifyCollection:
+      break;
+    case selectOperateCollection.removeCollection: 
+      break;
+    case selectOperateCollection.back: 
+      whatOperate();
+      break;
+  }
+}
+
+
+async function selectAddCollection(): Promise<void> {
+  console.clear();
+  const answers = await inquirer.prompt({
+    type: 'list',
+    name: 'addCollection',
+    message: 'Qué desea hacer?',
+    choices: Object.values(optionAddCollection),
+  });
+  switch(answers["addCollection"]) {
+    case optionAddCollection.addArtist: 
+      break;
+    case optionAddCollection.addGroup:
+      break;
+    case optionAddCollection.addGenre: 
+      break;
+    case optionAddCollection.addSong: 
+      break;
+    case optionAddCollection.addAlbum: 
+      break;
+    case optionAddCollection.back: 
+      whatOperate();
       break;
   }
 }
