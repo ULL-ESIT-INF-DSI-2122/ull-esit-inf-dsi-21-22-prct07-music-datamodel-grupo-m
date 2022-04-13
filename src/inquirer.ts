@@ -478,6 +478,7 @@ async function selectAddCollection(): Promise<void> {
     case optionAddCollection.addGenre: 
       break;
     case optionAddCollection.addSong: 
+      addSong();
       break;
     case optionAddCollection.addAlbum: 
       break;
@@ -490,6 +491,8 @@ async function selectAddCollection(): Promise<void> {
 
 async function addSong(): Promise<void> {
   console.clear();
+  let single: boolean = false;
+  let artistMatch: (Artist | Group);
   const asnwers = await inquirer.prompt([{
     type: 'input',
     name: 'name',
@@ -505,31 +508,66 @@ async function addSong(): Promise<void> {
   }, {
     type: 'input',
     name: 'genres',
-    message: 'Seleccione el genero de la Cancion:',
+    message: 'Introduzca el genero de la Cancion:',
   }, {
-    type: 'input',
+    type: 'list',
     name: 'single',
-    message: 'its a single?:',
+    message: 'La canción fue un single?:',
+    choices: ['si', 'no'],
   }, {
     type: 'input',
     name: 'reproduction',
-    message: 'how many reproductions have this song?:',
+    message: 'Introduzca la cantidad de veces que fue reproducida la Canción:',
   }]).then((answers: any) => {
-    let newSong: Song = new Song(answers['name'], answers['author'], answers['duration'], answers['genres'], answers['single'], answers['reproduction']);
-    this.collection.addSong(newSong);
-    console.log('Successfully created ingredients');
+
+    if(answers.single == 'si') {
+      single = true;
+    }
+    artistMatch = findAuthor(answers.author);
+
+    let newSong: Song = new Song(answers['name'], artistMatch, answers['duration'], answers['genres'], single,  answers['reproduction']);
+    songCollection.addItem(newSong);
+    console.log('se ha introducido el artista');
+    songCollection.showCollection();
     inquirer.prompt([{
       type: 'list',
       name: 'continue',
       message: 'Do you want to add another song?:',
       choices: ['Yes', 'No'],
     }]).then((answers: any) => {
-      if (answers['continue'] == 'Yes') this.addSong();
-      else this.mainPrompt();
+      if (answers['continue'] == 'Yes') addSong();
+      else whatOperate();
     });
   });
 }
 
+function findAuthor(name: string): Artist | Group {
+  let pos: number = 0;
+  let lista: number = 1;
+  artistCollection.getList().forEach((item, index) => {
+    if (item.getName() == name) {
+      lista = 1;
+      pos = index;
+    } else {
+      groupCollection.getList().forEach((item, index) =>{
+        if(item.getNombre() == name) {
+          lista = 2;
+          pos = index;
+        } else {
+          pos = -1;
+        }
+      });
+    }
+  });
+
+  if (lista == 2) {
+    return groupCollection.getList()[pos];
+  } else {
+    return artistCollection.getList()[pos];
+  }
+  
+  
+}
 
 // ###############################################################################################################################
 

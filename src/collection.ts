@@ -37,7 +37,6 @@ export class Collection<T> {
       console.log(T);
     });
   }
-
 }
 
 export const albumCollection = new Collection<Album>();
@@ -46,3 +45,4 @@ export const groupCollection = new Collection<Group>();
 export const genreCollection = new Collection<Genre>();
 export const songCollection = new Collection<Song>();
 // export const playlistCollection = new Collection<Playlist>();
+

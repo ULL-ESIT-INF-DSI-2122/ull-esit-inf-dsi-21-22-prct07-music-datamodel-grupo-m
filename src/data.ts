@@ -40,23 +40,23 @@ export function data(): Manage {
  * Canciones 50 (5xgenero)
  */
   
-  let song1 = new Song("Getting Older", [artist1], 4.04, ['POP'], false, 82368601);
-  let song2 = new Song("I Didn't Change My Number", [artist1], 2.38, ['POP'], false, 78111966);
-  let song3 = new Song("Billie Bossa Nova", [artist1], 3.16, ['R&B'], false, 87082953);
-  let song4 = new Song("my future", [artist1], 3.30, ['R&B'], true, 306917025);
-  let song5 = new Song("Oxytocin", [artist1], 3.30, ['POP'], false, 82436281);
-  let song6 = new Song("GOLDWING", [artist1], 2.31, ['POP'], false, 50221104);
-  let song7 = new Song("Lost Cause", [artist1], 3.32, ['POP'], true, 181748562);
-  let song8 = new Song("Halley's Comet", [artist1], 3.54, ['POP'], false, 74773544);
-  let song9 = new Song("Not My Responsability", [artist1], 3.47, ['POP'], false, 36511925);
-  let song10 = new Song("OverHeated", [artist1], 3.34, ['POP'], false, 41873321);
-  let song11 = new Song("Everybody Dies", [artist1], 3.26, ['POP'], false, 42128791);
-  let song12 = new Song("Your Power", [artist1], 4.05, ['POP'], true, 261975001);
-  let song13 = new Song("NDA", [artist1], 3.15, ['ELECTROPOP', 'ALTERNATIVO'], true, 154235501);
-  let song14 = new Song("Therefore I Am", [artist1], 2.53, ['POP'], true, 567983255);
-  let song15 = new Song("Happier Than Ever", [artist1], 4.58, ['SOUL', 'ROCK'], true, 566031384);
-  let song16 = new Song("Male Fantasy", [artist1], 3.14, ['POP'], false, 69934484);
-
+  let song1 = new Song("Getting Older", artist1, 4.04, ['POP'], false, 82368601);
+  let song2 = new Song("I Didn't Change My Number", artist1, 2.38, ['POP'], false, 78111966);
+  let song3 = new Song("Billie Bossa Nova", artist1, 3.16, ['R&B'], false, 87082953);
+  let song4 = new Song("my future", artist1, 3.30, ['R&B'], true, 306917025);
+  let song5 = new Song("Oxytocin", artist1, 3.30, ['POP'], false, 82436281);
+  let song6 = new Song("GOLDWING", artist1, 2.31, ['POP'], false, 50221104);
+  let song7 = new Song("Lost Cause", artist1, 3.32, ['POP'], true, 181748562);
+  let song8 = new Song("Halley's Comet", artist1, 3.54, ['POP'], false, 74773544);
+  let song9 = new Song("Not My Responsability", artist1, 3.47, ['POP'], false, 36511925);
+  let song10 = new Song("OverHeated", artist1, 3.34, ['POP'], false, 41873321);
+  let song11 = new Song("Everybody Dies", artist1, 3.26, ['POP'], false, 42128791);
+  let song12 = new Song("Your Power", artist1, 4.05, ['POP'], true, 261975001);
+  let song13 = new Song("NDA", artist1, 3.15, ['ELECTROPOP', 'ALTERNATIVO'], true, 154235501);
+  let song14 = new Song("Therefore I Am", artist1, 2.53, ['POP'], true, 567983255);
+  let song15 = new Song("Happier Than Ever", artist1, 4.58, ['SOUL', 'ROCK'], true, 566031384);
+  let song16 = new Song("Male Fantasy", artist1, 3.14, ['POP'], false, 69934484);
+/*
   let song17 = new Song("Zitti E Bouni", [group2], 3.14, ['ROCK'], true, 294095920);
   let song18 = new Song("Coraline", [group2], 5, ['ROCK', 'ALTERNATIVO'], true, 108471814);
   let song19 = new Song("Lividi Sui Gomiti", [group2], 2.45, ['ROCK'], false, 25066957);
@@ -119,30 +119,32 @@ export function data(): Manage {
   let song72 = new Song("Arms Tonite", [group4], 3.36, ['ROCK', 'INDIE'], false, 121872139);
   let song73 = new Song("Miles", [group4], 3.15, ['ROCK', 'INDIE'], false, 4603041);
   let song74 = new Song("Sleep Awake", [group4], 5.47, ['ROCK', 'INDIE'], false, 5525389);
-
+*/
   /**
  * Álbumes 5-10
  */
   
   let album1 = new Album("Happier Than Ever", [artist1], 2021, ['POP', 'ELECTROPOP'], [song1, song2, song3, song4, song5, song6, song7, song8, song9, song10, song11, song12, song13, song14, song15, song16]);
-  let album2 = new Album("Teatro d'ira - Vol.I", [group2], 2021, ['ROCK', 'ALTERNATIVO'], [song17, song18, song19, song20, song21, song22, song23, song24]);
+  //let album2 = new Album("Teatro d'ira - Vol.I", [group2], 2021, ['ROCK', 'ALTERNATIVO'], [song17, song18, song19, song20, song21, song22, song23, song24]);
+ /*
   let album3 = new Album("MONTERO", [artist2], 2021, ['POP', 'RAP'], [song25, song26, song27, song28, song29, song30, song31, song32, song33, song34, song35, song36, song37, song38, song39]);
   let album4 = new Album("Father of All...", [group1], 2020, ['ROCK', 'PUNK'], [song40, song41, song42, song43, song44, song45, song46, song47, song48, song49]);
   let album5 = new Album("ANTI", [artist6], 2016, ['POP', 'R&B', 'HIP-HOP'], [song50, song51, song52, song53, song54, song55, song56, song57, song58, song59, song60, song61, song62]);
   let album6 = new Album("O My Heart", [group4], 2008, ['ROCK', 'INDIE'], [song63, song64, song65, song66, song67, song68, song69, song70, song71, song72, song73, song74]);
-
+*/
   /**
  * Géneros musicales 10
  */
   
-  let genero1 = new Genre('ROCK', [artist1, group2, group1, group3, group4], [album2, album4, album6], [song15, song17, song18, song19, song20, song21, song22, song23, song24, song40, song41, song42, song44, song45, song46, song49, song63, song64, song65, song66, song67, song68, song69, song70, song71, song72, song73, song74]);
-  let genero2 = new Genre('POP', [artist1, artist2, artist6], [album1, album3, album5], [song1, song2, song3, song5, song6, song7, song8, song9, song10, song11, song12, song13, song14, song16, song27, song51, song52, song55, song57, song58, song59, song62]);
+  let genero1 = new Genre('ROCK', [artist1, group2, group1, group3, group4], [album1], [song15,song16]);
+  //let genero2 = new Genre('POP', [artist1, artist2, artist6], [album1, album3, album5], [song1, song2, song3, song5, song6, song7, song8, song9, song10, song11, song12, song13, song14, song16, song27, song51, song52, song55, song57, song58, song59, song62]);
+ /*
   let genero3 = new Genre('ALTERNATIVO', [artist1, group2], [album1, album2], [song13, song18]);
   let genero4 = new Genre('RAP', [artist2], [album3], [song25, song26, song27, song29, song30, song31, song32, song33, song34, song35, song36, song37, song38, song39]);
   let genero5 = new Genre('PUNK', [group1, group3], [album4], [song43, song47, song48]);
   let genero6 = new Genre('R&B', [artist6], [album5], [song3, song4, song50, song52, song53, song54, song56]);
   let genero7 = new Genre('INDIE', [group4], [album6], [song63, song64, song65, song66, song67, song68, song69, song70, song71, song72, song73, song74]);
-
+*/
 
 
 
@@ -160,27 +162,27 @@ export function data(): Manage {
 
   artist1.setAlbum(album1);
   artist1.setSongList([song1, song2, song3, song4, song5, song6, song7, song8, song9, song10, song11, song12, song13, song14, song15, song16]);
-  artist2.setAlbum(album3);
-  artist2.setSongList([song25, song26, song27, song28, song29, song30, song31, song32, song33, song34, song35, song36, song37, song38, song39]);
+  //artist2.setAlbum(album3);
+  //artist2.setSongList([song25, song26, song27, song28, song29, song30, song31, song32, song33, song34, song35, song36, song37, song38, song39]);
   artist3.setGroups([group2]);
   artist4.setGroups([group1, group3]);
   artist5.setGroups([group2]);
-  artist6.setAlbum(album5);
-  artist6.setSongList([song50, song51, song52, song53, song54, song55, song56, song57, song58, song59, song60, song61, song62]);
+  //artist6.setAlbum(album5);
+  //artist6.setSongList([song50, song51, song52, song53, song54, song55, song56, song57, song58, song59, song60, song61, song62]);
   artist7.setGroups([group4]);
 
-  group1.setAlbum(album4);
-  group2.setAlbum(album2);
-  group4.setAlbum(album6);
+  //group1.setAlbum(album4);
+  //group2.setAlbum(album2);
+  //group4.setAlbum(album6);
 
 /**
 * Rellenamos nuestra base de datos
 */
 
-  songCollection.setList([song1, song2, song3, song4, song5, song6, song7, song8, song9, song10, song11, song12, song13, song14, song15, song16, song17, song18, song19, song20, song21, song22, song23, song24, song25, song26, song27, song28, song29, song30, song31, song32, song33, song34, song35, song36, song37, song38, song39, song40, song41, song42, song43, song44, song45, song46, song47, song48, song49, song50, song51, song52, song53, song54, song55, song56, song57, song58, song59, song60, song61, song62, song63, song64, song65, song66, song67, song68, song69, song70, song71, song72, song73, song74]);
-  albumCollection.setList([album1, album2, album3, album4, album5, album6]);
+  //songCollection.setList([song1, song2, song3, song4, song5, song6, song7, song8, song9, song10, song11, song12, song13, song14, song15, song16, song17, song18, song19, song20, song21, song22, song23, song24, song25, song26, song27, song28, song29, song30, song31, song32, song33, song34, song35, song36, song37, song38, song39, song40, song41, song42, song43, song44, song45, song46, song47, song48, song49, song50, song51, song52, song53, song54, song55, song56, song57, song58, song59, song60, song61, song62, song63, song64, song65, song66, song67, song68, song69, song70, song71, song72, song73, song74]);
+  //albumCollection.setList([album1, album2, album3, album4, album5, album6]);
   artistCollection.setList([artist1, artist2, artist3, artist4, artist5, artist6, artist7]);
-  genreCollection.setList([genero1, genero2, genero3, genero4, genero5, genero6, genero7]);
+  //genreCollection.setList([genero1, genero2, genero3, genero4, genero5, genero6, genero7]);
   groupCollection.setList([group1, group2, group3, group4]);
   // playlistCollection.setList([playlist1]);
 
