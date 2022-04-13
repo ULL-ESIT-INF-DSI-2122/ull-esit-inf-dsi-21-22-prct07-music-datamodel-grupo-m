@@ -256,19 +256,60 @@ async function promptConsultCollection(): Promise<void>   {
       });
       break;
     case consultCollectionOptions.sortByAlbum:
-
+      console.clear();
+      inquirer.prompt({
+        type: 'list',
+        name: 'ascOrDesc',
+        message: 'Desea visualizar de forma ascendente o descendente? ',
+        choices: ["Ascendente", "Descendente"],
+      }).then(answers => {
+        if(answers.ascOrDesc == "Ascendente") {
+          console.log(sortAlbumCollection());
+        } else {
+          console.log(sortAlbumCollection(false));
+        }
+        promptConsultCollection();
+      });
       break;
     case consultCollectionOptions.sortByPlaylist:
+      
 
       break;
     case consultCollectionOptions.sortBylanzamiento:
-
+      console.clear();
+      inquirer.prompt({
+        type: 'list',
+        name: 'ascOrDesc',
+        message: 'Desea visualizar de forma ascendente o descendente? ',
+        choices: ["Ascendente", "Descendente"],
+      }).then(answers => {
+        if(answers.ascOrDesc == "Ascendente") {
+          console.log(sortAlbumYear());
+        } else {
+          console.log(sortAlbumYear(false));
+        }
+        promptConsultCollection();
+      });
       break; 
     case consultCollectionOptions.sortByReproduction:
-
+      console.clear();
+      inquirer.prompt({
+        type: 'list',
+        name: 'ascOrDesc',
+        message: 'Desea visualizar de forma ascendente o descendente? ',
+        choices: ["Ascendente", "Descendente"],
+      }).then(answers => {
+        if(answers.ascOrDesc == "Ascendente") {
+          console.log(sortListenersTotal());
+        } else {
+          console.log(sortListenersTotal(false));
+        }
+        promptConsultCollection();
+      });
       break;
     case consultCollectionOptions.sortBySingle:
-
+      console.log(sortSingles());
+      promptConsultCollection();
       break;
     case consultCollectionOptions.back:
       console.log(`Volviendo atras, espere por favor...`);
