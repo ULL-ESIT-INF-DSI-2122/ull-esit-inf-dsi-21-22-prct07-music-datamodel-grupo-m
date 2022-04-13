@@ -1,7 +1,7 @@
 import inquirer from 'inquirer';
 import * as readline from 'readline';
 
-import {Genre} from "./Basic_Class/genre";
+import {Genre, genreInfo} from "./Basic_Class/genre";
 import {Song} from "./Basic_Class/song";
 import {Album} from "./Basic_Class/album";
 import {Artist} from "./Basic_Class/artist";
@@ -493,6 +493,7 @@ async function addSong(): Promise<void> {
   console.clear();
   let single: boolean = false;
   let artistMatch: (Artist | Group);
+  let genreIntroduce: genreInfo;
   const asnwers = await inquirer.prompt([{
     type: 'input',
     name: 'name',
@@ -519,13 +520,12 @@ async function addSong(): Promise<void> {
     name: 'reproduction',
     message: 'Introduzca la cantidad de veces que fue reproducida la Canción:',
   }]).then((answers: any) => {
-
     if(answers.single == 'si') {
       single = true;
     }
     artistMatch = findAuthor(answers.author);
-
-    let newSong: Song = new Song(answers['name'], artistMatch, answers['duration'], answers['genres'], single,  answers['reproduction']);
+    genreIntroduce = findGenre(answers.genres);
+    let newSong: Song = new Song(answers['name'], artistMatch, answers['duration'], [genreIntroduce], single,  answers['reproduction']);
     songCollection.addItem(newSong);
     console.log('se ha introducido el artista');
     songCollection.showCollection();
@@ -540,21 +540,21 @@ async function addSong(): Promise<void> {
     });
   });
 }
-
 function findAuthor(name: string): Artist | Group {
   let pos: number = 0;
   let lista: number = 1;
+  console.log(`no ha entrado ${name}`);
   artistCollection.getList().forEach((item, index) => {
-    if (item.getName() == name) {
+    if (item.getName().toLocaleLowerCase() == name.toLocaleLowerCase()) {
       lista = 1;
       pos = index;
+      console.log(`es un artista en la posicion ${pos}`);
     } else {
       groupCollection.getList().forEach((item, index) =>{
-        if(item.getNombre() == name) {
+        if(item.getNombre().toLocaleLowerCase() == name.toLocaleLowerCase()) {
           lista = 2;
           pos = index;
-        } else {
-          pos = -1;
+          console.log(`es un grupo en la posicion ${pos}`);
         }
       });
     }
@@ -568,6 +568,23 @@ function findAuthor(name: string): Artist | Group {
   
   
 }
+
+
+function findGenre(name: string): genreInfo {
+  let pos: number = 0;
+  console.log(`se busca ${name}`);
+  genreCollection.getList().forEach((item, index) => {
+    if (item.getNombre().toLocaleLowerCase() == name.toLocaleLowerCase()) {
+      pos = index;
+      console.log(`se ha encontrado el genero de la ${pos}`);
+    }
+  });
+
+  return genreCollection.getList()[pos].getNombre();
+  
+  
+}
+
 
 // ###############################################################################################################################
 
