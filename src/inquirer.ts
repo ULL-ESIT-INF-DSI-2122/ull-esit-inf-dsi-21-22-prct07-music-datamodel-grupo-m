@@ -471,6 +471,7 @@ async function selectAddCollection(): Promise<void> {
   });
   switch(answers["addCollection"]) {
     case optionAddCollection.addArtist: 
+
       break;
     case optionAddCollection.addGroup:
       break;
@@ -485,6 +486,51 @@ async function selectAddCollection(): Promise<void> {
       break;
   }
 }
+
+
+async function addSong(): Promise<void> {
+  console.clear();
+  const asnwers = await inquirer.prompt([{
+    type: 'input',
+    name: 'name',
+    message: 'Introduzca el nombre de la Canción:',
+  }, {
+    type: 'input',
+    name: 'author',
+    message: 'Introduzca el autor de la Canción:',
+  }, {
+    type: 'input',
+    name: 'duration',
+    message: 'Introduzca la duración de la Canción:',
+  }, {
+    type: 'input',
+    name: 'genres',
+    message: 'Seleccione el genero de la Cancion:',
+  }, {
+    type: 'input',
+    name: 'single',
+    message: 'its a single?:',
+  }, {
+    type: 'input',
+    name: 'reproduction',
+    message: 'how many reproductions have this song?:',
+  }]).then((answers: any) => {
+    let newSong: Song = new Song(answers['name'], answers['author'], answers['duration'], answers['genres'], answers['single'], answers['reproduction']);
+    this.collection.addSong(newSong);
+    console.log('Successfully created ingredients');
+    inquirer.prompt([{
+      type: 'list',
+      name: 'continue',
+      message: 'Do you want to add another song?:',
+      choices: ['Yes', 'No'],
+    }]).then((answers: any) => {
+      if (answers['continue'] == 'Yes') this.addSong();
+      else this.mainPrompt();
+    });
+  });
+}
+
+
 // ###############################################################################################################################
 
 mainPrompt();
