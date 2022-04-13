@@ -12,6 +12,9 @@ export class Manage extends Collection<Playlist> {
     this.listPlaylist = listPlaylist;
   }
 
+  addItem(item: Playlist) : void {
+    this.listPlaylist.push(item);
+  }
 
 
   searchPlaylist(namePlaylist: string): Playlist[] {
@@ -87,9 +90,10 @@ export class Manage extends Collection<Playlist> {
     } else {
       return this.listPlaylist.sort((a, b) => (a.getDuration() > b.getDuration()) ? -1 : 1);
     }
-  }
+  } 
+  
 
-
+  
   // Crear una PLaylist nueva o a partir de una existente ??
 
   // Borrar y guardar una playlist 

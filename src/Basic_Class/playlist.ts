@@ -81,4 +81,9 @@ export class Playlist {
     getName(): string{
       return this.name;
     }
+
+    setPlaylistSong(newItem: Song[]): void {
+      this.songs = newItem;
+    }
+
 }
