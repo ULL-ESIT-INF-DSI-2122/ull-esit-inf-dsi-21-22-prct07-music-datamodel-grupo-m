@@ -16,6 +16,17 @@ export class Manage extends Collection<Playlist> {
     this.listPlaylist.push(item);
   }
 
+/*   removeItem(searchName: string): Playlist[] {
+    this.listPlaylist.forEach((item) =>{
+      if (item.getName() == searchName) {
+        let index = this.listPlaylist.indexOf(item);
+        if (index !== -1) {
+          this.listPlaylist.splice(index, 1);
+        }
+      }
+    });
+    return this.listPlaylist;
+  } */
 
   searchPlaylist(namePlaylist: string): Playlist[] {
     const arrayMatchedPlaylist: Playlist[] = [];

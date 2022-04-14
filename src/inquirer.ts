@@ -442,6 +442,7 @@ async function promptOperatePlaylist(): Promise<void> {
     case selectOperatePlaylist.modifyPlaylist:
       break;
     case selectOperatePlaylist.removePlaylist: 
+      removePlaylistExist();
       break;
     case selectOperatePlaylist.back: 
       whatOperate();
@@ -990,7 +991,7 @@ async function removeGenre(): Promise<void> {
   const answers: any = await inquirer.prompt({
     type: 'input',
     name: 'removeName',
-    message: 'Introduzca el nombre de los  generos que desea eliminar de la Collecion: (tienen que estar separados por coma y luego un espacio): ', 
+    message: 'Introduzca el nombre de los generos que desea eliminar de la Collecion: (tienen que estar separados por coma y luego un espacio): ', 
   });
   let removeAnswers: string = answers.removeName;
   let removeArray: string [] =  removeAnswers.split(", ", removeAnswers.length);
@@ -1012,7 +1013,7 @@ async function removeGroup(): Promise<void> {
   const answers: any = await inquirer.prompt({
     type: 'input',
     name: 'removeName',
-    message: 'Introduzca el nombre de los  generos que desea eliminar de la Collecion: (tienen que estar separados por coma y luego un espacio): ', 
+    message: 'Introduzca el nombre de los grupos que desea eliminar de la Collecion: (tienen que estar separados por coma y luego un espacio): ', 
   });
   let removeAnswers: string = answers.removeName;
   let removeArray: string [] =  removeAnswers.split(", ", removeAnswers.length);
@@ -1034,7 +1035,7 @@ async function removeAlbum(): Promise<void> {
   const answers: any = await inquirer.prompt({
     type: 'input',
     name: 'removeName',
-    message: 'Introduzca el nombre de los  generos que desea eliminar de la Collecion: (tienen que estar separados por coma y luego un espacio): ', 
+    message: 'Introduzca el nombre de los albumes que desea eliminar de la Collecion: (tienen que estar separados por coma y luego un espacio): ', 
   });
   let removeAnswers: string = answers.removeName;
   let removeArray: string [] =  removeAnswers.split(", ", removeAnswers.length);
@@ -1055,8 +1056,48 @@ async function removeAlbum(): Promise<void> {
 
 // ELIMINAR UNA PLAYLIST
 // ###############################################################################################################################
+async function removePlaylistExist(): Promise<void> {
+  console.clear();
+  const answers: any = await inquirer.prompt({
+    type: 'input',
+    name: 'removeName',
+    message: 'Introduzca el nombre de las Playlist que desea eliminar.(tienen que estar separados por coma y luego un espacio): ',
+  });
+  let removeAnswers: string = answers.removeName;
+  let removeArray: string [] =  removeAnswers.split(", ", removeAnswers.length);
+  removeArray.forEach((i) => {
+    playlistManage.getList().forEach((j) => {
+      if (i.toLocaleLowerCase() == j.getName().toLocaleLowerCase()) {
+        let index = playlistManage.getList().indexOf(j);
+        if (index !== -1) {
+          console.log(`Se ha encontrado la playlist`);
+          playlistManage.getList().splice(index, 1);
+        } else {
+          console.log(`No se ha encontrado la playlist`);
+        }
+      }
+    });
+  });
 
+}
 
+/*
+let removeAnswers: string = answers.removeName;
+    let removeArray: string [] =  removeAnswers.split(", ", removeAnswers.length);
+    removeArray.forEach((i) => {
+      playlistManage.getList().forEach((j) => {
+        if (i.toLocaleLowerCase() == j.getName().toLocaleLowerCase()) {
+          console.log(`${j.getName}`);
+          let index = playlistManage.getList().indexOf(j);
+          if (index !== -1) {
+            playlistManage.getList().splice(index, 1);
+          }
+        }
+        console.log(`${playlistManage.getList()}`);
+      });
+    });
+    playlistManage.showPlaylist();
+*/
 
 // ###############################################################################################################################
 mainPrompt();
