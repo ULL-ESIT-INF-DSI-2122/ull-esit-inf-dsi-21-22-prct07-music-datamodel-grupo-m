@@ -46,7 +46,7 @@ enum consultCollectionOptions {
   sortByPlaylist = 'Visualizar por nombre de las Playlists',
   sortBylanzamiento = 'Visualizar por fechas de lanzamiento de los Albumes ',
   sortByReproduction = 'Visualizar por numero de reproducciones totales',
-  sortBySingle  = 'Filtrar lso singles que hay en el sistema',
+  sortBySingle  = 'Filtrar los singles que hay en el sistema',
   back = 'Volver atras'
 };
 
@@ -88,6 +88,17 @@ enum optionAddCollection {
   addAlbum = 'Añadir un album a la colección',
   back = 'Volver atras'
 };
+
+enum optionRemoveCollection {
+  removeArtist = 'Eliminar Artista de la colección',
+  removeGroup = 'Eliminar Grupos de la colección',
+  removeSong = 'Eliminar Canciones de la colección',
+  removeGenre = 'Eliminar Generos de la colección',
+  removeAlbum = 'Eliminar Albumes de la colección',
+  back = 'Volver atras'
+};
+
+
 // ###############################################################################################################################
 // Menu principal
 async function mainPrompt(): Promise<void>   {
@@ -454,6 +465,7 @@ async function promptOperateCollection(): Promise<void> {
     case selectOperateCollection.modifyCollection:
       break;
     case selectOperateCollection.removeCollection: 
+      selectRemoveCollection();
       break;
     case selectOperateCollection.back: 
       whatOperate();
@@ -487,7 +499,7 @@ async function selectAddCollection(): Promise<void> {
       addAlbum();
       break;
     case optionAddCollection.back: 
-      whatOperate();
+    promptOperateCollection();
       break;
   }
 }
@@ -893,6 +905,158 @@ async function addPlaylist(): Promise<void> {
 
   });
 }
+
+// ELIMINAR DE LAS COLLECCIONES
+// ###############################################################################################################################
+// Menu que da a elegir que eliminar
+async function selectRemoveCollection(): Promise<void> {
+  console.clear();
+  const answers = await inquirer.prompt({
+    type: 'list',
+    name: 'removeCollection',
+    message: 'Qué desea hacer?',
+    choices: Object.values(optionRemoveCollection),
+  });
+  switch(answers["removeCollection"]) {
+    case optionRemoveCollection.removeArtist: 
+      removeArtist();
+      break;
+    case optionRemoveCollection.removeGroup:
+      removeGroup();
+      break;
+    case optionRemoveCollection.removeGenre: 
+      removeGenre();
+      break;
+    case optionRemoveCollection.removeSong: 
+      removeSong();
+      break;
+    case optionRemoveCollection.removeAlbum: 
+      removeAlbum();
+      break;
+    case optionRemoveCollection.back: 
+      promptOperateCollection();
+      break;
+  }
+}
+// menu que añade un artista a la coleccion
+async function removeArtist(): Promise<void> {
+  console.clear();
+  const answers: any = await inquirer.prompt({
+    type: 'input',
+    name: 'removeName',
+    message: 'Introduzca el nombre de los artistas que desea eliminar de la Collecion.(tienen que estar separados por coma y luego un espacio): ',
+  });
+  let removeAnswers: string = answers.removeName;
+  let removeArray: string [] =  removeAnswers.split(", ", removeAnswers.length);
+  removeArray.forEach((i) => {
+    artistCollection.getList().forEach((j) => {
+      if (i.toLocaleLowerCase() == j.getName().toLocaleLowerCase()) {
+        let index = artistCollection.getList().indexOf(j);
+        if (index !== -1) {
+          artistCollection.getList().splice(index, 1);
+        }
+      }
+    });
+  });
+  artistCollection.showCollection();
+}
+
+
+async function removeSong(): Promise<void> {
+  console.clear();
+  const answers: any = await inquirer.prompt({
+    type: 'input',
+    name: 'removeName',
+    message: 'Introduzca el nombre de las canciones que desea eliminar de la Collecion.(tienen que estar separados por coma y luego un espacio): ',
+  });
+  let removeAnswers: string = answers.removeName;
+  let removeArray: string [] =  removeAnswers.split(", ", removeAnswers.length);
+  removeArray.forEach((i) => {
+    songCollection.getList().forEach((j) => {
+      if (i.toLocaleLowerCase() == j.getName().toLocaleLowerCase()) {
+        let index = songCollection.getList().indexOf(j);
+        if (index !== -1) {
+          songCollection.getList().splice(index, 1);
+        }
+      }
+    });
+  });
+  songCollection.showCollection();
+}
+
+
+async function removeGenre(): Promise<void> {
+  console.clear();
+  const answers: any = await inquirer.prompt({
+    type: 'input',
+    name: 'removeName',
+    message: 'Introduzca el nombre de los  generos que desea eliminar de la Collecion: (tienen que estar separados por coma y luego un espacio): ', 
+  });
+  let removeAnswers: string = answers.removeName;
+  let removeArray: string [] =  removeAnswers.split(", ", removeAnswers.length);
+  removeArray.forEach((i) => {
+    genreCollection.getList().forEach((j) => {
+      if (i.toLocaleLowerCase() == j.getNombre().toLocaleLowerCase()) {
+        let index = genreCollection.getList().indexOf(j);
+        if (index !== -1) {
+          genreCollection.getList().splice(index, 1);
+        }
+      }
+    });
+  });
+  genreCollection.showCollection();
+}
+
+async function removeGroup(): Promise<void> {
+  console.clear();
+  const answers: any = await inquirer.prompt({
+    type: 'input',
+    name: 'removeName',
+    message: 'Introduzca el nombre de los  generos que desea eliminar de la Collecion: (tienen que estar separados por coma y luego un espacio): ', 
+  });
+  let removeAnswers: string = answers.removeName;
+  let removeArray: string [] =  removeAnswers.split(", ", removeAnswers.length);
+  removeArray.forEach((i) => {
+    groupCollection.getList().forEach((j) => {
+      if (i.toLocaleLowerCase() == j.getNombre().toLocaleLowerCase()) {
+        let index = groupCollection.getList().indexOf(j);
+        if (index !== -1) {
+          groupCollection.getList().splice(index, 1);
+        }
+      }
+    });
+  });
+  groupCollection.showCollection();
+}
+
+async function removeAlbum(): Promise<void> {
+  console.clear();
+  const answers: any = await inquirer.prompt({
+    type: 'input',
+    name: 'removeName',
+    message: 'Introduzca el nombre de los  generos que desea eliminar de la Collecion: (tienen que estar separados por coma y luego un espacio): ', 
+  });
+  let removeAnswers: string = answers.removeName;
+  let removeArray: string [] =  removeAnswers.split(", ", removeAnswers.length);
+  removeArray.forEach((i) => {
+    albumCollection.getList().forEach((j) => {
+      if (i.toLocaleLowerCase() == j.getName().toLocaleLowerCase()) {
+        let index = albumCollection.getList().indexOf(j);
+        if (index !== -1) {
+          albumCollection.getList().splice(index, 1);
+        }
+      }
+    });
+  });
+  albumCollection.showCollection();
+}
+// ###############################################################################################################################
+
+
+// ELIMINAR UNA PLAYLIST
+// ###############################################################################################################################
+
+
 
 // ###############################################################################################################################
 mainPrompt();

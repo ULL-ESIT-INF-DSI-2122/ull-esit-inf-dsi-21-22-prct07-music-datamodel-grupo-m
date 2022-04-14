@@ -62,7 +62,7 @@ export function data(): Manage {
   let song19 = new Song("Lividi Sui Gomiti", group2, 2.45, ['ROCK'], false, 25066957);
   let song20 = new Song("I Wanna Be Your Slave", group2, 2.53, ['ROCK'], true, 579782441);
   let song21 = new Song("I Nome Del Padre", group2, 3.39, ['ROCK'], true, 16276862);
-  let song22 = new Song("For Your Love", group2, 3.5, ['ROCK'], false, 444444471);
+  let song22 = new Song("Billie", group2, 3.5, ['ROCK'], false, 444444471);
   let song23 = new Song("La Paura Del Buio", group2, 3.29, ['ROCK'], false, 37030114);
   let song24 = new Song("Vent'anni", group2, 4.13, ['ROCK'], false, 64917201);
 
