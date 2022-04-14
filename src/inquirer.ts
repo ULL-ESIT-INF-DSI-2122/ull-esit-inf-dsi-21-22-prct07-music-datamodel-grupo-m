@@ -478,6 +478,7 @@ async function selectAddCollection(): Promise<void> {
       addGroup();
       break;
     case optionAddCollection.addGenre: 
+      addGenre();
       break;
     case optionAddCollection.addSong: 
       addSong();
@@ -491,8 +492,6 @@ async function selectAddCollection(): Promise<void> {
   }
 }
 // Menu que añade un Album a la coleccion
-
-
 async function addAlbum(): Promise<void> {
   console.clear();
   let single: boolean = false;
@@ -521,7 +520,7 @@ async function addAlbum(): Promise<void> {
     name: 'songsName',
     message: 'Por favor, introduzca los titulos de las canciones que pertenecen al Album. (Nota: tienen que estar separados por coma y luego un espacio): ',
   }]).then((answers: any) => {
-    //artistMatch = findAuthor(answers.author);
+
     genreIntroduce = findGenre(answers.genres.toUpperCase());
 
     let artistAnswers: string = answers.author;
@@ -552,6 +551,83 @@ async function addAlbum(): Promise<void> {
     albumCollection.addItem(newAlbum);
     console.log('se ha introducido el grupo');
     albumCollection.showCollection();
+    inquirer.prompt([{
+      type: 'list',
+      name: 'continue',
+      message: 'Do you want to add another Album?:',
+      choices: ['si', 'no'],
+    }]).then((answers: any) => {
+      if (answers['continue'] == 'si') addAlbum();
+      else whatOperate();
+    });
+  });
+}
+// Menu que añade un genero a la colleccion de generos:
+
+async function addGenre(): Promise<void> {
+  console.clear();
+  let single: boolean = false;
+  let artistMatch: (Artist | Group);
+  
+  let genreIntroduce: genreInfo;
+
+  const asnwers = await inquirer.prompt([{
+    type: 'input',
+    name: 'nameGenre',
+    message: 'Introduzca el nombre del Genero que desea crear:',
+  }, {
+    type: 'input',
+    name: 'artistGenre',
+    message: 'Por favor, introduzca los artistas o grupos que estan en el Género. (Nota: tienen que estar separados por coma y luego un espacio): ',
+  }, {
+    type: 'input',
+    name: 'albumGenre',
+    message: 'Por favor, introduzca los albumes que estan dentro del Género. (Nota: tienen que estar separados por coma y luego un espacio): ',
+  },  {
+    type: 'input',
+    name: 'songsGenre',
+    message: 'Por favor, introduzca los titulos de las canciones que pertenecen al Genero. (Nota: tienen que estar separados por coma y luego un espacio): ',
+  }]).then((answers: any) => {
+
+    genreIntroduce = findGenre(answers.nameGenre.toUpperCase());
+
+    let artistAnswers: string = answers.artistGenre;
+    let resultArtist: (Artist| Group)[] = [];
+    let artistArray: string[] = artistAnswers.split(", ", artistAnswers.length);
+    artistArray.forEach((i) => {
+      artistCollection.getList().forEach((j) => {
+          if (i.toLocaleLowerCase() == j.getName().toLocaleLowerCase()) {
+            resultArtist.push(j);
+          }
+      });
+    });
+
+    let albumAnswers: string = answers.albumGenre;
+    let resultAlbum: Album[] = [];
+    let albumArray: string[] = albumAnswers.split(", ", albumAnswers.length);
+    albumArray.forEach((i) => {
+      albumCollection.getList().forEach((j) => {
+          if (i.toLocaleLowerCase() == j.getName().toLocaleLowerCase()) {
+            resultAlbum.push(j);
+          }
+      });
+    });
+
+    let songAnswers: string = answers.songsGenre;
+    let resultSongs: Song[] = [];
+    let songArray: string[] = songAnswers.split(", ", songAnswers.length);
+    songArray.forEach((i) => {
+      songCollection.getList().forEach((j) => {
+          if (i.toLocaleLowerCase() == j.getName().toLocaleLowerCase()) {
+            resultSongs.push(j);
+          }
+      });
+    });
+
+    let newGenre: Genre = new Genre(genreIntroduce , resultArtist, resultAlbum, resultSongs);
+    genreCollection.addItem(newGenre);
+    console.log('se ha introducido el grupo');
+    genreCollection.showCollection();
     inquirer.prompt([{
       type: 'list',
       name: 'continue',
