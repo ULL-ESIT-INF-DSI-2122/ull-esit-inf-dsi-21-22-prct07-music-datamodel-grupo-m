@@ -16,7 +16,7 @@ export class Album {
      * @param song Lista de song dentro del album.
      */
 
-    constructor(private name: string, private artist:( Artist | Group)[], private anioPubli: number, private genre: genreInfo[], private song: Song[]) {
+    constructor(private name: string, private artist: (Artist | Group)[], private anioPubli: number, private genre: genreInfo[], private song: Song[]) {
         this.name = name;
         this.anioPubli = anioPubli;
         this.genre = genre;

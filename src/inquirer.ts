@@ -483,12 +483,87 @@ async function selectAddCollection(): Promise<void> {
       addSong();
       break;
     case optionAddCollection.addAlbum: 
+      addAlbum();
       break;
     case optionAddCollection.back: 
       whatOperate();
       break;
   }
 }
+// Menu que añade un Album a la coleccion
+
+
+async function addAlbum(): Promise<void> {
+  console.clear();
+  let single: boolean = false;
+  let artistMatch: (Artist | Group);
+  
+  let genreIntroduce: genreInfo;
+
+  const asnwers = await inquirer.prompt([{
+    type: 'input',
+    name: 'nameAlbum',
+    message: 'Introduzca el nombre del Album:',
+  }, {
+    type: 'input',
+    name: 'author',
+    message: 'Por favor, introduzca los artistas o grupos a los que pertenece el Album. (Nota: tienen que estar separados por coma y luego un espacio): ',
+  }, {
+    type: 'input',
+    name: 'yearPublication',
+    message: 'Introduzca el año de publicación del Album:',
+  }, {
+    type: 'input',
+    name: 'genres',
+    message: 'Introduzca el genero del Album:',
+  }, {
+    type: 'input',
+    name: 'songsName',
+    message: 'Por favor, introduzca los titulos de las canciones que pertenecen al Album. (Nota: tienen que estar separados por coma y luego un espacio): ',
+  }]).then((answers: any) => {
+    //artistMatch = findAuthor(answers.author);
+    genreIntroduce = findGenre(answers.genres.toUpperCase());
+
+    let artistAnswers: string = answers.author;
+    let resultArtist: (Artist| Group)[] = [];
+    let artistArray: string[] = artistAnswers.split(", ", artistAnswers.length);
+    artistArray.forEach((i) => {
+      artistCollection.getList().forEach((j) => {
+        groupCollection.getList().forEach((k) => {
+          if ((i.toLocaleLowerCase() == j.getName().toLocaleLowerCase()) || (i.toLocaleLowerCase() == k.getNombre().toLocaleLowerCase())) {
+            resultArtist.push(j);
+          }
+        });
+      });
+    });
+
+    let songAnswers: string = answers.songsName;
+    let resultSongs: Song[] = [];
+    let songArray: string[] = songAnswers.split(", ", songAnswers.length);
+    songArray.forEach((i) => {
+      songCollection.getList().forEach((j) => {
+          if (i.toLocaleLowerCase() == j.getName().toLocaleLowerCase()) {
+            resultSongs.push(j);
+          }
+      });
+    });
+
+    let newAlbum: Album = new Album(answers.nameAlbum, resultArtist, answers.yearPublication, [genreIntroduce], resultSongs);
+    albumCollection.addItem(newAlbum);
+    console.log('se ha introducido el grupo');
+    albumCollection.showCollection();
+    inquirer.prompt([{
+      type: 'list',
+      name: 'continue',
+      message: 'Do you want to add another Album?:',
+      choices: ['si', 'no'],
+    }]).then((answers: any) => {
+      if (answers['continue'] == 'si') addAlbum();
+      else whatOperate();
+    });
+  });
+}
+
 
 // menu que añade un artista a la coleccion
 async function addArtist(): Promise<void> {
@@ -541,7 +616,7 @@ async function addGroup(): Promise<void> {
   }, {
     type: 'input',
     name: 'author',
-    message: 'Instruccion: Por favor introduzca los integrantes del grupo separados por coma y luego un espacio.\nIntroduzca los integrantes del grupo:',
+    message: 'Por favor, introduzca los integrantes del grupo que quiere agregar: (tienen que estar separados por coma y luego un espacio)',
   }, {
     type: 'input',
     name: 'creation',
@@ -582,7 +657,7 @@ async function addGroup(): Promise<void> {
   });
 }
 
-
+// menu que añade una Cancion a la colleccion
 async function addSong(): Promise<void> {
   console.clear();
   let single: boolean = false;
@@ -637,17 +712,17 @@ async function addSong(): Promise<void> {
 
 function findAuthor(name: string): Artist | Group {
   let pos: number = 0;
-  let lista: number = 1;
+  let count: number = 1;
   console.log(`no ha entrado ${name}`);
   artistCollection.getList().forEach((item, index) => {
     if (item.getName().toLocaleLowerCase() == name.toLocaleLowerCase()) {
-      lista = 1;
+      count = 1;
       pos = index;
       console.log(`es un artista en la posicion ${pos}`);
     } else {
       groupCollection.getList().forEach((item, index) =>{
         if(item.getNombre().toLocaleLowerCase() == name.toLocaleLowerCase()) {
-          lista = 2;
+          count = 2;
           pos = index;
           console.log(`es un grupo en la posicion ${pos}`);
         }
@@ -655,24 +730,20 @@ function findAuthor(name: string): Artist | Group {
     }
   });
 
-  if (lista == 2) {
+  if (count == 2) {
     return groupCollection.getList()[pos];
   } else {
     return artistCollection.getList()[pos];
   }
   
-  
+
 }
 
 function findArtist(name: string): Artist {
   let pos: number = 0;
-  let lista: number = 1;
-  console.log(`no ha entrado ${name}`);
   artistCollection.getList().forEach((item, index) => {
     if (item.getName().toLocaleLowerCase() == name.toLocaleLowerCase()) {
-      lista = 1;
       pos = index;
-      console.log(`es un artista en la posicion ${pos}`);
     }
   });
   return artistCollection.getList()[pos];
@@ -686,10 +757,7 @@ function findGenre(name: string): genreInfo {
       pos = index;
     }
   });
-
   return genreCollection.getList()[pos].getNombre();
-  
-  
 }
 
 
@@ -700,11 +768,9 @@ function findSong(name: string):Song  {
       pos = index;
     }
   });
-
   return songCollection.getList()[pos];
-  
-  
 }
+
 
 // AÑADIR PLAYLIST
 // ###############################################################################################################################
@@ -720,7 +786,7 @@ async function addPlaylist(): Promise<void> {
   }, {
     type: 'input',
     name: 'songsName',
-    message: 'Instruccion: Por favor introduzca los titulos de las canciones separados por coma y luego un espacio.\nIntroduzca los nombres de las diferentes canciones:',
+    message: 'Por favor, introduzca los titulos de las canciones que quiere agregar: (tienen que estar separados por coma y luego un espacio)',
   }, {
     type: 'input',
     name: 'duration',
@@ -755,20 +821,3 @@ async function addPlaylist(): Promise<void> {
 // ###############################################################################################################################
 mainPrompt();
 
-
-/*function askSong(veces: number): Song[] {
-  console.clear();
-  let matchSong: Song[] = [];
-  let count: number = 0;
-  while (count != veces) {
-    inquirer.prompt({
-      type: 'input',
-      name: 'introduceX',
-      message: 'Introduzca el nombre de la Canción: ',
-    }).then(answers => {
-      matchSong.push(findSong(answers.introduceX));
-    })
-    count++;
-  }
-  return matchSong;
-}*/
