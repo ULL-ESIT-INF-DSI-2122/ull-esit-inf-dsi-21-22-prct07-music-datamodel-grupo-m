@@ -150,7 +150,9 @@ export function data(): Manage {
   
   let playlist1 = new Playlist("Playlist1", [song1], 10, ['ROCK'], 1990);
   let playlist2 = new Playlist("Playlist2", [song2, song5], 40, ['POP', 'RAP'], 2012);
-  let playlist3 = new Playlist("playlist3", [song3, song5], 50, ['RAP'], 2010);
+  let playlist3 = new Playlist("Playlist3", [song3, song5], 15, ['RAP'], 2010);
+  let playlist4 = new Playlist("Playlist4", [song43, song47, song48], 20, ['PUNK'], 2015);
+  let playlist5 = new Playlist("Playlist5", [song63, song64, song65, song66], 50, ['INDIE'], 2021);
 
 
   /**
@@ -181,7 +183,7 @@ export function data(): Manage {
   artistCollection.setList([artist1, artist2, artist3, artist4, artist5, artist6, artist7]);
   genreCollection.setList([genero1, genero2, genero3, genero4, genero5, genero6, genero7]);
   groupCollection.setList([group1, group2, group3, group4]);
-  playCollection.setList([playlist1, playlist2, playlist3]);
+  playCollection.setList([playlist1, playlist2, playlist3, playlist4, playlist5]);
 
   /**
   * Calculamos los oyentes mensuales de cada artista
