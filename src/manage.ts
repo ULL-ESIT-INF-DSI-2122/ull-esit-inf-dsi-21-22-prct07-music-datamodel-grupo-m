@@ -12,6 +12,10 @@ export class Manage extends Collection<Playlist> {
     this.listPlaylist = listPlaylist;
   }
 
+  getList() : Playlist[] {
+    return this.listPlaylist;
+  }
+
   addItem(item: Playlist) : void {
     this.listPlaylist.push(item);
   }

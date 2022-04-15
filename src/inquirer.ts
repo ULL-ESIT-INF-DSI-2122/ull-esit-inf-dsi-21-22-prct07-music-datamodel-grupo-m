@@ -14,6 +14,7 @@ import {sortTituloCollection, sortAlbumCollection, sortAlbumYear, sortListenersT
 
 
 let playlistManage: Manage = data();
+data();
 
 enum mainOptions {
   consult = 'Realizar una Consulta',
@@ -1078,8 +1079,9 @@ async function removePlaylistExist(): Promise<void> {
       }
     });
   });
-
+  playlistManage.showPlaylist();
 }
+
 
 /*
 let removeAnswers: string = answers.removeName;
