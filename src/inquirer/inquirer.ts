@@ -13,22 +13,24 @@ import {Manage} from '../Gestor/manage';
 import {sortTituloCollection, sortAlbumCollection, sortAlbumYear, sortListenersTotal, sortSingles} from '../Gestor/sort';
 import {mainPrompt} from '../main';
 
+/**
+ * Se carga la base de datos del fichero data
+ */
 let playlistManage: Manage = data();
 data();
 
-enum mainOptions {
-  consult = 'Realizar una Consulta',
-  calculate = 'Realizar una Operación',
-  quit = 'Salir'
-};
-  
+/**
+ * Menu que especifica las diferentes opciones de navegacion
+ */  
 enum consultType {
   consultPlaylist = 'Consultar las Playlist del sistema',
   consultCollection = 'Consultar la Colecciones del sistema',
   back = 'Volver atrás'
 };
   
-
+/**
+ * Menu que especifica las diferentes opciones de navegacion por las Playlists del sistema
+ */
 enum consultPlaylistOptions {
   defaultVisualize = 'Visualizar por defecto las Playlist del sistema',
   sortByTitle = 'Visualizar por titulo de las canciones de la Playlist',
@@ -40,6 +42,9 @@ enum consultPlaylistOptions {
   back = 'Volver atras'
 };
 
+/**
+ * Menu que especifica las diferentes opciones de navegacion de las colecciones de elementos del sistema
+ */
 enum consultCollectionOptions {
   defaultVisualize = 'Visualizar por defecto las diversas Collecciones del sistema',
   sortByTitle = 'Visualizar por titulo de las canciones',
@@ -51,6 +56,9 @@ enum consultCollectionOptions {
   back = 'Volver atras'
 };
 
+/**
+ * Menu que especifica las opciones en caso de querer visualizar por defecto las colecciones del sistema
+ */
 enum consultDefaultCollection {
   printArtist = 'Visualizar la lista de Artistas del sistema',
   printSong = 'Visualizar la lista de Canciones del sistema',
@@ -60,25 +68,36 @@ enum consultDefaultCollection {
   back = 'Volver atras'
 };
 
+/**
+ * Menu que especifica las opciones en caso de seleccionar operar en el sistema
+ */
 enum OperationSelect {
   operatePlaylist = 'Realizar una operación en las Playlist del sistema',
   operateCollection = 'Realizar una operación en las Colecciones del sistema',
   back = 'Volver atras'
 };
 
+/**
+ * Menu que especifica las opciones en caso de seleccionar operar en las playlists del sistema
+ */
 enum selectOperatePlaylist {
   addNewPlaylist = 'Añadir una Playlist nueva al sistema',
   removePlaylist =  'Eliminar una Playlist existente',
   back = 'Volver atras'
 };
 
+/**
+ * Menu que especifica las opciones en caso de seleccionar operar en las colecciones del sistema
+ */
 enum selectOperateCollection {
   addNewCollection = 'Añadir nuevos elementos a la Coleccion',
   removeCollection = 'Eliminar elementos existentes de la Coleccion',
   back = 'Volver atras'
 };
 
-
+/**
+ * Menu que especifica las opciones en caso de querer añadir nuevos elementos a las colecciones del sistema
+ */
 enum optionAddCollection {
   addArtist = 'Añadir un Artista a la colección',
   addGroup = 'Añadir un grupo a la colección',
@@ -88,6 +107,9 @@ enum optionAddCollection {
   back = 'Volver atras'
 };
 
+/**
+ * Menu que especifica las opciones en caso de querer eliminar elementos existentes de las colecciones del sistemas
+ */
 enum optionRemoveCollection {
   removeArtist = 'Eliminar Artista de la colección',
   removeGroup = 'Eliminar Grupos de la colección',
@@ -97,10 +119,12 @@ enum optionRemoveCollection {
   back = 'Volver atras'
 };
 
-
-// OPERACION DE VISUALIZAR
 // ###############################################################################################################################
-// En caso de seleccionar visualizar
+// NAVEGACION POR EL SISTEMA
+// ###############################################################################################################################
+/**
+ * Funcion que implementa el menu en caso de seleccionar navegar en el menu principal
+ */
 export async function whatConsult(): Promise<void>   {
   console.clear();
   const answers = await inquirer.prompt({
@@ -122,7 +146,10 @@ export async function whatConsult(): Promise<void>   {
       break;
   }
 }
-// en caso de visualizar playlist
+
+/**
+ * En caso de decidir navegar en las playlist del sistema muestra las diversas formas de navegar
+ */
 async function promptConsultPlaylist(): Promise<void>   {
   const answers = await inquirer.prompt({
     type: 'list',
@@ -240,7 +267,9 @@ async function promptConsultPlaylist(): Promise<void>   {
   }
 }
 
-// En caso de visualizar la collecion
+/**
+ * En caso de decidir navegar en las colecciones de elementos del sistema muestra las diversas formas de navegar
+ */
 async function promptConsultCollection(): Promise<void>   {
   const answers = await inquirer.prompt({
     type: 'list',
@@ -331,7 +360,9 @@ async function promptConsultCollection(): Promise<void>   {
       break;
   }
 }
-// En caso de visualizar la collecion
+/**
+ * Si se decide visualizar por defecto las colecciones del sistema, pregunta que coleccion se desea visualizar.
+ */
 async function promptDefaultCollection(): Promise<void>   {
   const answers = await inquirer.prompt({
     type: 'list',
@@ -372,10 +403,12 @@ async function promptDefaultCollection(): Promise<void>   {
   }
 }
 // ###############################################################################################################################
-// MENU DE OPERACIONES
+// OPERACIONES EN EL SISTEMA
 // ###############################################################################################################################
 
-
+/**
+ * Funcion que implementa el menu en caso de seleccionar operar en el menu principal
+ */
 export async function whatOperate(): Promise<void> {
   console.clear();
   const answers = await inquirer.prompt({
@@ -397,6 +430,9 @@ export async function whatOperate(): Promise<void> {
   }
 }
 
+/**
+ * Menu que muestra las opciones en caso de seleccionar operar sobre las playlist del sistema
+ */
 async function promptOperatePlaylist(): Promise<void> {
   console.clear();
   const answers = await inquirer.prompt({
@@ -418,7 +454,9 @@ async function promptOperatePlaylist(): Promise<void> {
   }
 }
 
-
+/**
+ * Funcion que muestra las opciones en caso de elegir operar sobre las colecciones de objetos del sistema
+ */
 async function promptOperateCollection(): Promise<void> {
   console.clear();
   const answers = await inquirer.prompt({
@@ -440,7 +478,9 @@ async function promptOperateCollection(): Promise<void> {
   }
 }
 
-
+/**
+ * Menu que muestra las diversas opciones de añadir, tras seleccionar que desea añadir una nueva coleccion al sistema
+ */
 async function selectAddCollection(): Promise<void> {
   console.clear();
   const answers = await inquirer.prompt({
@@ -470,7 +510,9 @@ async function selectAddCollection(): Promise<void> {
       break;
   }
 }
-// Menu que añade un Album a la coleccion
+/**
+ * Funcion encargada de añadir un album a la coleccion tras solicitar previamente a través de inquirer los datos que conformaran el nuevo objeto de tipo album
+ */
 async function addAlbum(): Promise<void> {
   console.clear();
   let single: boolean = false;
@@ -541,7 +583,9 @@ async function addAlbum(): Promise<void> {
     });
   });
 }
-// Menu que añade un genero a la colleccion de generos:
+/**
+ * Funcion encargada de añadir un genero a la coleccion tras solicitar previamente a través de inquirer los datos que conformaran el nuevo objeto de tipo genero
+ */
 
 async function addGenre(): Promise<void> {
   console.clear();
@@ -620,7 +664,9 @@ async function addGenre(): Promise<void> {
 }
 
 
-// menu que añade un artista a la coleccion
+/**
+ * Funcion encargada de añadir un artista a la coleccion tras solicitar previamente a través de inquirer los datos que conformaran el nuevo objeto de tipo artista
+ */
 async function addArtist(): Promise<void> {
   console.clear();
   const answers: any = await inquirer.prompt([{
@@ -646,7 +692,9 @@ async function addArtist(): Promise<void> {
     continueAddArtist();
 }
 
-// Menu que pregunta si se desea añadir otro artista a la coleccion
+/**
+ * Funcion que implementa un menu en el que pregunta si se desea continuar añadiendo un artista o no
+ */
 async function continueAddArtist(): Promise<void> {
   const answers = await inquirer.prompt({
     type: 'list',
@@ -658,7 +706,9 @@ async function continueAddArtist(): Promise<void> {
   else whatOperate();
 }
 
-//menu que añade un grupo a la coleccion
+/**
+ * Funcion encargada de añadir un grupo nuevo a la coleccion tras solicitar previamente a través de inquirer los datos que conformaran el nuevo objeto de tipo grupo
+ */
 async function addGroup(): Promise<void> {
   console.clear();
   let single: boolean = false;
@@ -712,7 +762,9 @@ async function addGroup(): Promise<void> {
   });
 }
 
-// menu que añade una Cancion a la colleccion
+/**
+ * Funcion encargada de añadir una cancion a la coleccion tras solicitar previamente a través de inquirer los datos que conformaran el nuevo objeto de tipo cancion
+ */
 async function addSong(): Promise<void> {
   console.clear();
   let single: boolean = false;
@@ -765,6 +817,11 @@ async function addSong(): Promise<void> {
   });
 }
 
+/**
+ * Funcion que se encarga de encontrar el nombre de un autor en las colecciones de un grupo o artista
+ * @param name nombre del grupo o artista que se desea buscar
+ * @returns devuelve la posicion de la coinciencia encontrada
+ */
 function findAuthor(name: string): Artist | Group {
   let pos: number = 0;
   let count: number = 1;
@@ -790,21 +847,13 @@ function findAuthor(name: string): Artist | Group {
   } else {
     return artistCollection.getList()[pos];
   }
-  
-
 }
 
-function findArtist(name: string): Artist {
-  let pos: number = 0;
-  artistCollection.getList().forEach((item, index) => {
-    if (item.getName().toLocaleLowerCase() == name.toLocaleLowerCase()) {
-      pos = index;
-    }
-  });
-  return artistCollection.getList()[pos];
-}
-
-
+/**
+ * Funcion encargada de encontrar un genero dentro de la coleccion de generos
+ * @param name genero que se desea encontrar
+ * @returns devuelve la posicion de la coincidencia del genero
+ */
 function findGenre(name: string): genreInfo {
   let pos: number = 0;
   genreCollection.getList().forEach((item, index) => {
@@ -815,7 +864,11 @@ function findGenre(name: string): genreInfo {
   return genreCollection.getList()[pos].getNombre();
 }
 
-
+/**
+ * Funcion encagada de encontrar una cancion dentro de las colecciones registradas de canciones
+ * @param name nombre de la cancion que se desea buscar
+ * @returns devuelve la posicion de la coincidencia de la cancion
+ */
 function findSong(name: string):Song  {
   let pos: number = 0;
   songCollection.getList().forEach((item, index) => {
@@ -829,6 +882,9 @@ function findSong(name: string):Song  {
 
 // AÑADIR PLAYLIST
 // ###############################################################################################################################
+/**
+ * Menu que muestra las diversas opciones de añadir, tras seleccionar que desea añadir una nueva playlist en el sistema
+ */
 async function addPlaylist(): Promise<void> {
   console.clear();
   let single: boolean = false;
@@ -881,10 +937,13 @@ async function addPlaylist(): Promise<void> {
 
   });
 }
-
+// ###############################################################################################################################
 // ELIMINAR DE LAS COLLECCIONES
 // ###############################################################################################################################
-// Menu que da a elegir que eliminar
+
+/**
+ * Menu que muestra las diversas opciones de eliminar, tras seleccionar que desea eliminar una coleccion existente del sistema
+ */
 async function selectRemoveCollection(): Promise<void> {
   console.clear();
   const answers = await inquirer.prompt({
@@ -914,7 +973,9 @@ async function selectRemoveCollection(): Promise<void> {
       break;
   }
 }
-// menu que añade un artista a la coleccion
+/**
+ * Funcion que elimina un artista que introduce el usuario de la coleccion de artistas
+ */
 async function removeArtist(): Promise<void> {
   console.clear();
   const answers: any = await inquirer.prompt({
@@ -946,7 +1007,9 @@ async function removeArtist(): Promise<void> {
   });
 }
 
-
+/**
+ * Funcion que elimina una cancion que introduce el usuario de la coleccion de canciones
+ */
 async function removeSong(): Promise<void> {
   console.clear();
   const answers: any = await inquirer.prompt({
@@ -978,7 +1041,9 @@ async function removeSong(): Promise<void> {
   });
 }
 
-
+/**
+ * Funcion que elimina un genero que introduce el usuario de la coleccion de generos
+ */
 async function removeGenre(): Promise<void> {
   console.clear();
   const answers: any = await inquirer.prompt({
@@ -1010,6 +1075,9 @@ async function removeGenre(): Promise<void> {
   });
 }
 
+/**
+ * Funcion que elimina un grupo que introduce el usuario de la coleccion de grupos
+ */
 async function removeGroup(): Promise<void> {
   console.clear();
   const answers: any = await inquirer.prompt({
@@ -1040,7 +1108,9 @@ async function removeGroup(): Promise<void> {
     else whatOperate();
   });
 }
-
+/**
+ * Funcion que elimina un album que introduce el usuario de la coleccion de albumes
+ */
 async function removeAlbum(): Promise<void> {
   console.clear();
   const answers: any = await inquirer.prompt({
@@ -1071,11 +1141,10 @@ async function removeAlbum(): Promise<void> {
     else whatOperate();
   });
 }
-// ###############################################################################################################################
 
-
-// ELIMINAR UNA PLAYLIST
-// ###############################################################################################################################
+/**
+ * Menu que muestra las diversas opciones de eliminar, tras seleccionar que desea eliminar una playlist existente del sistema
+ */
 async function removePlaylistExist(): Promise<void> {
   console.clear();
   const answers: any = await inquirer.prompt({

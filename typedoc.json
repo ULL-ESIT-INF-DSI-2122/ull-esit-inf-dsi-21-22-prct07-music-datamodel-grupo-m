@@ -1,7 +1,20 @@
 {
 	"entryPoints": [
-		"./src/ejercicio1clase.ts",
-        "./src/name_exercice"
+		"./src/Basic_Class/album.ts",
+		"./src/Basic_Class/song.ts",
+		"./src/Basic_Class/artist.ts",
+		"./src/Basic_Class/group.ts",
+		"./src/Basic_Class/genre.ts",
+		"./src/Basic_Class/playlist.ts",
+		
+		"./src/Gestor/collection.ts",
+		"./src/Gestor/manage.ts",
+		"./src/Gestor/sort.ts",
+
+		"./src/inquirer/inquirer.ts",
+
+		"./src/data.ts",
+        "./src/main.ts"
 	], 
 	"out": "./docs/typedoc"
 }

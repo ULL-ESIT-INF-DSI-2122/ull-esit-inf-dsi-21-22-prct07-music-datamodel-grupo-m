@@ -7,15 +7,15 @@ import {Playlist} from "./Basic_Class/playlist";
 import {Manage} from "./Gestor/manage";
 import {Collection, albumCollection, artistCollection, groupCollection, genreCollection, songCollection} from './Gestor/collection'
 
+
 /**
- * @function Genera la coleccion del sistema con una serie de
- * datos preestablecidos
- */
-  /**
- * Artistas  5+
+ * Funcion data encargada de definir la base de datos que almacena todo el sistema
+ * @returns devuelve un objeto que clase gestora, que será una coleccion de Playlist
  */
 export function data(): Manage {
-
+  /**
+  * Artistas  5+
+  */
   let artist1 = new Artist("Billie Eillish", ['POP', 'ALTERNATIVO'], 47949051);
   let artist2 = new Artist("Lil Nash X", ['POP', 'RAP'], 49522921);
   let artist3 = new Artist("Damiano David", ['ROCK', 'POP'], 0);
@@ -24,10 +24,9 @@ export function data(): Manage {
   let artist6 = new Artist("Rihanna", ['POP', 'REGGAE', 'HIP-HOP', 'R&B'], 48806602);
   let artist7 = new Artist("Ryan Guldemond", ['ROCK', 'INDIE', 'ALTERNATIVO'], 0);
 
-
   /**
- * Groups 5
- */
+  * Groups 5
+  */
   
   let group1 = new Group("Green Day", [artist4], 1986, ['ROCK', 'PUNK'], 19999390);
   let group2 = new Group("Maneskin", [artist3, artist5], 2016, ['ROCK', 'ALTERNATIVO'], 20420352);
@@ -37,8 +36,8 @@ export function data(): Manage {
 
 
   /**
- * Canciones 50 (5xgenero)
- */
+  * Canciones 50 (5xgenero)
+  */
   
   let song1 = new Song("Getting Older", artist1, 4.04, ['POP'], false, 82368601);
   let song2 = new Song("I Didn't Change My Number", artist1, 2.38, ['POP'], false, 78111966);
@@ -121,8 +120,8 @@ export function data(): Manage {
   let song74 = new Song("Sleep Awake", group4, 5.47, ['ROCK', 'INDIE'], false, 5525389);
 
   /**
- * Álbumes 5-10
- */
+  * Álbumes 5-10
+  */
   
   let album1 = new Album("Happier Than Ever", [artist1], 2021, ['POP', 'ELECTROPOP'], [song1, song2, song3, song4, song5, song6, song7, song8, song9, song10, song11, song12, song13, song14, song15, song16]);
   let album2 = new Album("Teatro d'ira - Vol.I", [group2], 2021, ['ROCK', 'ALTERNATIVO'], [song17, song18, song19, song20, song21, song22, song23, song24]);
@@ -132,8 +131,8 @@ export function data(): Manage {
   let album6 = new Album("O My Heart", [group4], 2008, ['ROCK', 'INDIE'], [song63, song64, song65, song66, song67, song68, song69, song70, song71, song72, song73, song74]);
 
   /**
- * Géneros musicales 10
- */
+  * Géneros musicales 10
+  */
   
   
   let genero1 = new Genre('ROCK', [artist1, group2, group1, group3, group4], [album2, album4, album6], [song15, song17, song18, song19, song20, song21, song22, song23, song24, song40, song41, song42, song44, song45, song46, song49, song63, song64, song65, song66, song67, song68, song69, song70, song71, song72, song73, song74]);
@@ -145,18 +144,18 @@ export function data(): Manage {
   let genero7 = new Genre('INDIE', [group4], [album6], [song63, song64, song65, song66, song67, song68, song69, song70, song71, song72, song73, song74]);
 
 
-/**
- * Playlists 3
- */
+  /**
+  * Playlists 3
+  */
   
   let playlist1 = new Playlist("Playlist1", [song1], 10, ['ROCK'], 1990);
   let playlist2 = new Playlist("Playlist2", [song2, song5], 40, ['POP', 'RAP'], 2012);
   let patata = new Playlist("patata", [song3, song5], 50, ['RAP'], 2010);
 
 
-/**
- * Completando datos faltantes
-*/
+  /**
+  * Completando datos faltantes
+  */
 
   artist1.setAlbum(album1);
   artist1.setSongList([song1, song2, song3, song4, song5, song6, song7, song8, song9, song10, song11, song12, song13, song14, song15, song16]);
@@ -173,36 +172,31 @@ export function data(): Manage {
   group2.setAlbum(album2);
   group4.setAlbum(album6);
 
-/**
-* Rellenamos nuestra base de datos
-*/
+  /**
+  * Rellenamos nuestra base de datos
+  */
 
   songCollection.setList([song1, song2, song3, song4, song5, song6, song7, song8, song9, song10, song11, song12, song13, song14, song15, song16, song17, song18, song19, song20, song21, song22, song23, song24, song25, song26, song27, song28, song29, song30, song31, song32, song33, song34, song35, song36, song37, song38, song39, song40, song41, song42, song43, song44, song45, song46, song47, song48, song49, song50, song51, song52, song53, song54, song55, song56, song57, song58, song59, song60, song61, song62, song63, song64, song65, song66, song67, song68, song69, song70, song71, song72, song73, song74]);
   albumCollection.setList([album1,album2, album3, album4, album5, album6]);
   artistCollection.setList([artist1, artist2, artist3, artist4, artist5, artist6, artist7]);
   genreCollection.setList([genero1, genero2, genero3, genero4, genero5, genero6, genero7]);
   groupCollection.setList([group1, group2, group3, group4]);
-  //playlistCollection.setList([playlist1]);
 
-/**
-* Calculamos los oyentes mensuales de cada artista
-*/
+
+  /**
+  * Calculamos los oyentes mensuales de cada artista
+  */
 
   artistCollection.getList().forEach((artist) => {
     artist.setListeners(artist.calOyentes());
   });
 
-  /*
-   Hay tres formas de arreglar el asunto de los tests:
-   1. La primera solucion es buscar una funcion que devuelva depenediendo de lo que se quiera buscar el objeto en cuestion.
-   2. La segunda opcion es copiar los datos que hay aqui almacenados y ponerlos inicializados en cada test y comprobar que funciones
-   3 .Otra opcion es crear un array vacio e intentar indexar el elemento deseado dentro y luego realizar las operaciones pertinenete
-  
-  */
 
+  /**
+   * Añadimos a la coleccion del sistema todas las playlist existentes y lo devolvemos
+   */
   let arrayPlaylist: Playlist[] = [playlist1, playlist2, patata];
   let playlistCollection = new Manage(arrayPlaylist);
   return playlistCollection;
-
   
 }
