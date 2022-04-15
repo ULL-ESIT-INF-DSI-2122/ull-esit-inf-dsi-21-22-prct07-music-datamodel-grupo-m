@@ -8,9 +8,9 @@
 ## Introducción:
   El objetivo  de esta práctica es implementar a través de un diseño orientado a objetos diseñar un sistema que permita almacenar una biblioteca de musica. a través de las herramientas que se han ido utilizando a lo largo de prácticas anteriores añadiendo además nuevas herramientas como lowDB e inquirer.
 
-> Para acceder al informe de la práctica 7 piche [aquí]()
+> Para acceder al informe de la práctica 7 piche [aquí](https://github.com/ULL-ESIT-INF-DSI-2122/ull-esit-inf-dsi-21-22-prct07-music-datamodel-grupo-m/blob/master/docs/index.md)
 
-> Para acceder al informe a través de Github Pages, pinche [aquí]() u acceda al siguiente enlace:
+> Para acceder al informe a través de Github Pages, pinche [aquí](https://ull-esit-inf-dsi-2122.github.io/ull-esit-inf-dsi-21-22-prct07-music-datamodel-grupo-m/) u acceda al siguiente enlace:https://ull-esit-inf-dsi-2122.github.io/ull-esit-inf-dsi-21-22-prct07-music-datamodel-grupo-m/
 
 > Si desea acceder a la documentación de Typedoc puede acceder a través de la extensión Live Server.
 
