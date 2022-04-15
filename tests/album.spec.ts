@@ -1,7 +1,7 @@
 import 'mocha';
 import {expect} from 'chai';
 import {data} from "../src/data";
-import {albumCollection, artistCollection, groupCollection} from '../src/collection';
+import {genreCollection, artistCollection, groupCollection, albumCollection, songCollection} from '../src/Gestor/collection';
 // //import {DataBase, albumCollection, artistCollection, groupCollection, genreCollection, songCollection, playlistCollection} from './database'
 
 
