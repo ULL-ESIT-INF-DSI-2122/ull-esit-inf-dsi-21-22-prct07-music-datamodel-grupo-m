@@ -7,11 +7,11 @@ import {Album} from "./Basic_Class/album";
 import {Artist} from "./Basic_Class/artist";
 import {Group} from "./Basic_Class/group";
 import {Playlist} from "./Basic_Class/playlist";
-import {Collection, albumCollection, artistCollection, groupCollection, genreCollection, songCollection} from './collection'
+import {Collection, albumCollection, artistCollection, groupCollection, genreCollection, songCollection} from './Gestor/collection'
 import {data} from "./data";
-import {Manage} from './manage';
-import {sortTituloCollection, sortAlbumCollection, sortAlbumYear, sortListenersTotal, sortSingles} from './sort';
-
+import {Manage} from './Gestor/manage';
+import {sortTituloCollection, sortAlbumCollection, sortAlbumYear, sortListenersTotal, sortSingles} from './Gestor/sort';
+import {mainPrompt} from './main';
 
 let playlistManage: Manage = data();
 data();
@@ -68,14 +68,12 @@ enum OperationSelect {
 
 enum selectOperatePlaylist {
   addNewPlaylist = 'Añadir una Playlist nueva al sistema',
-  modifyPlaylist = 'Modificar una Playlist existente',
   removePlaylist =  'Eliminar una Playlist existente',
   back = 'Volver atras'
 };
 
 enum selectOperateCollection {
   addNewCollection = 'Añadir nuevos elementos a la Coleccion',
-  modifyCollection = 'Realizar una modificación en las Colecciones del sistema',
   removeCollection = 'Eliminar elementos existentes de la Coleccion',
   back = 'Volver atras'
 };
@@ -100,36 +98,10 @@ enum optionRemoveCollection {
 };
 
 
-// ###############################################################################################################################
-// Menu principal
-async function mainPrompt(): Promise<void>   {
-  console.clear();
-  console.log(`Bienvenidos a la Biblioteca Musical!\n» Autores: Joel, Micaela & Carla`);
-  const answers = await inquirer.prompt({
-    type: 'list',
-    name: 'chooseSelect',
-    message: 'Que desea hacer?:',
-    choices: Object.values(mainOptions),
-  });
-  switch(answers["chooseSelect"]) {
-    case mainOptions.consult:
-      whatConsult();
-      break;
-    case mainOptions.calculate:
-      whatOperate();
-      break;
-    case mainOptions.quit:
-      console.clear();
-      console.log(`Gracias por su visita. Que tenga un buen dia`);
-      console.log(`Saliendo...`);
-      break;
-  }
-}
-
 // OPERACION DE VISUALIZAR
 // ###############################################################################################################################
 // En caso de seleccionar visualizar
-async function whatConsult(): Promise<void>   {
+export async function whatConsult(): Promise<void>   {
   console.clear();
   const answers = await inquirer.prompt({
     type: 'list',
@@ -359,9 +331,6 @@ async function promptConsultCollection(): Promise<void>   {
       break;
   }
 }
-
-// En caso de seleccionar la visualizacion de collecciones por defecto
-
 // En caso de visualizar la collecion
 async function promptDefaultCollection(): Promise<void>   {
   const answers = await inquirer.prompt({
@@ -407,7 +376,7 @@ async function promptDefaultCollection(): Promise<void>   {
 // ###############################################################################################################################
 
 
-async function whatOperate(): Promise<void> {
+export async function whatOperate(): Promise<void> {
   console.clear();
   const answers = await inquirer.prompt({
     type: 'list',
@@ -440,8 +409,6 @@ async function promptOperatePlaylist(): Promise<void> {
     case selectOperatePlaylist.addNewPlaylist: 
       addPlaylist();
       break;
-    case selectOperatePlaylist.modifyPlaylist:
-      break;
     case selectOperatePlaylist.removePlaylist: 
       removePlaylistExist();
       break;
@@ -463,8 +430,6 @@ async function promptOperateCollection(): Promise<void> {
   switch(answers["operateCollection"]) {
     case selectOperateCollection.addNewCollection: 
       selectAddCollection();
-      break;
-    case selectOperateCollection.modifyCollection:
       break;
     case selectOperateCollection.removeCollection: 
       selectRemoveCollection();
@@ -648,7 +613,7 @@ async function addGenre(): Promise<void> {
       message: 'Do you want to add another Album?:',
       choices: ['si', 'no'],
     }]).then((answers: any) => {
-      if (answers['continue'] == 'si') addAlbum();
+      if (answers['continue'] == 'si') addGenre();
       else whatOperate();
     });
   });
@@ -738,10 +703,10 @@ async function addGroup(): Promise<void> {
     inquirer.prompt([{
       type: 'list',
       name: 'continue',
-      message: 'Do you want to add another group?:',
-      choices: ['Yes', 'No'],
+      message: 'Desea Añadir otro grupo??:',
+      choices: ['si', 'no'],
     }]).then((answers: any) => {
-      if (answers['continue'] == 'Yes') addSong();
+      if (answers['continue'] == 'si') addGroup();
       else whatOperate();
     });
   });
@@ -791,10 +756,10 @@ async function addSong(): Promise<void> {
     inquirer.prompt([{
       type: 'list',
       name: 'continue',
-      message: 'Do you want to add another song?:',
-      choices: ['Yes', 'No'],
+      message: 'Desea añadir otra cancion?:',
+      choices: ['si', 'no'],
     }]).then((answers: any) => {
-      if (answers['continue'] == 'Yes') addSong();
+      if (answers['continue'] == 'si') addSong();
       else whatOperate();
     });
   });
@@ -904,6 +869,15 @@ async function addPlaylist(): Promise<void> {
     let newPlaylist: Playlist =  new Playlist(answers.name, resultArray, answers.duration, [genreIntroduce], answers.yearCreation);
     playlistManage.addItem(newPlaylist);
     playlistManage.showPlaylist();
+    inquirer.prompt([{
+      type: 'list',
+      name: 'continue',
+      message: 'Desea añadir otra playlist?:',
+      choices: ['si', 'no'],
+    }]).then((answers: any) => {
+      if (answers['continue'] == 'si') addPlaylist();
+      else promptOperatePlaylist();
+    });
 
   });
 }
@@ -961,6 +935,15 @@ async function removeArtist(): Promise<void> {
     });
   });
   artistCollection.showCollection();
+  inquirer.prompt([{
+    type: 'list',
+    name: 'continue',
+    message: 'Desea eliminar otro artista?:',
+    choices: ['si', 'no'],
+  }]).then((answers: any) => {
+    if (answers['continue'] == 'si') removeArtist();
+    else whatOperate();
+  });
 }
 
 
@@ -984,6 +967,15 @@ async function removeSong(): Promise<void> {
     });
   });
   songCollection.showCollection();
+  inquirer.prompt([{
+    type: 'list',
+    name: 'continue',
+    message: 'Desea eliminar otra cancion?:',
+    choices: ['si', 'no'],
+  }]).then((answers: any) => {
+    if (answers['continue'] == 'si') removeSong();
+    else whatOperate();
+  });
 }
 
 
@@ -1007,6 +999,15 @@ async function removeGenre(): Promise<void> {
     });
   });
   genreCollection.showCollection();
+  inquirer.prompt([{
+    type: 'list',
+    name: 'continue',
+    message: 'Desea eliminar otro genero?:',
+    choices: ['si', 'no'],
+  }]).then((answers: any) => {
+    if (answers['continue'] == 'si') removeGenre();
+    else whatOperate();
+  });
 }
 
 async function removeGroup(): Promise<void> {
@@ -1029,6 +1030,15 @@ async function removeGroup(): Promise<void> {
     });
   });
   groupCollection.showCollection();
+  inquirer.prompt([{
+    type: 'list',
+    name: 'continue',
+    message: 'Desea eliminar otro Grupo?:',
+    choices: ['si', 'no'],
+  }]).then((answers: any) => {
+    if (answers['continue'] == 'si') removeGroup();
+    else whatOperate();
+  });
 }
 
 async function removeAlbum(): Promise<void> {
@@ -1051,6 +1061,15 @@ async function removeAlbum(): Promise<void> {
     });
   });
   albumCollection.showCollection();
+  inquirer.prompt([{
+    type: 'list',
+    name: 'continue',
+    message: 'Desea eliminar otro Album?:',
+    choices: ['si', 'no'],
+  }]).then((answers: any) => {
+    if (answers['continue'] == 'si') removeAlbum();
+    else whatOperate();
+  });
 }
 // ###############################################################################################################################
 
@@ -1080,27 +1099,13 @@ async function removePlaylistExist(): Promise<void> {
     });
   });
   playlistManage.showPlaylist();
+  inquirer.prompt([{
+    type: 'list',
+    name: 'continue',
+    message: 'Desea eliminar otra Playlist?:',
+    choices: ['si', 'no'],
+  }]).then((answers: any) => {
+    if (answers['continue'] == 'si') removePlaylistExist();
+    else promptOperatePlaylist();
+  });
 }
-
-
-/*
-let removeAnswers: string = answers.removeName;
-    let removeArray: string [] =  removeAnswers.split(", ", removeAnswers.length);
-    removeArray.forEach((i) => {
-      playlistManage.getList().forEach((j) => {
-        if (i.toLocaleLowerCase() == j.getName().toLocaleLowerCase()) {
-          console.log(`${j.getName}`);
-          let index = playlistManage.getList().indexOf(j);
-          if (index !== -1) {
-            playlistManage.getList().splice(index, 1);
-          }
-        }
-        console.log(`${playlistManage.getList()}`);
-      });
-    });
-    playlistManage.showPlaylist();
-*/
-
-// ###############################################################################################################################
-mainPrompt();
-

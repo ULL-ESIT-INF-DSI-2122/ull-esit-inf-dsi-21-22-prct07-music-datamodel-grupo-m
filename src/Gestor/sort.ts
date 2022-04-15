@@ -1,10 +1,10 @@
-import { data } from "./data";
-import {Genre} from "./Basic_Class/genre";
-import {Song} from "./Basic_Class/song";
-import {Album} from "./Basic_Class/album";
-import {Artist} from "./Basic_Class/artist";
-import {Group} from "./Basic_Class/group";
-import {Playlist} from "./Basic_Class/playlist";
+import { data } from "../data";
+import {Genre} from "../Basic_Class/genre";
+import {Song} from "../Basic_Class/song";
+import {Album} from "../Basic_Class/album";
+import {Artist} from "../Basic_Class/artist";
+import {Group} from "../Basic_Class/group";
+import {Playlist} from "../Basic_Class/playlist";
 import {Collection, albumCollection, artistCollection, groupCollection, genreCollection, songCollection} from './collection'
 
 

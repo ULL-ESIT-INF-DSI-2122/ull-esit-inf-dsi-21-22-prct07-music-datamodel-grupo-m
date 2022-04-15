@@ -1,7 +1,7 @@
-import {Playlist} from "./Basic_Class/playlist";
-import { Song } from "./Basic_Class/song";
+import {Playlist} from "../Basic_Class/playlist";
+import { Song } from "../Basic_Class/song";
 import {Collection} from  "./collection";
-import { data } from "./data";
+import { data } from "../data";
 /**
  * Clase Gestora encargada de realizar los diversos métodos para manejar Playlist en nuestro sistema.
  */

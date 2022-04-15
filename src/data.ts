@@ -4,8 +4,8 @@ import {Album} from "./Basic_Class/album";
 import {Artist} from "./Basic_Class/artist";
 import {Group} from "./Basic_Class/group";
 import {Playlist} from "./Basic_Class/playlist";
-import {Manage} from "./manage";
-import {Collection, albumCollection, artistCollection, groupCollection, genreCollection, songCollection} from './collection'
+import {Manage} from "./Gestor/manage";
+import {Collection, albumCollection, artistCollection, groupCollection, genreCollection, songCollection} from './Gestor/collection'
 
 /**
  * @function Genera la coleccion del sistema con una serie de
