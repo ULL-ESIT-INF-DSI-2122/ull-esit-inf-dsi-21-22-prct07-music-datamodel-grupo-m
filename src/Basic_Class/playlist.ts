@@ -27,6 +27,10 @@ export class Playlist {
       return this.songs;
     }
 
+    /**
+     * Metodo que se encarga de obtener el nombre de una cancion del array de playlist
+     * @returns devuelve el nombre de una cancion de todas las que recoge la lista
+     */
     getNameSong(): string {
       this.songs.forEach((item) => {
         return item.getName();
@@ -34,6 +38,10 @@ export class Playlist {
       return "No existe ningun nombre";
     }
 
+    /**
+     * metodo encargado de obtener el nombre de los artistas de la canciones de la playlist
+     * @returns devuelve el autor de la lista de canciones
+     */
     getArtistSong(): string {
       this.songs.forEach((item) => {
         return item.getAutor();
@@ -41,6 +49,10 @@ export class Playlist {
       return "No existe ningun Artista o Grupo asociado";
     }
 
+    /**
+     * metodo encargado de obtener la duracion de las canciones que hay en las playlist
+     * @returns devuelve la duracion de las canciones de la Playlist
+     */
     getDurationSong(): number {
       this.songs.forEach((item) => {
         return item.getDuration();
@@ -48,6 +60,10 @@ export class Playlist {
       return -1;
     }
 
+    /**
+     * metodo encargado de obtener los generos de las canciones de la playlist.
+     * @returns obtiene el genero de las canciones de la playlist
+     */
     getGenrePlaylist(): string {
       this.songs.forEach((item) => {
         return item.getGenres();
@@ -62,7 +78,10 @@ export class Playlist {
       return this.duration;
     }
 
-
+    /**
+     * metodo que obtiene el año de creacion de la playlist
+     * @returns devuelve el año de creacion de la playlist
+     */
     getCreateYear(): number {
       return this.creationYear;
     }
@@ -82,6 +101,10 @@ export class Playlist {
       return this.name;
     }
 
+    /**
+     * establece un array de canciones al array de canciones de una playlist
+     * @param newItem nuevo conjunto de canciones que perteneceran a una playlist. 
+     */
     setPlaylistSong(newItem: Song[]): void {
       this.songs = newItem;
     }

@@ -33,6 +33,10 @@ export class Artist {
     return this.name;
   }
 
+  /**
+   * Metodo que establece un nuevo nombre a un artista
+   * @param newName nuevo nombre que se le quiere asociar a un artista
+   */
   setName(newName: string): void {
     this.name = newName;
   }
@@ -99,6 +103,10 @@ export class Artist {
     this.groupList = newGroupList;
   }
 
+  /**
+   * Metodo encargado de añadir un nuevo grupo a los grupos a los que pertenece el artista
+   * @param newGrupo nuevo grupo que se añade
+   */
   public addGroup(newGrupo: Group): void {
     this.groupList.push(newGrupo);
   }
@@ -112,6 +120,10 @@ export class Artist {
     this.songsList = newList;
   }
 
+  /**
+   * metodo que añade una nueva cancion que ha sacado el artista
+   * @param newSong nueva cancion que publico el artista
+   */
   public setSong(newSong: Song): void {
     this.songsList.push(newSong);
   }
@@ -125,15 +137,12 @@ export class Artist {
     this.albumList.push(newAlbum);
   }
 
+  /**
+   * metodo que actualiza los oyentes que tiene un artista
+   * @param listeners numero de oyentes individuales que tiene el artista
+   */
   public setListeners(listeners: number): void {
     this.listenerMensual = listeners;
   }
-/*
-  public setGenres(newGenre: genreInfo): void {
-    if (newGenre === genreInfo) {
-      this.genres.push(newGenre);
-    }
-  }
-*/
 
 }
