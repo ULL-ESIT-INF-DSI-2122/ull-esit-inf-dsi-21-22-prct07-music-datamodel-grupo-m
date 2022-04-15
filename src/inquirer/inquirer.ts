@@ -1,17 +1,17 @@
 import inquirer from 'inquirer';
 import * as readline from 'readline';
 
-import {Genre, genreInfo} from "./Basic_Class/genre";
-import {Song} from "./Basic_Class/song";
-import {Album} from "./Basic_Class/album";
-import {Artist} from "./Basic_Class/artist";
-import {Group} from "./Basic_Class/group";
-import {Playlist} from "./Basic_Class/playlist";
-import {Collection, albumCollection, artistCollection, groupCollection, genreCollection, songCollection} from './Gestor/collection'
-import {data} from "./data";
-import {Manage} from './Gestor/manage';
-import {sortTituloCollection, sortAlbumCollection, sortAlbumYear, sortListenersTotal, sortSingles} from './Gestor/sort';
-import {mainPrompt} from './main';
+import {Genre, genreInfo} from "../Basic_Class/genre";
+import {Song} from "../Basic_Class/song";
+import {Album} from "../Basic_Class/album";
+import {Artist} from "../Basic_Class/artist";
+import {Group} from "../Basic_Class/group";
+import {Playlist} from "../Basic_Class/playlist";
+import {Collection, albumCollection, artistCollection, groupCollection, genreCollection, songCollection} from '../Gestor/collection'
+import {data} from "../data";
+import {Manage} from '../Gestor/manage';
+import {sortTituloCollection, sortAlbumCollection, sortAlbumYear, sortListenersTotal, sortSingles} from '../Gestor/sort';
+import {mainPrompt} from '../main';
 
 let playlistManage: Manage = data();
 data();

@@ -12,7 +12,7 @@ import {data} from "./data";
 import {Manage} from './Gestor/manage';
 import {sortTituloCollection, sortAlbumCollection, sortAlbumYear, sortListenersTotal, sortSingles} from './Gestor/sort';
 
-import {whatConsult, whatOperate} from './inquirer';
+import {whatConsult, whatOperate} from './inquirer/inquirer';
 
 let playlistManage: Manage = data();
 data();
