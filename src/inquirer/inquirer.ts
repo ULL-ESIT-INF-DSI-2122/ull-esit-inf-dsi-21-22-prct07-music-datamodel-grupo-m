@@ -7,7 +7,7 @@ import {Album} from "../Basic_Class/album";
 import {Artist} from "../Basic_Class/artist";
 import {Group} from "../Basic_Class/group";
 import {Playlist} from "../Basic_Class/playlist";
-import {Collection, albumCollection, artistCollection, groupCollection, genreCollection, songCollection, playCollection} from '../Gestor/collection'
+import {Collection, albumCollection, artistCollection, groupCollection, genreCollection, songCollection} from '../Gestor/collection'
 import {data} from "../data";
 import {Manage} from '../Gestor/manage';
 import {sortTituloCollection, sortAlbumCollection, sortAlbumYear, sortListenersTotal, sortSingles, sortTituloPlaylist} from '../Gestor/sort';
