@@ -11,7 +11,6 @@ import {Collection, albumCollection, artistCollection, groupCollection, genreCol
 import {data} from "./data";
 import {Manage} from './Gestor/manage';
 import {sortTituloCollection, sortAlbumCollection, sortAlbumYear, sortListenersTotal, sortSingles} from './Gestor/sort';
-
 import {whatConsult, whatOperate} from './inquirer/inquirer';
 /**
  * Se carga la base de datos desde el fichero data

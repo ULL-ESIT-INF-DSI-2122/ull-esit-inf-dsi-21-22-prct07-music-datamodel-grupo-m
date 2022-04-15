@@ -5,7 +5,7 @@ import {Album} from "../Basic_Class/album";
 import {Artist} from "../Basic_Class/artist";
 import {Group} from "../Basic_Class/group";
 import {Playlist} from "../Basic_Class/playlist";
-import {Collection, albumCollection, artistCollection, groupCollection, genreCollection, songCollection} from './collection'
+import {Collection, albumCollection, artistCollection, groupCollection, genreCollection, songCollection, playCollection} from './collection'
 
 
 /**
@@ -73,4 +73,17 @@ export function sortSingles(): Song[] {
       }
   });
   return singleSong;
+}
+
+/**
+ * Funcion externa a las clases que ordena una coleccion por titulo de la canciones
+ * @param selec flag que determina si se ordena ascendente o descende
+ * @returns dependiente del flag devuelve la lista ordenada por titulo de forma ascendente o descendente
+ */
+ export function sortTituloPlaylist(selec: Boolean = true): Playlist[] {
+  if (selec == true) {
+    return playCollection.getList().sort((a, b) => (a.getName().toLocaleLowerCase() < b.getName().toLocaleLowerCase()) ? -1 : 1);
+  } else {
+    return playCollection.getList().sort((a, b) => (a.getName().toLocaleLowerCase() > b.getName().toLocaleLowerCase()) ? -1 : 1);
+  }
 }

@@ -78,3 +78,4 @@ export const artistCollection = new Collection<Artist>();
 export const groupCollection = new Collection<Group>();
 export const genreCollection = new Collection<Genre>();
 export const songCollection = new Collection<Song>();
+export const playCollection = new Collection<Playlist>();

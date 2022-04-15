@@ -5,7 +5,7 @@ import {Artist} from "./Basic_Class/artist";
 import {Group} from "./Basic_Class/group";
 import {Playlist} from "./Basic_Class/playlist";
 import {Manage} from "./Gestor/manage";
-import {Collection, albumCollection, artistCollection, groupCollection, genreCollection, songCollection} from './Gestor/collection'
+import {Collection, albumCollection, artistCollection, groupCollection, genreCollection, songCollection, playCollection} from './Gestor/collection'
 
 
 /**
@@ -150,7 +150,7 @@ export function data(): Manage {
   
   let playlist1 = new Playlist("Playlist1", [song1], 10, ['ROCK'], 1990);
   let playlist2 = new Playlist("Playlist2", [song2, song5], 40, ['POP', 'RAP'], 2012);
-  let patata = new Playlist("patata", [song3, song5], 50, ['RAP'], 2010);
+  let playlist3 = new Playlist("playlist3", [song3, song5], 50, ['RAP'], 2010);
 
 
   /**
@@ -181,7 +181,7 @@ export function data(): Manage {
   artistCollection.setList([artist1, artist2, artist3, artist4, artist5, artist6, artist7]);
   genreCollection.setList([genero1, genero2, genero3, genero4, genero5, genero6, genero7]);
   groupCollection.setList([group1, group2, group3, group4]);
-
+  playCollection.setList([playlist1, playlist2, playlist3]);
 
   /**
   * Calculamos los oyentes mensuales de cada artista
@@ -195,7 +195,7 @@ export function data(): Manage {
   /**
    * Añadimos a la coleccion del sistema todas las playlist existentes y lo devolvemos
    */
-  let arrayPlaylist: Playlist[] = [playlist1, playlist2, patata];
+  let arrayPlaylist: Playlist[] = [playlist1, playlist2, playlist3];
   let playlistCollection = new Manage(arrayPlaylist);
   return playlistCollection;
   
